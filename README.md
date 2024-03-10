@@ -37,8 +37,8 @@ npm install
 Run database from postgressql. Use the "database.sql" to initialize the database.
 
 1. Create a database named "any_budget_can".
-2. The queries in the tables.sql file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on Postgres, so you will need to make sure to have that installed.
-3. Open up your editor of choice and run an npm install
+2. The queries in the database.sql file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on Postgres, so you will need to make sure to have that installed.
+3. Open up in VScode and run an npm install
 4. In terminal run
 
 ```
