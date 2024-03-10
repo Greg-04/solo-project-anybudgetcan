@@ -2,6 +2,9 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
+
+CREATE DATABASE "any_budget_can"
+
 CREATE TABLE "user" ( 
 "id" SERIAL PRIMARY KEY, 
 "name" VARCHAR(100),
