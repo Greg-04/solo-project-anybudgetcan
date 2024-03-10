@@ -6,6 +6,7 @@
 - Categorized budget overview
 - Viewing multiple created savings plans
 - Remaining budget amount
+  
 Users will also be able to access each of these pages to view, modify, or add additional savings plans. Allowing users to understand their financial habits and progress toward savings goals effectively.
 
 ## Getting Started
