@@ -1,5 +1,5 @@
 import React from 'react';
-import './AddTransactionsPage.css'
+import './AddTransactionsPage'
 
 function AddTransactionsPage() {
   return (
