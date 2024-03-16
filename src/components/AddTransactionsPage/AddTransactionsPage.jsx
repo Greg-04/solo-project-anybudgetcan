@@ -15,9 +15,9 @@ function AddTransactionsPage() {
 
   // Handle category selection
   const handleCategorySelect = (event) => {
-    // console.log('in category select handle');
-    // const selectedCategory = event.target.value;
-    // // next step
+    console.log('categoryID before setting state', event.target.value);
+    setCategoryId(event.target.value);
+    console.log('categoryID after setting state', event.target.value);
   };
 
   // Fetch categories on component mount
@@ -33,10 +33,21 @@ function AddTransactionsPage() {
       <div className="transactionForm">
         <form>
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" value={name} onChange={(event) => setName(event.target.value)} required/>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
+          />
           {/* <p>{name}</p> // for testing purposes*/}
           <label htmlFor="amount">Amount:</label>
-          <input type="number" id="amount" value={amount} onChange={(event) => setAmount(event.target.value)}/>
+          <input
+            type="number"
+            id="amount"
+            value={amount}
+            onChange={(event) => setAmount(event.target.value)}
+          />
           <label htmlFor="category">Select Category:</label>
           <select id="category" onChange={handleCategorySelect}>
             <option value="">Select a category</option>
@@ -47,8 +58,13 @@ function AddTransactionsPage() {
             ))}
           </select>
           <label htmlFor="trans_date">Date:</label>
-          <input type="date" id="trans_date" value={transDate} onChange={(event) => setTransDate(event.target.value)} />
-          <button type="submit" >Add Transaction</button>
+          <input
+            type="date"
+            id="trans_date"
+            value={transDate}
+            onChange={(event) => setTransDate(event.target.value)}
+          />
+          <button type="submit">Add Transaction</button>
         </form>
       </div>
     </>
