@@ -10,7 +10,7 @@ function AddTransactionsPage() {
 
   // Handle category selection
   const handleCategorySelect = (event) => {
-    console.log('in category select handle');
+    // console.log('in category select handle');
     // const selectedCategory = event.target.value;
     // // next step
   };
@@ -21,18 +21,22 @@ function AddTransactionsPage() {
   }, [dispatch]);
 
   return (
-    <div className="container">
-      <h1>Add Transactions</h1>
-      <label htmlFor="category">Select Category:</label>
-      <select id="category" onChange={handleCategorySelect}>
-        <option value="">Select a category</option>
-        {category.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
-    </div>
+    <>
+      <div>
+        <h1>Add Transactions</h1>
+      </div>
+      <div className="category">
+        <label htmlFor="category">Select Category:</label>
+        <select id="category" onChange={handleCategorySelect}>
+          <option value="">Select a category</option>
+          {category.map((categoryName) => (
+            <option key={categoryName.id} value={categoryName.id}>
+              {categoryName.name}
+            </option>
+          ))}
+        </select>
+      </div>
+    </>
   );
 }
 
