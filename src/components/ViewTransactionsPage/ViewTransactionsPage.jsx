@@ -27,7 +27,14 @@ function ViewTransactionsPage() {
             </tr>
           </thead>
           <tbody>
-            {JSON.stringify(transactions)}
+          {transactions.map((transaction) => (
+              <tr key={transaction.id}>
+                <td>{transaction.name}</td>
+                <td>{transaction.amount}</td>
+                <td>{transaction.category_name}</td>
+                <td>{transaction.trans_date}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
