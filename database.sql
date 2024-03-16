@@ -35,7 +35,7 @@ CREATE TABLE "plan" (
 "id" SERIAL PRIMARY KEY, 
 "user_id" INT REFERENCES "user",
 "name" VARCHAR(255),
-"end_date" TIMESTAMP, 
+"target_date" TIMESTAMP, 
 "priority" INT,
 "budget_goal" NUMERIC(10,2),
 "active" BOOLEAN
@@ -56,6 +56,17 @@ CREATE TABLE "category_limit" (
 "amount_limit" NUMERIC(10,2) 
 );
 
-
+INSERT INTO "category" ("name")
+VALUES 
+('Housing'),
+('Transportation'),
+('Groceries'),
+('Healthcare'),
+('Debt Payments'),
+('Entertainment'),
+('Personal Care'),
+('Clothing and Accessories'),
+('Savings and Investments'),
+('Dining out');
 
 
