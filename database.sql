@@ -27,7 +27,7 @@ CREATE TABLE "transaction" (
 "user_id" INT REFERENCES "user", 
 "category_id" INT REFERENCES "category", 
 "amount" NUMERIC(10,2), 
-"trans_date" TIMESTAMP, 
+"trans_date" DATE, 
 "name" VARCHAR(255)
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE "plan" (
 "id" SERIAL PRIMARY KEY, 
 "user_id" INT REFERENCES "user",
 "name" VARCHAR(255),
-"target_date" TIMESTAMP, 
+"target_date" DATE, 
 "priority" INT,
 "budget_goal" NUMERIC(10,2),
 "active" BOOLEAN
@@ -68,5 +68,3 @@ VALUES
 ('Clothing and Accessories'),
 ('Savings and Investments'),
 ('Dining out');
-
-
