@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddTransactionsPage from '../AddTransactionsPage/AddTransactionsPage';
+import ViewTransactionsPage from '../ViewTransactionsPage/ViewTransactionsPage';
 
 import './App.css';
 
@@ -68,6 +69,10 @@ function App() {
 
           <ProtectedRoute exact path="/addtransactions">
             <AddTransactionsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/viewtransactions">
+            <ViewTransactionsPage />
           </ProtectedRoute>
 
           <Route exact path="/login">

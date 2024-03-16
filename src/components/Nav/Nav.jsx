@@ -43,6 +43,10 @@ function Nav() {
         <Link className="navLink" to="/addtransactions">
           Add Transactions
         </Link>
+
+        <Link className="navLink" to="/viewtransactions">
+          View Transactions
+        </Link>
       </div>
     </div>
   );

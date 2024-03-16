@@ -1,4 +1,4 @@
-import './AddTransactionsPage';
+import './AddTransactionsPage.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -61,9 +61,14 @@ function AddTransactionsPage() {
             id="amount"
             value={amount}
             onChange={(event) => setAmount(event.target.value)}
+            required
           />
           <label htmlFor="category">Select Category:</label>
-          <select id="category" value={categoryId} onChange={handleCategorySelect}>
+          <select
+            required
+            id="category"
+            value={categoryId}
+            onChange={handleCategorySelect}>
             <option value="">Select a category</option>
             {category.map((categoryName) => (
               <option key={categoryName.id} value={categoryName.id}>
@@ -77,6 +82,7 @@ function AddTransactionsPage() {
             id="trans_date"
             value={transDate}
             onChange={(event) => setTransDate(event.target.value)}
+            required
           />
           <button type="submit">Add Transaction</button>
         </form>
