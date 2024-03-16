@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
 SELECT "transaction"."id", "transaction"."name", "transaction"."amount", 
 "transaction"."trans_date", "transaction"."category_id", "category"."name" AS "category_name"
 FROM "transaction"
-JOIN "category" ON "transaction"."category_id" = "category"."id";`;
+JOIN "category" ON "transaction"."category_id" = "category"."id"
+ORDER BY "transaction".trans_date DESC;`;
   pool
     .query(queryText)
     .then((result) => res.send(result.rows))

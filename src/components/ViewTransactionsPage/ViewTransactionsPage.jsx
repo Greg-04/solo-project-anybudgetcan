@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function ViewTransactionsPage() {
   const dispatch = useDispatch();
   const transactions = useSelector((store) => store.transaction);
+  console.log('transactions data', transactions);
 
   // Fetch transactions on component mount
   useEffect(() => {
@@ -13,6 +14,7 @@ function ViewTransactionsPage() {
 
   //Function to reformat the timestamp into date format
   const formatDate = (newDate) => {
+    //This splits string into substrings/array
     const splitDate = newDate.split('T');
     // console.log('new date object', splitDate);
     return splitDate[0];
@@ -34,14 +36,21 @@ function ViewTransactionsPage() {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((transaction) => (
-              <tr key={transaction.id}>
-                <td>{formatDate(transaction.trans_date)}</td>
-                <td>{transaction.name}</td>
-                <td>${transaction.amount}</td>
-                <td>{transaction.category_name}</td>
+            {/* Adding the conditional to check if transactions has data and displays is loading if not*/}
+            {transactions ? (
+              transactions.map((transaction) => (
+                <tr key={transaction.id}>
+                  <td>{formatDate(transaction.trans_date)}</td>
+                  <td>{transaction.name}</td>
+                  <td>${transaction.amount}</td>
+                  <td>{transaction.category_name}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td>Loading...</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

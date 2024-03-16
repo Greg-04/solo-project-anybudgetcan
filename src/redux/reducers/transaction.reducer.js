@@ -1,4 +1,4 @@
-const transactionReducer = (state = {}, action) => {
+const transactionReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TRANSACTION_SUCCESS':
       return { ...state, success: true };
