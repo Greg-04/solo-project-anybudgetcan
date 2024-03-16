@@ -17,22 +17,22 @@ function ViewTransactionsPage() {
         <h1>View Transactions</h1>
       </div>
       <div>
-        <table>
+        <table className="table-container">
           <thead>
             <tr>
+              <th>Date</th>
               <th>Name</th>
               <th>Amount</th>
               <th>Category</th>
-              <th>Date</th>
             </tr>
           </thead>
           <tbody>
           {transactions.map((transaction) => (
               <tr key={transaction.id}>
+                <td>{transaction.trans_date}</td>
                 <td>{transaction.name}</td>
                 <td>{transaction.amount}</td>
                 <td>{transaction.category_name}</td>
-                <td>{transaction.trans_date}</td>
               </tr>
             ))}
           </tbody>
