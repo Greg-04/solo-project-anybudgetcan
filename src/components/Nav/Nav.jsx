@@ -41,7 +41,7 @@ function Nav() {
         </Link>
 
         <Link className="navLink" to="/addtransactions">
-          Transactions
+          Add Transactions
         </Link>
       </div>
     </div>
