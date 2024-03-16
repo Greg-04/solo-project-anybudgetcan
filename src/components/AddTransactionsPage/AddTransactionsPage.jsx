@@ -20,6 +20,20 @@ function AddTransactionsPage() {
     console.log('categoryID after setting state', event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Dispatch the action type to add the transaction
+    dispatch({
+      type: 'ADD_TRANSACTION',
+      payload: { name, amount, category_id: categoryId, trans_date: transDate },
+    });
+    // Clearing input fields
+    setName('');
+    setAmount('');
+    setCategoryId('');
+    setTransDate('');
+  };
+
   // Fetch categories on component mount
   useEffect(() => {
     dispatch({ type: 'FETCH_CATEGORIES' });
@@ -31,7 +45,7 @@ function AddTransactionsPage() {
         <h1>Add Transactions</h1>
       </div>
       <div className="transactionForm">
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -49,7 +63,7 @@ function AddTransactionsPage() {
             onChange={(event) => setAmount(event.target.value)}
           />
           <label htmlFor="category">Select Category:</label>
-          <select id="category" onChange={handleCategorySelect}>
+          <select id="category" value={categoryId} onChange={handleCategorySelect}>
             <option value="">Select a category</option>
             {category.map((categoryName) => (
               <option key={categoryName.id} value={categoryName.id}>
