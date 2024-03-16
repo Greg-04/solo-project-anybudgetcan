@@ -11,6 +11,13 @@ function ViewTransactionsPage() {
     dispatch({ type: 'FETCH_TRANSACTIONS' });
   }, [dispatch]);
 
+  //Function to reformat the timestamp into date format
+  const formatDate = (newDate) => {
+    const splitDate = newDate.split('T');
+    // console.log('new date object', splitDate);
+    return splitDate[0];
+  };
+
   return (
     <>
       <div>
@@ -27,11 +34,11 @@ function ViewTransactionsPage() {
             </tr>
           </thead>
           <tbody>
-          {transactions.map((transaction) => (
+            {transactions.map((transaction) => (
               <tr key={transaction.id}>
-                <td>{transaction.trans_date}</td>
+                <td>{formatDate(transaction.trans_date)}</td>
                 <td>{transaction.name}</td>
-                <td>{transaction.amount}</td>
+                <td>${transaction.amount}</td>
                 <td>{transaction.category_name}</td>
               </tr>
             ))}
