@@ -4,6 +4,8 @@ const transactionReducer = (state = {}, action) => {
       return { ...state, success: true };
     case 'ADD_TRANSACTION_ERROR':
       return { ...state, error: action.payload };
+    case 'SET_TRANSACTIONS':
+      return action.payload;
     default:
       return state;
   }
