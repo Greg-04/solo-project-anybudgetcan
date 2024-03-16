@@ -20,6 +20,12 @@ function ViewTransactionsPage() {
     return splitDate[0];
   };
 
+  // Function to handle delete
+  const handleDelete = (id) => {
+    // Dispatch action to delete transaction
+    console.log('In Delete Handle');
+  };
+
   return (
     <>
       <div>
@@ -44,6 +50,11 @@ function ViewTransactionsPage() {
                   <td>{transaction.name}</td>
                   <td>${transaction.amount}</td>
                   <td>{transaction.category_name}</td>
+                  <td>
+                    <button onClick={(event) => handleDelete(transaction.id)}>
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))
             ) : (
