@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
  */
 router.delete('/:id', (req, res) => {
   const transactionId = Number(req.params.id);
-  const queryText = 'DELETE FROM "transaction" WHERE id = $1;';
+  const queryText = 'DELETE FROM "transaction" WHERE "id" = $1;';
   pool
     .query(queryText, [transactionId])
     .then((results) => {
@@ -54,6 +54,31 @@ router.delete('/:id', (req, res) => {
     })
     .catch((error) => {
       console.error('Error deleting transaction:', error);
+      res.sendStatus(500);
+    });
+});
+
+/**
+ * PUT route
+ */
+router.put('/:id', (req, res) => {
+  const transactionId = req.params.id;
+  const { name, amount, category_id, trans_date } = req.body;
+
+  const queryText = `
+    UPDATE "transaction" 
+    SET "name" = $1, "amount" = $2, "category_id" = $3, "trans_date" = $4
+    WHERE "id" = $5
+  `;
+  const queryValues = [name, amount, category_id, trans_date, transactionId];
+
+  pool
+    .query(queryText, queryValues)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.error('Error updating transaction:', error);
       res.sendStatus(500);
     });
 });
