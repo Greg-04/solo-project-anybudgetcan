@@ -44,11 +44,24 @@ function* fetchTransactions() {
   }
 }
 
+//Put Worker Saga
+function* updateTransaction(action) {
+  try {
+    const { id, data } = action.payload;
+    yield axios.put(`/api/transaction/${id}`, data);
+    yield put({ type: 'FETCH_TRANSACTIONS' }); // Refresh transactions after update
+  } catch (error) {
+    console.error('Error updating transaction:', error);
+  }
+}
+
+
 // Watcher saga
 function* transactionSaga() {
   yield takeLatest('ADD_TRANSACTION', addTransaction);
   yield takeLatest('FETCH_TRANSACTIONS', fetchTransactions);
   yield takeLatest('DELETE_TRANSACTION', deleteTransaction);
+  yield takeLatest('UPDATE_TRANSACTION', updateTransaction);
 }
 
 export default transactionSaga;
