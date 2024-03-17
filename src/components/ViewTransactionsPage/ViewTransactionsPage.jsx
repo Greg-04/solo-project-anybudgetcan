@@ -5,7 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 function ViewTransactionsPage() {
   const dispatch = useDispatch();
   const transactions = useSelector((store) => store.transaction);
-  console.log('transactions data', transactions);
+  // console.log('transactions data', transactions);
+
+  const handleEdit = () => {
+    console.log('in Edit Handle');
+    // Dispatch action to update the transaction
+  };
 
   // Fetch transactions on component mount
   useEffect(() => {
@@ -57,6 +62,9 @@ function ViewTransactionsPage() {
                     <button onClick={() => handleDelete(transaction.id)}>
                       Delete
                     </button>
+                  </td>
+                  <td>
+                    <button onClick={() => handleEdit()}>Edit</button>
                   </td>
                 </tr>
               ))}
