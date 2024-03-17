@@ -12,6 +12,20 @@ function* addTransaction(action) {
     yield put({ type: 'ADD_TRANSACTION_ERROR', payload: error });
   }
 }
+
+// DELETE Worker Saga: will be fired on "DELETE_TRANSACTION" actions
+function* deleteTransaction(action) {
+  try {
+    const id = action.payload;
+    yield axios.delete(`/api/transaction/${id}`);
+    // If successful, dispatch action
+    yield put({ type: 'DELETE_TRANSACTION_SUCCESS', payload: id });
+  } catch (error) {
+    // If an error occurs, dispatch a failure action
+    yield put({ type: 'DELETE_TRANSACTION_ERROR', payload: error });
+  }
+}
+
 // Get Worker Saga
 // worker Saga: will be fired on "FETCH_TRANSACTIONS" actions
 function* fetchTransactions() {
@@ -32,6 +46,7 @@ function* fetchTransactions() {
 function* transactionSaga() {
   yield takeLatest('ADD_TRANSACTION', addTransaction);
   yield takeLatest('FETCH_TRANSACTIONS', fetchTransactions);
+  yield takeLatest('DELETE_TRANSACTION', deleteTransaction);
 }
 
 export default transactionSaga;
