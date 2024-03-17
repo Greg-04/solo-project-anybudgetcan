@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddTransactionsPage from '../AddTransactionsPage/AddTransactionsPage';
 import ViewTransactionsPage from '../ViewTransactionsPage/ViewTransactionsPage';
+import ExpensesPage from '../ExpensesPage/ExpensesPage';
 
 import './App.css';
 
@@ -67,12 +68,16 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/addtransactions">
+          <ProtectedRoute exact path="/addTransactions">
             <AddTransactionsPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/viewtransactions">
+          <ProtectedRoute exact path="/viewTransactions">
             <ViewTransactionsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/expensesPage">
+          <ExpensesPage/>
           </ProtectedRoute>
 
           <Route exact path="/login">

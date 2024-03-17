@@ -54,7 +54,6 @@ function ViewTransactionsPage() {
   // Function to handle delete
   const handleDelete = (id) => {
     // Dispatch action to delete transaction
-    // console.log('In Delete Handle');
     // console.log('Transaction ID:', id);
     dispatch({ type: 'DELETE_TRANSACTION', payload: id });
   };

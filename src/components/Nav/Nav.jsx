@@ -40,12 +40,16 @@ function Nav() {
           About
         </Link>
 
-        <Link className="navLink" to="/addtransactions">
+        <Link className="navLink" to="/addTransactions">
           Add Transactions
         </Link>
 
-        <Link className="navLink" to="/viewtransactions">
+        <Link className="navLink" to="/viewTransactions">
           View Transactions
+        </Link>
+
+        <Link className="navLink" to="/expensesPage">
+          Expenses
         </Link>
       </div>
     </div>
