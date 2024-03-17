@@ -23,6 +23,7 @@ function AddTransactionsPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // console.log('Payload:', name, amount, categoryId, transDate);
     // Dispatch the action type to add the transaction
     dispatch({
       type: 'ADD_TRANSACTION',
