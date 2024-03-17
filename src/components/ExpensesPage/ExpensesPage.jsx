@@ -8,6 +8,8 @@ function ExpensesPage() {
   const dispatch = useDispatch();
   // Get categories from Redux store
   const category = useSelector((store) => store.category);
+  //Get expenses from store
+  const expenses = useSelector((store) => store.expense);
 
   //Setting up state for each input
   const [name, setName] = useState('');
@@ -38,12 +40,13 @@ function ExpensesPage() {
   // Fetch categories on component mount
   useEffect(() => {
     dispatch({ type: 'FETCH_CATEGORIES' });
+    dispatch({ type: 'FETCH_EXPENSES' });
   }, [dispatch]);
 
   return (
     <>
       <h1>Expenses Page</h1>
-      <div>
+      <main>
         <div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
@@ -78,7 +81,28 @@ function ExpensesPage() {
             <button type="submit">Submit</button>
           </form>
         </div>
-      </div>
+        <h2>Expense List</h2>
+        <div>
+          <table className="expenseTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {expenses.map((expenseItem) => (
+                <tr key={expenseItem.id}>
+                  <td>{expenseItem.name}</td>
+                  <td>{expenseItem.amount}</td>
+                  <td>{expenseItem.category_id}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </main>
     </>
   );
 }
