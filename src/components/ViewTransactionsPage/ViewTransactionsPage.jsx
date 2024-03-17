@@ -1,5 +1,5 @@
 import './ViewTransactionsPage.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function ViewTransactionsPage() {
@@ -7,9 +7,35 @@ function ViewTransactionsPage() {
   const transactions = useSelector((store) => store.transaction);
   // console.log('transactions data', transactions);
 
-  const handleEdit = () => {
-    console.log('in Edit Handle');
-    // Dispatch action to update the transaction
+  // State to manage editing for each transaction
+  const [editingId, setEditingId] = useState(null); // ID of the transaction being edited
+  const [newAmount, setNewAmount] = useState(''); // New amount for the transaction being edited
+
+  //Setting the state of the current inputs
+  const handleEdit = (id, currentAmount) => {
+    setEditingId(id);
+    setNewAmount(currentAmount);
+  };
+
+  //Adding a save handle to dispatch the update saga
+  const handleSave = (id) => {
+    dispatch({
+      type: 'UPDATE_TRANSACTION_AMOUNT',
+      payload: { id, amount: newAmount },
+    });
+    setEditingId(null); // Reset editing state
+    setNewAmount('');
+  };
+
+  //adding a cancel handle to revert back the state
+  const handleCancel = () => {
+    setEditingId(null); // Reset editing state
+    setNewAmount('');
+  };
+
+  //adding handle to set new changed amount
+  const handleChange = (event) => {
+    setNewAmount(event.target.value);
   };
 
   // Fetch transactions on component mount
@@ -47,6 +73,7 @@ function ViewTransactionsPage() {
               <th>Amount</th>
               <th>Category</th>
               <th>Delete?</th>
+              <th>Edit Amount</th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +83,18 @@ function ViewTransactionsPage() {
                 <tr key={transaction.id}>
                   <td>{formatDate(transaction.trans_date)}</td>
                   <td>{transaction.name}</td>
-                  <td>${transaction.amount}</td>
+                  {/* <td>${transaction.amount}</td> */}
+                  <td>
+                    {editingId === transaction.id ? (
+                      <input
+                        type="number"
+                        value={newAmount}
+                        onChange={handleChange}
+                      />
+                    ) : (
+                      `$${transaction.amount}`
+                    )}
+                  </td>
                   <td>{transaction.category_name}</td>
                   <td>
                     <button onClick={() => handleDelete(transaction.id)}>
@@ -64,7 +102,21 @@ function ViewTransactionsPage() {
                     </button>
                   </td>
                   <td>
-                    <button onClick={() => handleEdit()}>Edit</button>
+                    {editingId === transaction.id ? (
+                      <>
+                        <button onClick={() => handleSave(transaction.id)}>
+                          Save
+                        </button>
+                        <button onClick={handleCancel}>Cancel</button>
+                      </>
+                    ) : (
+                      <button
+                        onClick={() =>
+                          handleEdit(transaction.id, transaction.amount)
+                        }>
+                        Edit
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}
