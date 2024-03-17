@@ -5,10 +5,10 @@ import axios from 'axios';
 function* addTransaction(action) {
   try {
     yield axios.post('/api/transaction', action.payload);
-    // If successful, dispatch action to fetch transactions
-    yield put({ type: 'FETCH_TRANSACTIONS' });
     // If successful, dispatch action
     yield put({ type: 'ADD_TRANSACTION_SUCCESS' });
+    // If successful, dispatch action to fetch transactions
+    yield put({ type: 'FETCH_TRANSACTIONS' });
   } catch (error) {
     // If an error occurs, dispatch a failure action
     yield put({ type: 'ADD_TRANSACTION_ERROR', payload: error });
