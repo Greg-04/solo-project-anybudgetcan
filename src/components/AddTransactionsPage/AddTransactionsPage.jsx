@@ -12,6 +12,7 @@ function AddTransactionsPage() {
   const [amount, setAmount] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [transDate, setTransDate] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   // Handle category selection
   const handleCategorySelect = (event) => {
@@ -32,6 +33,12 @@ function AddTransactionsPage() {
     setAmount('');
     setCategoryId('');
     setTransDate('');
+    // Set success message
+    setSuccessMessage('Transaction added successfully!');
+    // Clear success message after 3 seconds
+    setTimeout(() => {
+      setSuccessMessage('');
+    }, 3000);
   };
 
   // Fetch categories on component mount
@@ -87,6 +94,11 @@ function AddTransactionsPage() {
           <button type="submit">Add Transaction</button>
         </form>
       </div>
+      <h2>
+        {successMessage && (
+          <div className="success-message">{successMessage}</div>
+        )}
+      </h2>
     </>
   );
 }
