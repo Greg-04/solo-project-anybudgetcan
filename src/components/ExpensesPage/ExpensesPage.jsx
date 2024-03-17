@@ -21,6 +21,20 @@ function ExpensesPage() {
     // console.log('categoryID after setting state', event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('test handle submit', name, amount, categoryId);
+    // Dispatch the action type to add the transaction
+    dispatch({
+      type: 'ADD_EXPENSES',
+      payload: { name, amount, category_id: categoryId },
+    });
+    //clearing inputs after submission
+    setName('');
+    setAmount('');
+    setCategoryId('');
+  };
+
   // Fetch categories on component mount
   useEffect(() => {
     dispatch({ type: 'FETCH_CATEGORIES' });
@@ -31,8 +45,23 @@ function ExpensesPage() {
       <h1>Expenses Page</h1>
       <div>
         <div>
-          <form>
-            {' '}
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              required
+            />
+            <label htmlFor="amount">Amount:</label>
+            <input
+              type="number"
+              id="amount"
+              value={amount}
+              onChange={(event) => setAmount(event.target.value)}
+              required
+            />
             <label htmlFor="category">Select Category:</label>
             <select
               required
@@ -46,6 +75,7 @@ function ExpensesPage() {
                 </option>
               ))}
             </select>
+            <button type="submit">Submit</button>
           </form>
         </div>
       </div>
