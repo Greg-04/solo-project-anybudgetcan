@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route
  */
 router.get('/', (req, res) => {
   const queryText = ` 
@@ -22,7 +22,7 @@ ORDER BY "transaction".trans_date DESC;`;
 });
 
 /**
- * POST route template
+ * POST route
  */
 router.post('/', (req, res) => {
   const { name, amount, category_id, trans_date } = req.body;
@@ -37,6 +37,23 @@ router.post('/', (req, res) => {
     })
     .catch((error) => {
       console.log('Error adding transaction:', error);
+      res.sendStatus(500);
+    });
+});
+
+/**
+ * DELETE route
+ */
+router.delete('/:id', (req, res) => {
+  const transactionId = Number(req.params.id);
+  const queryText = 'DELETE FROM "transaction" WHERE id = $1;';
+  pool
+    .query(queryText, [transactionId])
+    .then((results) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.error('Error deleting transaction:', error);
       res.sendStatus(500);
     });
 });

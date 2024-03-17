@@ -1,17 +1,18 @@
 .table-container {
   margin-top: 20px;
+  border: 1px solid #000000;
 }
 
 .table-container table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: collapse; /* Collapse borders */
 }
 
 .table-container th,
 .table-container td {
   padding: 8px;
-  border: 1px solid #000000;
   text-align: left;
+  border: 1px solid #000000; /* Add border to each cell */
 }
 
 .table-container th {
