@@ -45,8 +45,8 @@ function ViewTransactionsPage() {
             </tr>
           </thead>
           <tbody>
-            {/* Adding the conditional to check if transactions has data and displays is loading if not*/}
-            {transactions ? (
+            {/* Adding a conditional check to prevent mapping over undefined or null */}
+            {transactions &&
               transactions.map((transaction) => (
                 <tr key={transaction.id}>
                   <td>{formatDate(transaction.trans_date)}</td>
@@ -54,13 +54,14 @@ function ViewTransactionsPage() {
                   <td>${transaction.amount}</td>
                   <td>{transaction.category_name}</td>
                   <td>
-                    <button onClick={(event) => handleDelete(transaction.id)}>
+                    <button onClick={() => handleDelete(transaction.id)}>
                       Delete
                     </button>
                   </td>
                 </tr>
-              ))
-            ) : (
+              ))}
+            {/* If transactions is null or undefined, display a loading message */}
+            {!transactions && (
               <tr>
                 <td>Loading...</td>
               </tr>

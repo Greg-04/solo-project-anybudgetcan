@@ -27,7 +27,7 @@ function AddTransactionsPage() {
       type: 'ADD_TRANSACTION',
       payload: { name, amount, category_id: categoryId, trans_date: transDate },
     });
-    // Clearing input fields
+    //clearing inputs after submission
     setName('');
     setAmount('');
     setCategoryId('');
