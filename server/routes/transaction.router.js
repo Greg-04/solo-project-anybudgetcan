@@ -67,10 +67,10 @@ router.put('/:id', (req, res) => {
 
   const queryText = `
     UPDATE "transaction" 
-    SET "name" = $1, "amount" = $2, "category_id" = $3, "trans_date" = $4
-    WHERE "id" = $5
+    SET "amount" = $1
+    WHERE "id" = $2
   `;
-  const queryValues = [name, amount, category_id, trans_date, transactionId];
+  const queryValues = [amount, transactionId];
 
   pool
     .query(queryText, queryValues)
