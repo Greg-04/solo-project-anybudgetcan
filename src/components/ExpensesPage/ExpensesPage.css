@@ -1,0 +1,20 @@
+.expenseTable {
+  margin-top: 20px;
+  border: 1px solid #000000;
+}
+
+.expenseTable table {
+  width: 100%;
+  border-collapse: collapse; /* Collapse borders */
+}
+
+.expenseTable th,
+.expenseTable td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #000000; /* Add border to each cell */
+}
+
+.expenseTable th {
+  background-color: #f2f2f2;
+}
