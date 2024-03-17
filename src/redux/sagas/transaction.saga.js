@@ -44,12 +44,27 @@ function* fetchTransactions() {
   }
 }
 
+// PUT Worker Saga
+// worker Saga: will be fired on "UPDATE_TRANSACTION_AMOUNT" actions
+function* updateTransactionAmount(action) {
+  try {
+    // Extract necessary data from the action payload
+    const { id, amount } = action.payload;
+    
+    // Dispatch an action to update the transaction amount in the reducer
+    yield put({ type: 'UPDATE_TRANSACTION_AMOUNT_SUCCESS', payload: { id, amount } });
+  } catch (error) {
+    // Handle any errors
+    yield put({ type: 'UPDATE_TRANSACTION_AMOUNT_ERROR', payload: error });
+  }
+}
 
 // Watcher saga
 function* transactionSaga() {
   yield takeLatest('ADD_TRANSACTION', addTransaction);
   yield takeLatest('FETCH_TRANSACTIONS', fetchTransactions);
   yield takeLatest('DELETE_TRANSACTION', deleteTransaction);
+  yield takeLatest('UPDATE_TRANSACTION_AMOUNT', updateTransactionAmount);
 }
 
 export default transactionSaga;
