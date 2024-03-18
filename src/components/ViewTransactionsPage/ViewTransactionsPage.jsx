@@ -76,6 +76,7 @@ function ViewTransactionsPage() {
             </tr>
           </thead>
           <tbody>
+            {/* {JSON.stringify(transactions)} */}
             {/* Adding a conditional check to prevent mapping over undefined or null */}
             {transactions &&
               transactions.map((transaction) => (

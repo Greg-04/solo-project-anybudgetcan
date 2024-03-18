@@ -92,13 +92,14 @@ function ExpensesPage() {
               </tr>
             </thead>
             <tbody>
-              {expenses.map((expenseItem) => (
+              {JSON.stringify(expenses)}
+              {/* {expenses.map((expenseItem) => (
                 <tr key={expenseItem.id}>
                   <td>{expenseItem.name}</td>
                   <td>{expenseItem.amount}</td>
                   <td>{expenseItem.category_name}</td>
                 </tr>
-              ))}
+              ))} */}
             </tbody>
           </table>
         </div>

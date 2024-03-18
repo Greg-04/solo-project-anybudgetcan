@@ -15,18 +15,18 @@ function* addExpense(action) {
   }
 }
 
-// // DELETE Worker Saga: will be fired on "DELETE_TRANSACTION" actions
-// function* deleteTransaction(action) {
-//   try {
-//     const id = action.payload;
-//     yield axios.delete(`/api/transaction/${id}`);
-//     // If successful, dispatch action
-//     yield put({ type: 'DELETE_TRANSACTION_SUCCESS', payload: id });
-//   } catch (error) {
-//     // If an error occurs, dispatch a failure action
-//     yield put({ type: 'DELETE_TRANSACTION_ERROR', payload: error });
-//   }
-// }
+// DELETE Worker Saga: will be fired on "DELETE_EXPENSE" actions
+function* deleteExpense(action) {
+  try {
+    const id = action.payload;
+    yield axios.delete(`/api/expenses/${id}`);
+    // If successful, dispatch action
+    yield put({ type: 'DELETE_EXPENSE_SUCCESS', payload: id });
+  } catch (error) {
+    // If an error occurs, dispatch a failure action
+    yield put({ type: 'DELETE_EXPENSE_ERROR', payload: error });
+  }
+}
 
 // Get Worker Saga
 // worker Saga: will be fired on "FETCH_EXPENSES" actions
@@ -44,27 +44,27 @@ function* fetchExpenses() {
   }
 }
 
-// // PUT Worker Saga
-// // worker Saga: will be fired on "UPDATE_TRANSACTION_AMOUNT" actions
-// function* updateTransactionAmount(action) {
-//   try {
-//     // Extract necessary data from the action payload
-//     const { id, amount } = action.payload;
+// PUT Worker Saga
+// worker Saga: will be fired on "UPDATE_EXPENSE_AMOUNT" actions
+function* updateExpenseAmount(action) {
+  try {
+    // Extract necessary data from the action payload
+    const { id, amount } = action.payload;
 
-//     // Dispatch an action to update the transaction amount in the reducer
-//     yield put({ type: 'UPDATE_TRANSACTION_AMOUNT_SUCCESS', payload: { id, amount } });
-//   } catch (error) {
-//     // Handle any errors
-//     yield put({ type: 'UPDATE_TRANSACTION_AMOUNT_ERROR', payload: error });
-//   }
-// }
+    // Dispatch an action to update the transaction amount in the reducer
+    yield put({ type: 'UPDATE_EXPENSE_AMOUNT_SUCCESS', payload: { id, amount } });
+  } catch (error) {
+    // Handle any errors
+    yield put({ type: 'UPDATE_EXPENSE_AMOUNT_ERROR', payload: error });
+  }
+}
 
 // Watcher saga
 function* expensesSaga() {
   yield takeLatest('ADD_EXPENSES', addExpense);
   yield takeLatest('FETCH_EXPENSES', fetchExpenses);
-  // yield takeLatest('DELETE_TRANSACTION', deleteTransaction);
-  // yield takeLatest('UPDATE_TRANSACTION_AMOUNT', updateTransactionAmount);
+  yield takeLatest('DELETE_EXPENSE', deleteExpense);
+  yield takeLatest('UPDATE_EXPENSE_AMOUNT', updateExpenseAmount);
 }
 
 export default expensesSaga;
