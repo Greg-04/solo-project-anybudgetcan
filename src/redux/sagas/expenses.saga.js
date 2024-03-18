@@ -5,8 +5,8 @@ import axios from 'axios';
 function* addExpense(action) {
   try {
     yield axios.post('/api/expenses', action.payload);
-    // If successful, dispatch action
-    yield put({ type: 'ADD_EXPENSES_SUCCESS' });
+    // // If successful, dispatch action
+    // yield put({ type: 'ADD_EXPENSES_SUCCESS' });
     // If successful, dispatch action to fetch expenses
     yield put({ type: 'FETCH_EXPENSES' });
   } catch (error) {
@@ -34,7 +34,7 @@ function* fetchExpenses() {
   try {
     // Get the categories:
     const expenseResponse = yield axios.get('/api/expenses');
-    // Set the value of the categories reducer:
+    // Set the value of the expense reducer:
     yield put({
       type: 'SET_EXPENSES',
       payload: expenseResponse.data,
@@ -51,8 +51,11 @@ function* updateExpenseAmount(action) {
     // Extract necessary data from the action payload
     const { id, amount } = action.payload;
 
-    // Dispatch an action to update the transaction amount in the reducer
-    yield put({ type: 'UPDATE_EXPENSE_AMOUNT_SUCCESS', payload: { id, amount } });
+    // Dispatch an action to update the expense amount in the reducer
+    yield put({
+      type: 'UPDATE_EXPENSE_AMOUNT_SUCCESS',
+      payload: { id, amount },
+    });
   } catch (error) {
     // Handle any errors
     yield put({ type: 'UPDATE_EXPENSE_AMOUNT_ERROR', payload: error });

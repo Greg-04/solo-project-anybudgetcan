@@ -2,6 +2,7 @@ const transactionReducer = (state = null, action) => {
   switch (action.type) {
     case 'ADD_TRANSACTION_SUCCESS':
       return { ...state, success: true };
+      //ADD_TRANSACTION_ERROR is a success message however not required for functionality, if problem persists remove this or add to separate reducer
     case 'ADD_TRANSACTION_ERROR':
       return { ...state, error: action.payload };
     //calling to worker saga

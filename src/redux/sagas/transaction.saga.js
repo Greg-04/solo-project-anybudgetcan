@@ -5,7 +5,7 @@ import axios from 'axios';
 function* addTransaction(action) {
   try {
     yield axios.post('/api/transaction', action.payload);
-    // If successful, dispatch action
+    // If successful, dispatch action, /* This is a success message however not necessary for functionality*/
     yield put({ type: 'ADD_TRANSACTION_SUCCESS' });
     // If successful, dispatch action to fetch transactions
     yield put({ type: 'FETCH_TRANSACTIONS' });
@@ -34,7 +34,7 @@ function* fetchTransactions() {
   try {
     // Get the categories:
     const transactionResponse = yield axios.get('/api/transaction');
-    // Set the value of the categories reducer:
+    // Set the value of the transaction reducer:
     yield put({
       type: 'SET_TRANSACTIONS',
       payload: transactionResponse.data,
@@ -50,9 +50,12 @@ function* updateTransactionAmount(action) {
   try {
     // Extract necessary data from the action payload
     const { id, amount } = action.payload;
-    
+
     // Dispatch an action to update the transaction amount in the reducer
-    yield put({ type: 'UPDATE_TRANSACTION_AMOUNT_SUCCESS', payload: { id, amount } });
+    yield put({
+      type: 'UPDATE_TRANSACTION_AMOUNT_SUCCESS',
+      payload: { id, amount },
+    });
   } catch (error) {
     // Handle any errors
     yield put({ type: 'UPDATE_TRANSACTION_AMOUNT_ERROR', payload: error });

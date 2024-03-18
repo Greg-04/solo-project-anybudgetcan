@@ -11,6 +11,10 @@ function ExpensesPage() {
   //Get expenses from store
   const expenses = useSelector((store) => store.expense);
 
+  // State to manage editing for each expense
+  const [editingId, setEditingId] = useState(null); // ID of the expense being edited
+  const [newAmount, setNewAmount] = useState(''); // New amount for the expense being edited
+
   //Setting up state for each input
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
@@ -23,6 +27,41 @@ function ExpensesPage() {
     // console.log('categoryID after setting state', event.target.value);
   };
 
+  // Function to handle delete
+  const handleDelete = (id) => {
+    // Dispatch action to delete expense
+    // console.log('Expense ID:', id);
+    dispatch({ type: 'DELETE_EXPENSE', payload: id });
+  };
+
+  //Setting the state of the current inputs
+  const handleEdit = (id, currentAmount) => {
+    setEditingId(id);
+    setNewAmount(currentAmount);
+  };
+
+  //Adding a save handle to dispatch the update saga
+  const handleSave = (id) => {
+    dispatch({
+      type: 'UPDATE_EXPENSE_AMOUNT',
+      payload: { id, amount: newAmount },
+    });
+    setEditingId(null); // Reset editing state
+    setNewAmount('');
+  };
+
+  //adding a cancel handle to revert back the state
+  const handleCancel = () => {
+    setEditingId(null); // Reset editing state
+    setNewAmount('');
+  };
+
+  //adding handle to set new changed amount
+  const handleChange = (event) => {
+    setNewAmount(event.target.value);
+  };
+
+  //Submit handle to add transaction
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('test handle submit', name, amount, categoryId);
@@ -89,17 +128,61 @@ function ExpensesPage() {
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Category</th>
+                <th>Delete?</th>
+                <th>Edit Amount</th>
               </tr>
             </thead>
             <tbody>
-              {JSON.stringify(expenses)}
-              {/* {expenses.map((expenseItem) => (
-                <tr key={expenseItem.id}>
-                  <td>{expenseItem.name}</td>
-                  <td>{expenseItem.amount}</td>
-                  <td>{expenseItem.category_name}</td>
+              {/* {JSON.stringify(expenses)} */}
+              {/* Adding a conditional check to prevent mapping over undefined or null */}
+              {expenses &&
+                expenses.map((expenseItem) => (
+                  <tr key={expenseItem.id}>
+                    <td>{expenseItem.name}</td>
+                    {/* <td>${expenses.amount}</td> */}
+                    <td>
+                      {editingId === expenseItem.id ? (
+                        <input
+                          type="number"
+                          value={newAmount}
+                          onChange={handleChange}
+                        />
+                      ) : (
+                        `$${expenseItem.amount}`
+                      )}
+                    </td>
+                    <td>{expenseItem.category_name}</td>
+                    <td>
+                      <button onClick={() => handleDelete(expenseItem.id)}>
+                        Delete
+                      </button>
+                    </td>
+                    <td>
+                      {editingId === expenseItem.id ? (
+                        <>
+                          <button onClick={() => handleSave(expenseItem.id)}>
+                            Save
+                          </button>
+                          <button onClick={handleCancel}>Cancel</button>
+                        </>
+                      ) : (
+                        <button
+                          onClick={() =>
+                            handleEdit(expenseItem.id, expenseItem.amount)
+                          }>
+                          Edit
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              {/* If expenses is null or undefined, display a loading message */}
+              {/* {JSON.stringify(expenses)} */}
+              {!expenses && (
+                <tr>
+                  <td>Loading...</td>
                 </tr>
-              ))} */}
+              )}
             </tbody>
           </table>
         </div>
