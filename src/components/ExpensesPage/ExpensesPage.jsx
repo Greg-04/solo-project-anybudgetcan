@@ -96,7 +96,7 @@ function ExpensesPage() {
                 <tr key={expenseItem.id}>
                   <td>{expenseItem.name}</td>
                   <td>{expenseItem.amount}</td>
-                  <td>{expenseItem.category_id}</td>
+                  <td>{expenseItem.category_name}</td>
                 </tr>
               ))}
             </tbody>
