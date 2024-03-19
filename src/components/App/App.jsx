@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddTransactionsPage from '../AddTransactionsPage/AddTransactionsPage';
 import ViewTransactionsPage from '../ViewTransactionsPage/ViewTransactionsPage';
 import ExpensesPage from '../ExpensesPage/ExpensesPage';
+import IncomePage from '../IncomePage/IncomePage';
 
 import './App.css';
 
@@ -77,7 +78,11 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/expensesPage">
-          <ExpensesPage/>
+            <ExpensesPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/incomePage">
+            <IncomePage />
           </ProtectedRoute>
 
           <Route exact path="/login">
