@@ -24,9 +24,12 @@ function IncomePage() {
 
   //handle for my income submit
   const handleSubmit = (event) => {
+    event.preventDefault();
     alert('Income Submitted!');
     setSalary('');
     setIncomeFrequency('');
+
+    //to do: add a navigate to the next page*
   };
 
   return (
