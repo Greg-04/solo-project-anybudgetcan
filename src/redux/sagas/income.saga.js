@@ -19,7 +19,7 @@ function* fetchIncome() {
 // POST Worker Saga: will be fired on "ADD_INCOME" actions
 function* addIncome(action) {
   try {
-    yield axios.post('/api/expenses', action.payload);
+    yield axios.post('/api/income', action.payload);
     // If successful, dispatch action to fetch income
     yield put({ type: 'FETCH_INCOME' });
   } catch (error) {
