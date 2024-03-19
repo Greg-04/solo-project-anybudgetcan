@@ -3,7 +3,12 @@ import React, { useState } from 'react';
 
 function IncomePage() {
   //Setting up state for salary
-  const [salary, setSalary] = useState(`$${Number(0)}`);
+  const [salary, setSalary] = useState(0);
+
+  //handle for salary change
+  const handleSalaryChange = (event) => {
+    setSalary(Number(event.target.value));
+  }
 
   return (
     <>
@@ -13,23 +18,33 @@ function IncomePage() {
         </div>
       </div>
       <main>
-        <form>
+        <form className="salaryForm">
           <h2>Set your income</h2>
-          <h1>{salary}</h1>
+          <h1>${salary}</h1>
           <div>
             <p>Annual or Monthly?</p>
-            <select required id="income" value={null}>
+            <select 
+            required 
+            id="income" 
+            value={null}
+            >
               <option value="">Select</option>
               <option>Yearly</option>
               <option>Monthly</option>
             </select>
           </div>
           <div>
-            <input type="number"></input>
+            <p>Enter your income:</p>
+            <input 
+            type="number"
+            value={salary}
+            onChange={handleSalaryChange}
+            required
+            ></input>
           </div>
           <div>
             <br />
-            <button>Submit</button>
+            <button type="submit">Submit</button>
             <br />
             <button>Next</button>
           </div>
