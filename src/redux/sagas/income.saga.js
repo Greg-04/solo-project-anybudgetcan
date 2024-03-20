@@ -23,16 +23,14 @@ function* addIncome(action) {
     // If successful, dispatch action to fetch income
     yield put({ type: 'FETCH_INCOME' });
   } catch (error) {
-    // If an error occurs, dispatch a failure action
-    yield put({ type: 'ADD_INCOME_ERROR' });
     console.log('Error with user registration:', error);
   }
 }
 
 //watcher saga
-function* incomeSaga() {
+function* planSaga() {
   yield takeLatest('FETCH_INCOME', fetchIncome);
   yield takeLatest('ADD_INCOME', addIncome);
 }
 
-export default incomeSaga;
+export default planSaga;
