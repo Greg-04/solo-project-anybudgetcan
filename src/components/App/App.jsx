@@ -24,6 +24,7 @@ import ViewTransactionsPage from '../ViewTransactionsPage/ViewTransactionsPage';
 import ExpensesPage from '../ExpensesPage/ExpensesPage';
 import IncomePage from '../IncomePage/IncomePage';
 import CreatePlanPage from '../CreatePlanPage/CreatePlanPage';
+import BudgetOverviewPage from '../BudgetOverviewPage/BudgetOverviewPage';
 
 import './App.css';
 
@@ -88,6 +89,10 @@ function App() {
 
           <ProtectedRoute exact path="/createPlanPage">
             <CreatePlanPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/budgetOverviewPage">
+            <BudgetOverviewPage />
           </ProtectedRoute>
 
           <Route exact path="/login">
