@@ -1,7 +1,10 @@
 import './IncomePage.css';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function IncomePage() {
+  // Dispatch hook
+  const dispatch = useDispatch();
   //Setting up state for salary and income frequency
   const [salary, setSalary] = useState(0);
   const [incomeFrequency, setIncomeFrequency] = useState('');
@@ -26,9 +29,21 @@ function IncomePage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('Income Submitted!');
-    setSalary('');
-    setIncomeFrequency('');
 
+    //If statement to convert yearly salary inputs
+    let adjustedSalary = salary;
+    if (incomeFrequency === 'Annual') {
+      //converting to monthly value
+      adjustedSalary /= 12;
+    }
+
+    dispatch({
+      type: 'ADD_INCOME',
+      payload: { monthly_amount: adjustedSalary },
+    });
+    //Set values back to $0
+    setSalary(0);
+    setIncomeFrequency('');
     //to do: add a navigate to the next page*
   };
 
@@ -51,7 +66,7 @@ function IncomePage() {
               value={incomeFrequency}
               onChange={handleFrequencyChange}>
               <option value="">Select</option>
-              <option>Yearly</option>
+              <option>Annual</option>
               <option>Monthly</option>
             </select>
           </div>

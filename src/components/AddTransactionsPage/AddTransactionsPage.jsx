@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function AddTransactionsPage() {
-  // Dispatch function
+  // Dispatch hook
   const dispatch = useDispatch();
   // Get categories from Redux store
   const category = useSelector((store) => store.category);

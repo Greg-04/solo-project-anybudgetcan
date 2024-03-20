@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function ViewTransactionsPage() {
+  //dispatch hook
   const dispatch = useDispatch();
   const transactions = useSelector((store) => store.transaction);
   // console.log('transactions data', transactions);

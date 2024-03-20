@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ExpensesPage() {
-  // Dispatch function
+  // Dispatch hook
   const dispatch = useDispatch();
   // Get categories from Redux store
   const category = useSelector((store) => store.category);
