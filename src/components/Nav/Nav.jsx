@@ -61,7 +61,7 @@ function Nav() {
         </Link>
 
         <Link className="navLink" to="/budgetOverviewPage">
-          Budget OVerview
+          Budget Overview
         </Link>
       </div>
     </div>
