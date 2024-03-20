@@ -1,7 +1,11 @@
 import './CreatePlanPage.css';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function CreatePlanPage() {
+  //set hook
+  let dispatch = useDispatch();
+  //set states for inputs
   const [targetDate, setTargetDate] = useState('');
   const [planName, setPlanName] = useState('');
   const [targetAmount, setTargetAmount] = useState('');
@@ -30,6 +34,26 @@ function CreatePlanPage() {
     // console.log('targetAmount:', targetAmount);
   };
 
+  //handle for my plan submit
+  const handlePlanSubmit = (event) => {
+    event.preventDefault();
+    alert('Plan Submitted!');
+    console.log('payload:', planName, targetDate, targetAmount);
+    dispatch({
+      type: 'ADD_PLAN',
+      payload: {
+        name: planName,
+        target_date: targetDate,
+        budget_goal: targetAmount,
+      },
+    });
+    //Set values back
+    setTargetDate('');
+    setPlanName('');
+    setTargetAmount('');
+    //to do: add a navigate to the next page*
+  };
+
   return (
     <>
       <div className="container">
@@ -38,7 +62,7 @@ function CreatePlanPage() {
         </div>
       </div>
       <main>
-        <form className="createPlanForm">
+        <form className="createPlanForm" onSubmit={handlePlanSubmit}>
           <h2>Set Savings Plan</h2>
 
           <div>

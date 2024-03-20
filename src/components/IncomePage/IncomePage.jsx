@@ -29,14 +29,14 @@ function IncomePage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('Income Submitted!');
-
+    // console.log('Payload:', salary);
     //If statement to convert yearly salary inputs
     let adjustedSalary = salary;
     if (incomeFrequency === 'Annual') {
       //converting to monthly value
       adjustedSalary /= 12;
     }
-
+    // console.log('modified salary:', adjustedSalary);
     dispatch({
       type: 'ADD_INCOME',
       payload: { monthly_amount: adjustedSalary },
