@@ -1,5 +1,5 @@
 import './BudgetOverviewPage.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
@@ -14,6 +14,11 @@ function BudgetOverviewPage() {
   };
 
   const options = {};
+
+  // // Fetch data on component
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_CATEGORIES' });
+  // }, [dispatch]);
 
   return (
     <>

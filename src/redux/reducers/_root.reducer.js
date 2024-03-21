@@ -6,6 +6,7 @@ import transaction from './transaction.reducer';
 import expense from './expenses.reducer';
 import income from './income.reducer';
 import plan from './plan.reducer';
+import expenseTotal from './expenseTotalReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   expense,
   income,
   plan,
+  expenseTotal,
 });
 
 export default rootReducer;
