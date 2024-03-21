@@ -99,3 +99,30 @@ WHERE
   "id" = '1';
 
 SELECT * FROM "transaction";
+
+SELECT "category"."id", "category"."name", SUM("expenses"."amount") AS "expenses_total" FROM "category"
+JOIN "expenses" ON "expenses"."category_id" = "category"."id"
+GROUP BY "category"."id", "category"."name";
+
+SELECT "category"."id", "category"."name", SUM("expenses"."amount") AS "expenses_total" FROM "category"
+JOIN "expenses" ON "expenses"."category_id" = "category"."id"
+GROUP BY "category"."id", "category"."name";
+
+SELECT "category"."id", "category"."name", SUM("transaction"."amount") AS "transaction_total" FROM "category"
+JOIN "transaction" ON "transaction"."category_id" = "category"."id"
+GROUP BY "category"."id", "category"."name";
+    
+SELECT "category"."id", "category"."name", 
+COALESCE((
+SELECT SUM("amount") 
+FROM "expenses" 
+WHERE "category_id" = "category"."id"), 0)
++
+COALESCE((
+SELECT SUM("amount") 
+FROM "transaction" 
+WHERE "category_id" = "category"."id"
+), 0) AS "combined_total"
+FROM "category"
+ORDER BY "category"."id";
+ORDER BY "combined_total" DESC;
