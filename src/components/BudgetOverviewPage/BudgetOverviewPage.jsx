@@ -69,12 +69,16 @@ function BudgetOverviewPage() {
   };
 
   const combinedChartData = {
-    labels: combinedTotal.map((combinedTotalItem) => combinedTotalItem.name),
+    labels: combinedTotal
+      //filter to remove values with 0
+      .filter((item) => item.combined_total !== '0')
+      .map((combinedTotalItem) => combinedTotalItem.name),
     datasets: [
       {
-        data: combinedTotal.map(
-          (combinedTotalItem) => combinedTotalItem.combined_total
-        ),
+        data: combinedTotal
+          //filter to remove values with 0
+          .filter((item) => item.combined_total !== '0')
+          .map((combinedTotalItem) => combinedTotalItem.combined_total),
         backgroundColor: [
           'aqua',
           'orangered',
@@ -91,6 +95,7 @@ function BudgetOverviewPage() {
     ],
   };
   const options = {
+    //This is to create percentage values on the pie chart. Code gathered from online
     plugins: {
       tooltip: {
         callbacks: {
