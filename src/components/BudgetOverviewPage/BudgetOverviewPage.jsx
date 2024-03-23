@@ -94,7 +94,6 @@ function BudgetOverviewPage() {
           'orangered',
           'purple',
           'green',
-          'red',
           'black',
           'blue',
           'yellow',
@@ -176,7 +175,7 @@ function BudgetOverviewPage() {
           {combinedTotal
             .filter((item) => item.combined_total !== '0')
             .map((combinedTotalItem) => (
-              <div className="combinedTotalItem">
+              <div className="combinedTotalItem" key={combinedTotalItem.id}>
                 <h3>{combinedTotalItem.name}</h3>
                 <p>Amount Spent: ${combinedTotalItem.combined_total}</p>
               </div>
