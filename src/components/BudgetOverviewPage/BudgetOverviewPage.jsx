@@ -104,7 +104,7 @@ function BudgetOverviewPage() {
             padding: '20px',
             width: '25%',
           }}>
-          Expense Totals
+          Fixed Expense Totals
           <Pie data={expenseChartData} options={options}></Pie>
         </div>
         <div
@@ -116,7 +116,15 @@ function BudgetOverviewPage() {
           Transaction Totals
           <Pie data={transactionChartData} options={options}></Pie>
         </div>
-        <div className="combinedChart"></div>
+        <div
+          className="combinedChart"
+          style={{
+            padding: '20px',
+            width: '25%',
+          }}>
+          Combined Totals
+          <Pie data={transactionChartData} options={options}></Pie>
+        </div>
       </main>
     </>
   );
