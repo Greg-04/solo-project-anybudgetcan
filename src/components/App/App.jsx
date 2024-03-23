@@ -25,6 +25,7 @@ import ExpensesPage from '../ExpensesPage/ExpensesPage';
 import IncomePage from '../IncomePage/IncomePage';
 import CreatePlanPage from '../CreatePlanPage/CreatePlanPage';
 import BudgetOverviewPage from '../BudgetOverviewPage/BudgetOverviewPage';
+import PlanInformationPage from '../PlanInformationPage/PlanInformationPage';
 
 import './App.css';
 
@@ -93,6 +94,10 @@ function App() {
 
           <ProtectedRoute exact path="/budgetOverviewPage">
             <BudgetOverviewPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/planInformationPage">
+            <PlanInformationPage />
           </ProtectedRoute>
 
           <Route exact path="/login">

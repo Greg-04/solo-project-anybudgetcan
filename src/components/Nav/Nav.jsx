@@ -63,6 +63,10 @@ function Nav() {
         <Link className="navLink" to="/budgetOverviewPage">
           Budget Overview
         </Link>
+
+        <Link className="navLink" to="/planInformationPage">
+          Plan Information
+        </Link>
       </div>
     </div>
   );
