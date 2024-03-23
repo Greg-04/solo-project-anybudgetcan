@@ -2,4 +2,7 @@
   border: 5px solid #000000;
   text-align: center;
   background-color: rgba(171, 168, 168, 0.679);
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 8px;
 }

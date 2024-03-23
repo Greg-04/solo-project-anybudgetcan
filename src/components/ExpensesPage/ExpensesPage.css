@@ -1,6 +1,8 @@
 .expenseTable {
   margin-top: 20px;
   border: 1px solid #000000;
+  margin-left: auto; /* Center the container horizontally */
+  margin-right: auto;
 }
 
 .expenseTable table {
@@ -10,11 +12,27 @@
 
 .expenseTable th,
 .expenseTable td {
-  padding: 8px;
+  padding: 20px;
   text-align: left;
   border: 1px solid #000000; /* Add border to each cell */
 }
 
 .expenseTable th {
   background-color: #f2f2f2;
+}
+
+/*This is for form */
+.expenseForm {
+  border: 3px solid #000000;
+  text-align: center;
+  background-color: rgba(171, 168, 168, 0.679);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.button {
+  margin-top: 20px;
 }

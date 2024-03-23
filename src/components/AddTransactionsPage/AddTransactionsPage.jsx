@@ -49,13 +49,14 @@ function AddTransactionsPage() {
 
   return (
     <>
-      <div>
+      <div className="header">
         <h1>Add Transactions</h1>
       </div>
-      <div className="transactionForm">
-        <form onSubmit={handleSubmit}>
+      <div>
+        <form className="transactionForm" onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
           <input
+            className="input-container"
             type="text"
             id="name"
             value={name}
@@ -65,6 +66,7 @@ function AddTransactionsPage() {
           {/* <p>{name}</p> // for testing purposes*/}
           <label htmlFor="amount">Amount:</label>
           <input
+            className="input-container"
             type="number"
             id="amount"
             value={amount}
@@ -73,6 +75,7 @@ function AddTransactionsPage() {
           />
           <label htmlFor="category">Select Category:</label>
           <select
+            className="input-container"
             required
             id="category"
             value={categoryId}
@@ -84,15 +87,18 @@ function AddTransactionsPage() {
               </option>
             ))}
           </select>
+
           <label htmlFor="trans_date">Date:</label>
           <input
+            className="input-container"
             type="date"
             id="trans_date"
             value={transDate}
             onChange={(event) => setTransDate(event.target.value)}
             required
           />
-          <button type="submit">Add Transaction</button>
+          <br></br>
+          <button className="button" type="submit">Add Transaction</button>
         </form>
       </div>
       <h2>

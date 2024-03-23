@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import Grid from '@mui/material/Grid';
 
 //registering pie chart components
 ChartJS.register(Tooltip, Legend, ArcElement);
@@ -143,43 +144,54 @@ function BudgetOverviewPage() {
         </div>
       </div>
       <main>
-        <div
-          className="expenseChart"
-          style={{
-            padding: '20px',
-            width: '25%',
-          }}>
-          <h2>Fixed Expense Totals</h2>
-          <Pie data={expenseChartData} options={options}></Pie>
+        <div className="container">
+          <div
+            className="chart-container"
+            style={{
+              padding: '20px',
+              width: '25%',
+            }}>
+            <h2>Fixed Expense Totals</h2>
+            <Pie data={expenseChartData} options={options}></Pie>
+          </div>
+
+          <div
+            className="chart-container"
+            style={{
+              padding: '20px',
+              width: '25%',
+            }}>
+            <h2>Transaction Totals</h2>
+            <Pie data={transactionChartData} options={options}></Pie>
+          </div>
+
+          <div
+            className="chart-container"
+            style={{
+              padding: '20px',
+              width: '25%',
+            }}>
+            <h2>Combined Totals</h2>
+            <Pie data={combinedChartData} options={options}></Pie>
+          </div>
         </div>
-        <div
-          className="transactionChart"
-          style={{
-            padding: '20px',
-            width: '25%',
-          }}>
-          <h2>Transaction Totals</h2>
-          <Pie data={transactionChartData} options={options}></Pie>
-        </div>
-        <div
-          className="combinedChart"
-          style={{
-            padding: '20px',
-            width: '25%',
-          }}>
-          <h2>Combined Totals</h2>
-          <Pie data={combinedChartData} options={options}></Pie>
-        </div>
+
         <div>
-          <h2>Total Spending by Category</h2>
-          {combinedTotal
-            .filter((item) => item.combined_total !== '0')
-            .map((combinedTotalItem) => (
-              <div className="combinedTotalItem" key={combinedTotalItem.id}>
-                <h3>{combinedTotalItem.name}</h3>
-                <p>Amount Spent: ${combinedTotalItem.combined_total}</p>
-              </div>
-            ))}
+          <h2 className="header">Total Spending by Category</h2>
+          <Grid container spacing={5}>
+            {combinedTotal
+              .filter((item) => item.combined_total !== '0')
+              .map((combinedTotalItem) => (
+                <Grid
+                  item
+                  xs={4}
+                  className="combinedTotalItem"
+                  key={combinedTotalItem.id}>
+                  <h3>{combinedTotalItem.name}</h3>
+                  <p>Amount Spent: ${combinedTotalItem.combined_total}</p>
+                </Grid>
+              ))}
+          </Grid>
         </div>
       </main>
     </>

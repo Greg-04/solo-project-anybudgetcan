@@ -61,7 +61,7 @@ function ViewTransactionsPage() {
 
   return (
     <>
-      <div>
+      <div className="header">
         <h1>View Transactions</h1>
       </div>
       <div>

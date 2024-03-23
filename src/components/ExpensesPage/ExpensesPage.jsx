@@ -84,12 +84,13 @@ function ExpensesPage() {
 
   return (
     <>
-      <h1>Expenses Page</h1>
+      <h1 className="header">Expenses Page</h1>
       <main>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form className="expenseForm" onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input
+              className="input-container"
               type="text"
               id="name"
               value={name}
@@ -98,6 +99,7 @@ function ExpensesPage() {
             />
             <label htmlFor="amount">Amount:</label>
             <input
+              className="input-container"
               type="number"
               id="amount"
               value={Number(amount)}
@@ -110,17 +112,18 @@ function ExpensesPage() {
               id="category"
               value={categoryId}
               onChange={handleCategorySelect}>
-              <option value="">Select a category</option>
+              <option className="input-container" value="">Select a category</option>
               {category.map((categoryName) => (
                 <option key={categoryName.id} value={categoryName.id}>
                   {categoryName.name}
                 </option>
               ))}
             </select>
-            <button type="submit">Submit</button>
+            <br></br>
+            <button className="button" type="submit">Submit</button>
           </form>
         </div>
-        <h2>Expense List</h2>
+        <h2 className="header">Expense List</h2>
         <div>
           <table className="expenseTable">
             <thead>
