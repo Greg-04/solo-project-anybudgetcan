@@ -67,6 +67,29 @@ function BudgetOverviewPage() {
       },
     ],
   };
+
+  const combinedChartData = {
+    labels: combinedTotal.map((combinedTotalItem) => combinedTotalItem.name),
+    datasets: [
+      {
+        data: combinedTotal.map(
+          (combinedTotalItem) => combinedTotalItem.combined_total
+        ),
+        backgroundColor: [
+          'aqua',
+          'orangered',
+          'purple',
+          'green',
+          'red',
+          'black',
+          'blue',
+          'yellow',
+          'pink',
+          'brown',
+        ],
+      },
+    ],
+  };
   const options = {
     plugins: {
       tooltip: {
@@ -126,7 +149,7 @@ function BudgetOverviewPage() {
             width: '25%',
           }}>
           Combined Totals
-          <Pie data={transactionChartData} options={options}></Pie>
+          <Pie data={combinedChartData} options={options}></Pie>
         </div>
       </main>
     </>
