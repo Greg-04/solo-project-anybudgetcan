@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 //registering pie chart components
 ChartJS.register(Tooltip, Legend, ArcElement);
@@ -30,16 +31,15 @@ function BudgetOverviewPage() {
         ),
         backgroundColor: [
           'aqua',
-          'orangered',
-          'purple',
           'green',
-          'red',
-          'black',
           'blue',
-          'yellow',
           'pink',
+          'yellow',
+          'orangered',
           'brown',
           'lightblue',
+          'black',
+          'purple',
           'lightgreen',
           'darkorange',
           'darkviolet',
@@ -60,16 +60,15 @@ function BudgetOverviewPage() {
         ),
         backgroundColor: [
           'aqua',
-          'orangered',
-          'purple',
           'green',
-          'red',
-          'black',
           'blue',
-          'yellow',
           'pink',
+          'yellow',
+          'orangered',
           'brown',
           'lightblue',
+          'black',
+          'purple',
           'lightgreen',
           'darkorange',
           'darkviolet',
@@ -92,15 +91,15 @@ function BudgetOverviewPage() {
           .map((combinedTotalItem) => combinedTotalItem.combined_total),
         backgroundColor: [
           'aqua',
-          'orangered',
-          'purple',
           'green',
-          'black',
           'blue',
-          'yellow',
           'pink',
+          'yellow',
+          'orangered',
           'brown',
           'lightblue',
+          'black',
+          'purple',
           'lightgreen',
           'darkorange',
           'darkviolet',
@@ -182,13 +181,19 @@ function BudgetOverviewPage() {
             {combinedTotal
               .filter((item) => item.combined_total !== '0')
               .map((combinedTotalItem) => (
-                <Grid
-                  item
-                  xs={4}
-                  className="combinedTotalItem"
-                  key={combinedTotalItem.id}>
-                  <h3>{combinedTotalItem.name}</h3>
-                  <p>Amount Spent: ${combinedTotalItem.combined_total}</p>
+                <Grid item xs={4} key={combinedTotalItem.id}>
+                  <Box
+                    sx={{
+                      borderRadius: '8px',
+                      margin: '10px',
+                      padding: '10px',
+                      backgroundColor: 'lightGray',
+                      border: '.2px solid #101010',
+                      boxShadow: '0 8px 6px rgba(0, 0, 0, 0.1)',
+                    }}>
+                    <h3>{combinedTotalItem.name}</h3>
+                    <p>Amount Spent: ${combinedTotalItem.combined_total}</p>
+                  </Box>
                 </Grid>
               ))}
           </Grid>
