@@ -1,6 +1,7 @@
 import './CreatePlanPage.css';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function CreatePlanPage() {
   //set hook
@@ -54,6 +55,9 @@ function CreatePlanPage() {
     //to do: add a navigate to the next page*
   };
 
+  //link to transactions page
+  const handleToTransactions = (event) => {};
+
   return (
     <>
       <div className="container">
@@ -93,8 +97,12 @@ function CreatePlanPage() {
             <br />
             <button type="submit">Make This Plan!</button>
             <br />
-            <button>Start recording your transactions!</button>
           </div>
+          <button>
+            <Link to="/addTransactions">
+              Start recording your transactions!
+            </Link>
+          </button>
         </form>
       </main>
     </>
