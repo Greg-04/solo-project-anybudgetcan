@@ -8,9 +8,16 @@ function PlanInformationPage() {
   //Set state for plan data
   const planInformation = useSelector((store) => store.plan);
 
+  const incomeInformation = useSelector((store) => store.income);
+  const expensesInformation = useSelector((store) => store.expense);
+  const transactionsInformation = useSelector((store) => store.transaction);
+
   // Fetch categories on component mount
   useEffect(() => {
     dispatch({ type: 'FETCH_PLAN' });
+    dispatch({ type: 'FETCH_INCOME' });
+    dispatch({ type: 'FETCH_EXPENSES' });
+    dispatch({ type: 'FETCH_TRANSACTIONS' });
   }, [dispatch]);
 
   //Function to reformat the timestamp into date format
@@ -29,7 +36,7 @@ function PlanInformationPage() {
         </div>
       </div>
       <main>
-        <div>
+        <div className="planInformation">
           {planInformation.map((planItem) => (
             <div key="planItem.id">
               <h2>{planItem.name}</h2>
