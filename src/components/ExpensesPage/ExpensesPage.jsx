@@ -2,6 +2,7 @@ import './ExpensesPage.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function ExpensesPage() {
   // Dispatch hook
@@ -112,7 +113,9 @@ function ExpensesPage() {
               id="category"
               value={categoryId}
               onChange={handleCategorySelect}>
-              <option className="input-container" value="">Select a category</option>
+              <option className="input-container" value="">
+                Select a category
+              </option>
               {category.map((categoryName) => (
                 <option key={categoryName.id} value={categoryName.id}>
                   {categoryName.name}
@@ -120,7 +123,13 @@ function ExpensesPage() {
               ))}
             </select>
             <br></br>
-            <button className="button" type="submit">Submit</button>
+            <button className="button" type="submit">
+              Submit
+            </button>
+            <br></br>
+            <button className="navButton">
+              <Link to="/createPlanPage">Next</Link>
+            </button>
           </form>
         </div>
         <h2 className="header">Expense List</h2>

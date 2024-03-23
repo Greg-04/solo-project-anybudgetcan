@@ -1,6 +1,7 @@
 import './IncomePage.css';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function IncomePage() {
   // Dispatch hook
@@ -82,7 +83,9 @@ function IncomePage() {
             <br />
             <button type="submit">Submit</button>
             <br />
-            <button>Next</button>
+            <button className="navButton">
+              <Link to="/expensesPage">Next</Link>
+            </button>
           </div>
         </form>
       </main>

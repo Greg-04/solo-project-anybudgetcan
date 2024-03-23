@@ -98,7 +98,7 @@ function CreatePlanPage() {
             <button type="submit">Make This Plan!</button>
             <br />
           </div>
-          <button>
+          <button className="navButton">
             <Link to="/addTransactions">
               Start recording your transactions!
             </Link>
