@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './PlanInformationPage.css';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
-
 function PlanInformationPage() {
+  //Set Dispatch Hook
+  const dispatch = useDispatch();
+  //Set state for plan data
+  const planInformation = useSelector((store) => store.plan);
+
+  // Fetch categories on component mount
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PLAN' });
+  }, [dispatch]);
+
   return (
     <>
-    <div className="container">
-      <div className="header">
-        <h1>Plan Information</h1>
+      <div className="container">
+        <div className="header">
+          <h1>Plan Information</h1>
+        </div>
       </div>
-    </div>
-    <main></main>
+      <main>
+        <div></div>
+      </main>
     </>
   );
 }
