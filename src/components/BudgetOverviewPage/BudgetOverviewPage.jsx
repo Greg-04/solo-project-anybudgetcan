@@ -22,8 +22,46 @@ function BudgetOverviewPage() {
     labels: expenseTotal.map((expenseTotalItem) => expenseTotalItem.name),
     datasets: [
       {
-        data: expenseTotal.map((item) => item.expenses_total),
-        backgroundColor: ['aqua', 'orangered', 'purple'],
+        data: expenseTotal.map(
+          (expenseTotalItem) => expenseTotalItem.expenses_total
+        ),
+        backgroundColor: [
+          'aqua',
+          'orangered',
+          'purple',
+          'green',
+          'red',
+          'black',
+          'blue',
+          'yellow',
+          'pink',
+          'brown',
+        ],
+      },
+    ],
+  };
+
+  const transactionChartData = {
+    labels: transactionTotal.map(
+      (transactionTotalItem) => transactionTotalItem.name
+    ),
+    datasets: [
+      {
+        data: transactionTotal.map(
+          (transactionTotalItem) => transactionTotalItem.transaction_total
+        ),
+        backgroundColor: [
+          'aqua',
+          'orangered',
+          'purple',
+          'green',
+          'red',
+          'black',
+          'blue',
+          'yellow',
+          'pink',
+          'brown',
+        ],
       },
     ],
   };
@@ -76,7 +114,7 @@ function BudgetOverviewPage() {
             width: '25%',
           }}>
           Transaction Totals
-          <Pie data={expenseChartData} options={options}></Pie>
+          <Pie data={transactionChartData} options={options}></Pie>
         </div>
         <div className="combinedChart"></div>
       </main>
