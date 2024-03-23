@@ -11,12 +11,14 @@ function BudgetOverviewPage() {
   //set dispatch hook
   const dispatch = useDispatch();
 
-  // Get expense total from Redux store
+  // Get data from Redux store
   const expenseTotal = useSelector((store) => store.expenseTotal);
   // console.log('Expense Total Data', expenseTotal);
+  const transactionTotal = useSelector((store) => store.transTotal);
+  // console.log('Transaction Total Data', transactionTotal);
 
   //setting up pie chart data
-  const data = {
+  const expenseChartData = {
     labels: expenseTotal.map((expenseTotalItem) => expenseTotalItem.name),
     datasets: [
       {
@@ -47,6 +49,7 @@ function BudgetOverviewPage() {
   // Fetch data on component
   useEffect(() => {
     dispatch({ type: 'FETCH_EXPENSE_TOTAL' });
+    dispatch({ type: 'FETCH_TRANSACTION_TOTAL' });
   }, [dispatch]);
 
   return (
@@ -64,9 +67,17 @@ function BudgetOverviewPage() {
             width: '25%',
           }}>
           Expense Totals
-          <Pie data={data} options={options}></Pie>
+          <Pie data={expenseChartData} options={options}></Pie>
         </div>
-        <div className="transactionChart"></div>
+        <div
+          className="transactionChart"
+          style={{
+            padding: '20px',
+            width: '25%',
+          }}>
+          Transaction Totals
+          <Pie data={expenseChartData} options={options}></Pie>
+        </div>
         <div className="combinedChart"></div>
       </main>
     </>

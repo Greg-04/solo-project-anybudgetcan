@@ -5,7 +5,9 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchTransactionTotal() {
   try {
     // Get the transaction totals:
-    const transactionTotalResponse = yield axios.get('/api/budgetOverview/transaction');
+    const transactionTotalResponse = yield axios.get(
+      '/api/budgetOverview/transactions'
+    );
     // Set the value of the transactionTotal reducer:
     yield put({
       type: 'SET_TRANSACTION_TOTAL',
