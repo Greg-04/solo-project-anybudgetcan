@@ -13,6 +13,14 @@ function PlanInformationPage() {
     dispatch({ type: 'FETCH_PLAN' });
   }, [dispatch]);
 
+  //Function to reformat the timestamp into date format
+  const formatDate = (newDate) => {
+    //This splits string into substrings/array
+    const splitDate = newDate.split('T');
+    // console.log('new date object', splitDate);
+    return splitDate[0];
+  };
+
   return (
     <>
       <div className="container">
@@ -21,7 +29,15 @@ function PlanInformationPage() {
         </div>
       </div>
       <main>
-        <div></div>
+        <div>
+          {planInformation.map((planItem) => (
+            <div key="planItem.id">
+              <h2>{planItem.name}</h2>
+              <p>Target Date: {formatDate(planItem.target_date)}</p>
+              <p>Budget Goal: ${planItem.budget_goal}</p>
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );
