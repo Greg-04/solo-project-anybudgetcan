@@ -10,6 +10,7 @@ function PlanInformationPage() {
 
   const incomeInformation = useSelector((store) => store.income);
   const expensesInformation = useSelector((store) => store.expense);
+  console.log('expensesInformation', expensesInformation);
   const transactionsInformation = useSelector((store) => store.transaction);
 
   // Fetch categories on component mount
@@ -41,13 +42,50 @@ function PlanInformationPage() {
     //.getTime() provides milliseconds value of date since 1JAN1970
     const timeDifference = targetDate.getTime() - today.getTime();
 
-   //After getting the value of time difference convert to days
-   /*(1000 * 3600 * 24): Value of milliseconds in one day
+    //After getting the value of time difference convert to days
+    /*(1000 * 3600 * 24): Value of milliseconds in one day
    Dividing this value with the timeDifference will give you the value of days left */
-   //Math.ceil rounds up to nearest integer
+    //Math.ceil rounds up to nearest integer
     const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
-    return (daysLeft);
+    return daysLeft;
   };
+
+  // // Using for loop that iterates over the array of objects and adds each amount
+  // const calculateTotalExpenses = () => {
+  //   let totalExpenses = 0;
+  //   for (let i = 0; i < expensesInformation.length; i++) {
+  //     totalExpenses += Number(expensesInformation[i].amount);
+  //   }
+  //   return totalExpenses;
+  // };
+  // //console logging total expenses
+  // const totalExpenses = calculateTotalExpenses();
+  // console.log('Total Expenses:', totalExpenses);
+
+  // Using .reduce to calculate total expenses
+  //.reduce iterates over an array and returns a single value,
+  const calculateTotalExpenses = () => {
+    // total is set 0 and each expense.amount will be added to total
+    const totalExpenses = expensesInformation.reduce(
+      (total, expense) => total + Number(expense.amount),
+      0
+    );
+    return totalExpenses;
+  };
+  // let totalExpenseValue = calculateTotalExpenses();
+  // console.log('Expenses Total', totalExpenseValue);
+
+  //.reduce to loop transactionsInformation and calculate transactions
+  const calculateTotalTransactions = () => {
+    // total is set 0 and each transaction.amount will be added to total
+    const totalTransactions = transactionsInformation.reduce(
+      (total, transaction) => total + Number(transaction.amount),
+      0
+    );
+    return totalTransactions;
+  };
+  let totalTransactionValue = calculateTotalTransactions();
+  console.log('Transactions Total', totalTransactionValue);
 
   return (
     <>
