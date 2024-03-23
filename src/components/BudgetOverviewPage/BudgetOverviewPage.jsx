@@ -5,6 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { grey } from '@mui/material/colors';
 
 //registering pie chart components
 ChartJS.register(Tooltip, Legend, ArcElement);
@@ -187,7 +188,7 @@ function BudgetOverviewPage() {
                       borderRadius: '8px',
                       margin: '10px',
                       padding: '10px',
-                      backgroundColor: 'lightGray',
+                      backgroundColor: `${grey[300]}`,
                       border: '.2px solid #101010',
                       boxShadow: '0 8px 6px rgba(0, 0, 0, 0.1)',
                     }}>
