@@ -38,6 +38,11 @@ function BudgetOverviewPage() {
           'yellow',
           'pink',
           'brown',
+          'lightblue',
+          'lightgreen',
+          'darkorange',
+          'darkviolet',
+          'gold',
         ],
       },
     ],
@@ -63,6 +68,11 @@ function BudgetOverviewPage() {
           'yellow',
           'pink',
           'brown',
+          'lightblue',
+          'lightgreen',
+          'darkorange',
+          'darkviolet',
+          'gold',
         ],
       },
     ],
@@ -90,6 +100,11 @@ function BudgetOverviewPage() {
           'yellow',
           'pink',
           'brown',
+          'lightblue',
+          'lightgreen',
+          'darkorange',
+          'darkviolet',
+          'gold',
         ],
       },
     ],
@@ -135,7 +150,7 @@ function BudgetOverviewPage() {
             padding: '20px',
             width: '25%',
           }}>
-          Fixed Expense Totals
+          <h2>Fixed Expense Totals</h2>
           <Pie data={expenseChartData} options={options}></Pie>
         </div>
         <div
@@ -144,7 +159,7 @@ function BudgetOverviewPage() {
             padding: '20px',
             width: '25%',
           }}>
-          Transaction Totals
+          <h2>Transaction Totals</h2>
           <Pie data={transactionChartData} options={options}></Pie>
         </div>
         <div
@@ -153,8 +168,19 @@ function BudgetOverviewPage() {
             padding: '20px',
             width: '25%',
           }}>
-          Combined Totals
+          <h2>Combined Totals</h2>
           <Pie data={combinedChartData} options={options}></Pie>
+        </div>
+        <div>
+          <h2>Total Spending by Category</h2>
+          {combinedTotal
+            .filter((item) => item.combined_total !== '0')
+            .map((combinedTotalItem) => (
+              <div className="combinedTotalItem">
+                <h3>{combinedTotalItem.name}</h3>
+                <p>Amount Spent: ${combinedTotalItem.combined_total}</p>
+              </div>
+            ))}
         </div>
       </main>
     </>
