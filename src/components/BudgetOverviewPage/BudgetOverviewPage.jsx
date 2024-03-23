@@ -16,6 +16,8 @@ function BudgetOverviewPage() {
   // console.log('Expense Total Data', expenseTotal);
   const transactionTotal = useSelector((store) => store.transTotal);
   // console.log('Transaction Total Data', transactionTotal);
+  const combinedTotal = useSelector((store) => store.combinedTotal);
+  // console.log('Combined Total Data', combinedTotal);
 
   //setting up pie chart data
   const expenseChartData = {
@@ -88,6 +90,7 @@ function BudgetOverviewPage() {
   useEffect(() => {
     dispatch({ type: 'FETCH_EXPENSE_TOTAL' });
     dispatch({ type: 'FETCH_TRANSACTION_TOTAL' });
+    dispatch({ type: 'FETCH_COMBINED_TOTAL' });
   }, [dispatch]);
 
   return (
