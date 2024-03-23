@@ -5,7 +5,7 @@ import './PlanInformationPage.css';
 function PlanInformationPage() {
   //Set Dispatch Hook
   const dispatch = useDispatch();
-  //Set state for plan data
+  //Getting plan data from redux store
   const planInformation = useSelector((store) => store.plan);
 
   const incomeInformation = useSelector((store) => store.income);
@@ -28,6 +28,27 @@ function PlanInformationPage() {
     return splitDate[0];
   };
 
+  // https://bugfender.com/blog/javascript-date-and-time/
+  //newDate()
+  const calculateRemainingDays = () => {
+    // console.log('plan information', planInformation);
+    const targetDate = new Date(planInformation[0].target_date);
+    // console.log('Target Date Object:', targetDate);
+    const today = new Date();
+    // console.log('Todays Date Object:', today);
+    // const testDate = targetDate.getTime();
+    // console.log('getTime Target Date', testDate);
+    //.getTime() provides milliseconds value of date since 1JAN1970
+    const timeDifference = targetDate.getTime() - today.getTime();
+
+   //After getting the value of time difference convert to days
+   /*(1000 * 3600 * 24): Value of milliseconds in one day
+   Dividing this value with the timeDifference will give you the value of days left */
+   //Math.ceil rounds up to nearest integer
+    const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    return (daysLeft);
+  };
+
   return (
     <>
       <div className="container">
@@ -42,6 +63,7 @@ function PlanInformationPage() {
               <h2>{planItem.name}</h2>
               <p>Target Date: {formatDate(planItem.target_date)}</p>
               <p>Budget Goal: ${planItem.budget_goal}</p>
+              <p>Remaining Days: {calculateRemainingDays()} days</p>
             </div>
           ))}
         </div>
