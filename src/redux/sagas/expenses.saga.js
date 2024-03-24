@@ -51,7 +51,8 @@ function* updateExpenseAmount(action) {
   try {
     // Extract necessary data from the action payload
     const { id, amount } = action.payload;
-
+    // Make the API call to update the expense amount
+    yield axios.put(`/api/expenses/${id}`, { amount });
     // Dispatch an action to update the expense amount in the reducer
     yield put({
       type: 'UPDATE_EXPENSE_AMOUNT_SUCCESS',

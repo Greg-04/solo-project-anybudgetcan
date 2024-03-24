@@ -37,15 +37,19 @@ function ExpensesPage() {
 
   //Setting the state of the current inputs
   const handleEdit = (id, currentAmount) => {
+    console.log('Before setting newAmount:', newAmount); // Debugging
     setEditingId(id);
-    setNewAmount(currentAmount);
+    // setNewAmount(currentAmount);
+    const newAmountValue = currentAmount.toString();
+    setNewAmount(newAmountValue);
+    console.log('After setting newAmount:', newAmountValue); // Debugging
   };
 
   //Adding a save handle to dispatch the update saga
   const handleSave = (id) => {
     dispatch({
       type: 'UPDATE_EXPENSE_AMOUNT',
-      payload: { id, amount: newAmount },
+      payload: { id, amount: Number(newAmount) },
     });
     setEditingId(null); // Reset editing state
     setNewAmount('');
