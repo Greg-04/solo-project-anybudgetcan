@@ -222,6 +222,12 @@ function PlanInformationPage() {
     const daysLeftUntilTarget = calculateRemainingDays();
     const daysInMonth = 30;
 
+    // If statement to catch periods less than 30 days
+    if (daysLeftUntilTarget <= daysInMonth) {
+      const dailyAmount = Number(dailyIncome - dailyExpenses);
+      return dailyAmount * daysLeftUntilTarget;
+    }
+
     //Setting up percentage of periods left until target. EX: days in month = 30, days until target = 54, 1.8 cycles left until target
     const monthlyCyclesRemaining = daysLeftUntilTarget / daysInMonth;
 
