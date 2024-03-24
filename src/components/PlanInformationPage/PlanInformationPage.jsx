@@ -346,7 +346,20 @@ function PlanInformationPage() {
     ],
   };
 
-  const options = {};
+  const options = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const label = context.label || '';
+            const value = context.parsed.y || 0;
+            const formattedValue = '$' + value.toFixed(2);
+            return `${label}: ${formattedValue}`;
+          },
+        },
+      },
+    },
+  };
 
   return (
     <>
@@ -381,7 +394,7 @@ function PlanInformationPage() {
         </div>
         <div>
           <h2 className="header">Bar Chart</h2>
-          <div style={{ width: '50%' }}>
+          <div style={{ margin: '0 auto', width: '80%' }}>
             <Bar data={data} options={options}></Bar>
           </div>
         </div>
