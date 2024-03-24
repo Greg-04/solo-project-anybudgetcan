@@ -183,10 +183,13 @@ function PlanInformationPage() {
     //reworked calculation to not overshoot incomeRemaining
     const incomeRemainingUntilTarget = incomeRemaining();
     const daysLeft = calculateRemainingDays();
+    const totalDaysInMonth = 30;
+    if (daysLeft < totalDaysInMonth) {
+      return daysLeft * (incomeRemainingUntilTarget / daysLeft);
+    }
     const dailyIncomeRemainingUntilTarget = Number(
       incomeRemainingUntilTarget / daysLeft
     );
-    const totalDaysInMonth = 30;
     const monthlyBudgetTarget = Number(
       dailyIncomeRemainingUntilTarget * totalDaysInMonth
     );
@@ -202,12 +205,15 @@ function PlanInformationPage() {
     // Get current date
     const currentDate = new Date();
 
+    // console.log(currentDate);
+
     // Get the first day of the current month
     const firstDayOfMonth = new Date(
       currentDate.getFullYear(),
       currentDate.getMonth(),
       1
     );
+    // console.log(firstDayOfMonth);
 
     // Get the last day of the current month
     const lastDayOfMonth = new Date(
@@ -215,6 +221,7 @@ function PlanInformationPage() {
       currentDate.getMonth() + 1,
       0
     );
+    // console.log(lastDayOfMonth);
 
     // Filter transactions occurred within the current month
     const transactionsWithinMonth =
@@ -226,7 +233,7 @@ function PlanInformationPage() {
           transactionDate <= lastDayOfMonth
         );
       });
-    console.log('transactionsWithinMonth', transactionsWithinMonth);
+    // console.log('transactionsWithinMonth', transactionsWithinMonth);
 
     // Calculate total transactions within the current month
     const totalTransactionsWithinMonth =
@@ -236,7 +243,7 @@ function PlanInformationPage() {
         0
       );
 
-    console.log('totalTransactionsWithinMonth', totalTransactionsWithinMonth);
+    // console.log('totalTransactionsWithinMonth', totalTransactionsWithinMonth);
 
     // Calculate remaining monthly budget after deducting transactions
     const remainingBudget = monthlyTotalBudget - totalTransactionsWithinMonth;
