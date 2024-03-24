@@ -8,7 +8,6 @@ import {
   CategoryScale,
   LinearScale, //y
   Tooltip,
-  Legend,
 } from 'chart.js';
 
 //Register ChartJS items
@@ -16,8 +15,7 @@ ChartJS.register(
   BarElement,
   CategoryScale,
   LinearScale, //y
-  Tooltip,
-  Legend
+  Tooltip
 );
 
 function PlanInformationPage() {
@@ -321,25 +319,74 @@ function PlanInformationPage() {
     return remainingBudget;
   };
 
+  // const data = {
+  //   labels: [
+  //     'Remaining Budget until target date:',
+  //     'Target Monthly Budget Amount:',
+  //     'Remaining Monthly Budget Amount',
+  //   ],
+  //   datasets: [
+  //     {
+  //       label: [
+  //         'Remaining Budget until target date:'
+  //       ],
+  //       data: [
+  //         incomeRemaining().toFixed(2)
+  //       ],
+  //       backgroundColor: ['green', 'blue', 'red'],
+  //       borderColor: 'black',
+  //       borderWidth: 2,
+  //     },
+  //     {
+  //       label: [
+  //         'Target Monthly Budget Amount:'
+  //       ],
+  //       data: [
+
+  //         monthlyBudgetTotal().toFixed(2),
+
+  //       ],
+  //       backgroundColor: ['green', 'blue', 'red'],
+  //       borderColor: 'black',
+  //       borderWidth: 2,
+  //     },
+  //     {
+  //       label: [
+  //         'Remaining Monthly Budget Amount:'
+  //       ],
+  //       data: [
+  //         incomeRemaining().toFixed(2),
+  //         monthlyBudgetTotal().toFixed(2),
+  //         monthlyBudgetTotalRemaining().toFixed(2),
+  //       ],
+  //       backgroundColor: ['green', 'blue', 'red'],
+  //       borderColor: 'black',
+  //       borderWidth: 2,
+  //     }
+  //   ]
+  // };
+
   const data = {
-    labels: [
-      'Remaining Budget until target date:',
-      'Target Monthly Budget Amount:',
-      'Remaining Monthly Budget Amount',
-    ],
+    labels: [``],
     datasets: [
       {
-        label: [
-          'Remaining Budget until target date:',
-          'Target Monthly Budget Amount:',
-          'Remaining Monthly Budget Amount',
-        ],
-        data: [
-          incomeRemaining().toFixed(2),
-          monthlyBudgetTotal().toFixed(2),
-          monthlyBudgetTotalRemaining().toFixed(2),
-        ],
-        backgroundColor: ['green', 'green', 'red'],
+        label: 'Remaining Budget until target date:',
+        data: [incomeRemaining().toFixed(2)],
+        backgroundColor: 'green',
+        borderColor: 'black',
+        borderWidth: 2,
+      },
+      {
+        label: 'Target Monthly Budget Amount:',
+        data: [monthlyBudgetTotal().toFixed(2)],
+        backgroundColor: 'blue',
+        borderColor: 'black',
+        borderWidth: 2,
+      },
+      {
+        label: 'Remaining Monthly Budget Amount:',
+        data: [monthlyBudgetTotalRemaining().toFixed(2)],
+        backgroundColor: 'red',
         borderColor: 'black',
         borderWidth: 2,
       },
@@ -392,7 +439,7 @@ function PlanInformationPage() {
               </div>
             ))}
         </div>
-        <div>
+        <div className="chartContainer">
           <h2 className="header">Bar Chart</h2>
           <div style={{ margin: '0 auto', width: '80%' }}>
             <Bar data={data} options={options}></Bar>
