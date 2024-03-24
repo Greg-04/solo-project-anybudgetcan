@@ -24,10 +24,29 @@ function PlanInformationPage() {
 
   //Function to reformat the timestamp into date format
   const formatDate = (newDate) => {
-    //This splits string into substrings/array
-    const splitDate = newDate.split('T');
-    // console.log('new date object', splitDate);
-    return splitDate[0];
+    // //This splits string into substrings/array
+    // const splitDate = newDate.split('T');
+    // // console.log('new date object', splitDate);
+    // return splitDate[0];
+
+    /*The toLocaleDateString() method returns the date (not the time) of a date object as a string, using locale conventions. */
+    //https://www.geeksforgeeks.org/javascript-date-tolocaledatestring-method/
+    const date = new Date(newDate);
+    console.log(date);
+    const formattedDate = date.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    console.log(formattedDate);
+    const splitDate = formattedDate.split(',');
+    console.log(splitDate);
+    const weekday = splitDate[0];
+    const monthDay = splitDate[1];
+    const year = splitDate[2];
+
+    return `${weekday} - ${monthDay},${year}`;
   };
 
   // https://bugfender.com/blog/javascript-date-and-time/
@@ -138,7 +157,7 @@ function PlanInformationPage() {
               <h2>{planItem.name}</h2>
               <p>Target Date: {formatDate(planItem.target_date)}</p>
               <p>Budget Goal: ${planItem.budget_goal}</p>
-              <p>Remaining Days: {calculateRemainingDays()} days</p>
+              <p>Remaining Days: {calculateRemainingDays()} Days</p>
               <p>Remaining Amount: ${incomeRemaining().toFixed(2)}</p>
             </div>
           ))}
