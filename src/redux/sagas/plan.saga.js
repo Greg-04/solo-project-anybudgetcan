@@ -29,9 +29,9 @@ function* addPlan(action) {
 }
 
 //watcher saga
-function* incomeSaga() {
+function* planSaga() {
   yield takeLatest('FETCH_PLAN', fetchPlan);
   yield takeLatest('ADD_PLAN', addPlan);
 }
 
-export default incomeSaga;
+export default planSaga;
