@@ -35,29 +35,4 @@ router.post('/', (req, res) => {
     });
 });
 
-/**
- * PUT route
- */
-router.put('/:id', (req, res) => {
-  const incomeId = req.params.id;
-  const { id, monthly_amount } = req.body;
-
-  const queryText = `
-    UPDATE "income" 
-    SET "monthly_amount" = $1
-    WHERE "id" = $2
-  `;
-  const queryValues = [monthly_amount, incomeId];
-
-  pool
-    .query(queryText, queryValues)
-    .then((result) => {
-      res.sendStatus(200);
-    })
-    .catch((error) => {
-      console.error('Error updating income:', error);
-      res.sendStatus(500);
-    });
-});
-
 module.exports = router;

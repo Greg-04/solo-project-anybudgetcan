@@ -1,5 +1,5 @@
 import './IncomePage.css';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ function IncomePage() {
   //handle for my income submit
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert('Income Submitted!');
+    alert('Income Updated!');
     // console.log('Payload:', salary);
     //If statement to convert yearly salary inputs
     let adjustedSalary = salary;
@@ -39,6 +39,7 @@ function IncomePage() {
       adjustedSalary /= 12;
     }
     // console.log('modified salary:', adjustedSalary);
+
     dispatch({
       type: 'ADD_INCOME',
       payload: { monthly_amount: adjustedSalary },
@@ -62,7 +63,15 @@ function IncomePage() {
         </div>
       </div>
       <main>
-        <div className="header"><p>Current Monthly Amount ${currentIncome && currentIncome.map(currentIncomeItem => currentIncomeItem.monthly_amount)}</p></div>
+        <div className="header">
+          <p>
+            Current Monthly Amount $
+            {currentIncome &&
+              currentIncome.map(
+                (currentIncomeItem) => currentIncomeItem.monthly_amount
+              )}
+          </p>
+        </div>
         <form className="salaryForm" onSubmit={handleSubmit}>
           <h2>Update income</h2>
           <h1>${salary}</h1>

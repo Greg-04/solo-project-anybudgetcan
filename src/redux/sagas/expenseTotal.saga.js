@@ -5,7 +5,9 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchExpenseTotal() {
   try {
     // Get the expense totals:
-    const expenseTotalResponse = yield axios.get('/api/budgetOverview/expenses');
+    const expenseTotalResponse = yield axios.get(
+      '/api/budgetOverview/expenses'
+    );
     // Set the value of the expenseTotal reducer:
     yield put({
       type: 'SET_EXPENSE_TOTAL',
