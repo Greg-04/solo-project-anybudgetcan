@@ -71,9 +71,17 @@ function ViewTransactionsPage() {
     // console.log('newDateFormat', newDateFormat);
     const replaceNewDateFormat = newDateFormat.replace(/\//g, '-');
     // console.log('replaceNewDateFormat', replaceNewDateFormat);
-    
 
     return `${replaceNewDateFormat}`;
+  };
+
+  // Function to format date for table header
+  const formatTableHeaderDate = (newDate) => {
+    const date = new Date(newDate);
+    return date.toLocaleDateString('en-US', {
+      month: 'long',
+      year: 'numeric',
+    });
   };
 
   // Function to handle delete
@@ -83,77 +91,97 @@ function ViewTransactionsPage() {
     dispatch({ type: 'DELETE_TRANSACTION', payload: id });
   };
 
+  // Function to group transactions by month
+  const groupTransactionsByMonth = () => {
+    const groupedTransactions = {};
+    //forEach to call function for each element in array
+    transactions.forEach((transaction) => {
+      //Getting the month
+      const month = new Date(transaction.trans_date).getMonth() + 1; // Adding 1 because getMonth() returns zero-based month index
+      if (!groupedTransactions[month]) {
+        groupedTransactions[month] = [];
+      }
+      groupedTransactions[month].push(transaction);
+    });
+    return groupedTransactions;
+  };
+
   return (
     <>
       <div className="header">
         <h1>View Transactions</h1>
       </div>
-      <div>
-        <table className="table-container">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Description</th>
-              <th>Amount</th>
-              <th>Category</th>
-              <th>Delete?</th>
-              <th>Edit Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* {JSON.stringify(transactions)} */}
-            {/* Adding a conditional check to prevent mapping over undefined or null */}
-            {transactions &&
-              transactions.map((transaction) => (
-                <tr key={transaction.id}>
-                  <td>{formatDate(transaction.trans_date)}</td>
-                  <td>{transaction.name}</td>
-                  {/* <td>${transaction.amount}</td> */}
-                  <td>
-                    {editingId === transaction.id ? (
-                      <input
-                        type="number"
-                        value={newAmount}
-                        onChange={handleChange}
-                      />
-                    ) : (
-                      `$${transaction.amount}`
-                    )}
-                  </td>
-                  <td>{transaction.category_name}</td>
-                  <td>
-                    <button onClick={() => handleDelete(transaction.id)}>
-                      Delete
-                    </button>
-                  </td>
-                  <td>
-                    {editingId === transaction.id ? (
-                      <>
-                        <button onClick={() => handleSave(transaction.id)}>
-                          Save
-                        </button>
-                        <button onClick={handleCancel}>Cancel</button>
-                      </>
-                    ) : (
-                      <button
-                        onClick={() =>
-                          handleEdit(transaction.id, transaction.amount)
-                        }>
-                        Edit
-                      </button>
-                    )}
-                  </td>
+      {Object.entries(groupTransactionsByMonth()).map(
+        ([month, transactions]) => (
+          <div key={month} className="month-table">
+            <h2>{formatTableHeaderDate(transactions[0].trans_date)}</h2>
+            <table className="table-container">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Category</th>
+                  <th>Delete?</th>
+                  <th>Edit Amount</th>
                 </tr>
-              ))}
-            {/* If transactions is null or undefined, display a loading message */}
-            {!transactions && (
-              <tr>
-                <td>Loading...</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+              </thead>
+              <tbody>
+                {/* {JSON.stringify(transactions)} */}
+                {/* Adding a conditional check to prevent mapping over undefined or null */}
+                {transactions &&
+                  transactions.map((transaction) => (
+                    <tr key={transaction.id}>
+                      <td>{formatDate(transaction.trans_date)}</td>
+                      <td>{transaction.name}</td>
+                      {/* <td>${transaction.amount}</td> */}
+                      <td>
+                        {editingId === transaction.id ? (
+                          <input
+                            type="number"
+                            value={newAmount}
+                            onChange={handleChange}
+                          />
+                        ) : (
+                          `$${transaction.amount}`
+                        )}
+                      </td>
+                      <td>{transaction.category_name}</td>
+                      <td>
+                        <button onClick={() => handleDelete(transaction.id)}>
+                          Delete
+                        </button>
+                      </td>
+                      <td>
+                        {editingId === transaction.id ? (
+                          <>
+                            <button onClick={() => handleSave(transaction.id)}>
+                              Save
+                            </button>
+                            <button onClick={handleCancel}>Cancel</button>
+                          </>
+                        ) : (
+                          <button
+                            onClick={() =>
+                              handleEdit(transaction.id, transaction.amount)
+                            }>
+                            Edit
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                {/* If transactions is null or undefined, display a loading message */}
+                {!transactions && (
+                  <tr>
+                    <td>Loading...</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )
+      )}
     </>
   );
 }
