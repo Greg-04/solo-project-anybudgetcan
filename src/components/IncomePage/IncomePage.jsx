@@ -1,6 +1,6 @@
 import './IncomePage.css';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function IncomePage() {
@@ -9,6 +9,7 @@ function IncomePage() {
   //Setting up state for salary and income frequency
   const [salary, setSalary] = useState(0);
   const [incomeFrequency, setIncomeFrequency] = useState('');
+  const currentIncome = useSelector((store) => store.income);
 
   //handle for salary change
   const handleSalaryChange = (event) => {
@@ -48,6 +49,11 @@ function IncomePage() {
     //to do: add a navigate to the next page*
   };
 
+  // Fetch income on component mount
+  useEffect(() => {
+    dispatch({ type: 'FETCH_INCOME' });
+  }, [dispatch]);
+
   return (
     <>
       <div className="container">
@@ -56,8 +62,9 @@ function IncomePage() {
         </div>
       </div>
       <main>
+        <div className="header"><p>Current Monthly Amount ${currentIncome && currentIncome.map(currentIncomeItem => currentIncomeItem.monthly_amount)}</p></div>
         <form className="salaryForm" onSubmit={handleSubmit}>
-          <h2>Set your income</h2>
+          <h2>Update income</h2>
           <h1>${salary}</h1>
           <div>
             <p>Annual or Monthly?</p>

@@ -85,7 +85,7 @@ function ExpensesPage() {
 
   return (
     <>
-      <h1 className="header">Expenses Page</h1>
+      <h1 className="header">Add Fixed Monthly Expenses</h1>
       <main>
         <div>
           <form className="expenseForm" onSubmit={handleSubmit}>
@@ -132,7 +132,7 @@ function ExpensesPage() {
             </button>
           </form>
         </div>
-        <h2 className="header">Expense List</h2>
+        <h2 className="header">Fixed Monthly Expenses List</h2>
         <div>
           <table className="expenseTable">
             <thead>
