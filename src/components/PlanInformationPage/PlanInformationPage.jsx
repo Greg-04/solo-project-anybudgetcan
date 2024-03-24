@@ -9,7 +9,7 @@ function PlanInformationPage() {
   const planInformation = useSelector((store) => store.plan);
 
   const incomeInformation = useSelector((store) => store.income);
-  console.log('income information', incomeInformation);
+  // console.log('income information', incomeInformation);
   const expensesInformation = useSelector((store) => store.expense);
   // console.log('expensesInformation', expensesInformation);
   const transactionsInformation = useSelector((store) => store.transaction);
@@ -88,23 +88,41 @@ function PlanInformationPage() {
   // let totalTransactionValue = calculateTotalTransactions();
   // console.log('Transactions Total', totalTransactionValue);
 
-  const annualIncome = Number(incomeInformation[0].monthly_amount) * 12;
-  console.log('annual income', annualIncome);
-  const dailyIncome = Number(annualIncome / 365);
-  console.log('daily income', dailyIncome);
-  const targetDate = new Date(planInformation[0].target_date);
-  const today = new Date();
-  const timeDifference = targetDate.getTime() - today.getTime();
-  const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
-  console.log('days left', daysLeft);
-  const incomeUntilTarget = dailyIncome * daysLeft;
-  console.log('incomeUntilTarget', incomeUntilTarget);
-  //Function to calculate income
-  // const income = () => {
-  //   //Annual amount of income
-  //   const annualIncome = Number(incomeInformation[0].monthly_amount) * 12;
-  //   return console.log(annualIncome);
-  // };
+  // Function to calculate income gained until Target
+  const incomeGained = () => {
+    //set annual income
+    const annualIncome = Number(incomeInformation[0].monthly_amount) * 12;
+    // console.log('annual income', annualIncome);
+
+    //set daily income
+    const dailyIncome = Number(annualIncome / 365);
+    // console.log('daily income', dailyIncome);
+
+    //set days remaining
+    const targetDate = new Date(planInformation[0].target_date);
+    const today = new Date();
+    const timeDifference = targetDate.getTime() - today.getTime();
+    const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    // console.log('days left', daysLeft);
+
+    //get Income gained until target date
+    const incomeGained = dailyIncome * daysLeft;
+    // console.log('incomeUntilTarget', incomeUntilTarget);
+    return incomeGained;
+  };
+  // let totalIncomeGained = incomeGained();
+  // console.log('totalIncomeGained', totalIncomeGained);
+
+  // Function to calculate income remaining until Target date
+  const incomeRemaining = () => {
+    const gainedIncome = incomeGained();
+    const totalTransactions = calculateTotalTransactions();
+    const totalExpenses = calculateTotalExpenses();
+    const incomeRemaining = gainedIncome - (totalTransactions + totalExpenses);
+    return incomeRemaining;
+  };
+  // let incomeRemainingTotal = incomeRemaining();
+  // console.log('incomeRemainingTotal', incomeRemainingTotal);
 
   return (
     <>
@@ -121,7 +139,7 @@ function PlanInformationPage() {
               <p>Target Date: {formatDate(planItem.target_date)}</p>
               <p>Budget Goal: ${planItem.budget_goal}</p>
               <p>Remaining Days: {calculateRemainingDays()} days</p>
-              <p>Remaining Amount: </p>
+              <p>Remaining Amount: ${incomeRemaining().toFixed(2)}</p>
             </div>
           ))}
         </div>
