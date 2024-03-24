@@ -52,7 +52,8 @@ function* updateTransactionAmount(action) {
   try {
     // Extract necessary data from the action payload
     const { id, amount } = action.payload;
-
+    // Make the API call to update the expense amount
+    yield axios.put(`/api/transaction/${id}`, { amount });
     // Dispatch an action to update the transaction amount in the reducer
     yield put({
       type: 'UPDATE_TRANSACTION_AMOUNT_SUCCESS',
