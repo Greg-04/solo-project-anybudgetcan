@@ -95,6 +95,30 @@ function PlanInformationPage() {
   // let totalExpenseValue = calculateTotalExpenses();
   // console.log('Expenses Total', totalExpenseValue);
 
+  // need to account for monthly expense deductions similar to income
+  const calculateMonthlyExpenseDeductions = () => {
+    const totalExpenses = calculateTotalExpenses();
+    //set annual expenses
+    const annualExpenses = Number(totalExpenses * 12);
+
+    //set daily expenses
+    const dailyExpenses = Number(annualExpenses / 365);
+
+    //set days remaining
+    const targetDate = new Date(planInformation[0].target_date);
+    const today = new Date();
+    const timeDifference = targetDate.getTime() - today.getTime();
+    const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    // console.log('days left', daysLeft);
+
+    //get Expenses deducted until target date
+    const expensesDeducted = dailyExpenses * daysLeft;
+
+    return expensesDeducted;
+  };
+  // let totalExpenseDeductions = calculateMonthlyExpenseDeductions();
+  // console.log('totalExpenseDeductions', totalExpenseDeductions);
+
   //.reduce to loop transactionsInformation and calculate transactions
   const calculateTotalTransactions = () => {
     // total is set 0 and each transaction.amount will be added to total
@@ -129,19 +153,32 @@ function PlanInformationPage() {
     // console.log('incomeUntilTarget', incomeUntilTarget);
     return incomeGained;
   };
-  // let totalIncomeGained = incomeGained();
-  // console.log('totalIncomeGained', totalIncomeGained);
+  let totalIncomeGained = incomeGained();
+  console.log('totalIncomeGained', totalIncomeGained);
 
   // Function to calculate income remaining until Target date
   const incomeRemaining = () => {
     const gainedIncome = incomeGained();
     const totalTransactions = calculateTotalTransactions();
-    const totalExpenses = calculateTotalExpenses();
+    const totalExpenses = calculateMonthlyExpenseDeductions();
     const incomeRemaining = gainedIncome - (totalTransactions + totalExpenses);
     return incomeRemaining;
   };
   // let incomeRemainingTotal = incomeRemaining();
   // console.log('incomeRemainingTotal', incomeRemainingTotal);
+
+  //Monthly Budget Total
+  const monthlyBudgetTotal = () => {
+    //set annual income
+    const annualIncomeGained = Number(incomeInformation[0].monthly_amount) * 12;
+    // console.log('annual income', annualIncome);
+
+    //set daily income
+    const dailyIncomeGained = Number(annualIncome / 365);
+    // console.log('daily income', dailyIncome);
+    //set monthly income
+    const monthlyIncomeGained = Number(dailyIncome * 31);
+  };
 
   return (
     <>
@@ -159,6 +196,7 @@ function PlanInformationPage() {
               <p>Budget Goal: ${planItem.budget_goal}</p>
               <p>Remaining Days: {calculateRemainingDays()} Days</p>
               <p>Remaining Amount: ${incomeRemaining().toFixed(2)}</p>
+              <p>Monthly Budget Amount: ${null}</p>
             </div>
           ))}
         </div>
