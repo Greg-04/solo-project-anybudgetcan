@@ -46,10 +46,34 @@ function ViewTransactionsPage() {
 
   //Function to reformat the timestamp into date format
   const formatDate = (newDate) => {
-    //This splits string into substrings/array
-    const splitDate = newDate.split('T');
-    // console.log('new date object', splitDate);
-    return splitDate[0];
+    // //This splits string into substrings/array
+    // const splitDate = newDate.split('T');
+    // // console.log('new date object', splitDate);
+    // return splitDate[0];
+
+    //new date formatting
+    const date = new Date(newDate);
+    // console.log(date);
+    const formattedDate = date.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'numeric',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    // console.log(formattedDate);
+    const splitDate = formattedDate.split(',');
+    // console.log(splitDate);
+    const weekday = splitDate[0];
+    const monthDay = splitDate[1];
+    const splitMonthDay = monthDay.split(' ');
+    // console.log('splitMonthDay', splitMonthDay);
+    const newDateFormat = splitMonthDay[1];
+    // console.log('newDateFormat', newDateFormat);
+    const replaceNewDateFormat = newDateFormat.replace(/\//g, '-');
+    // console.log('replaceNewDateFormat', replaceNewDateFormat);
+    
+
+    return `${weekday}: ${replaceNewDateFormat}`;
   };
 
   // Function to handle delete
@@ -69,7 +93,7 @@ function ViewTransactionsPage() {
           <thead>
             <tr>
               <th>Date</th>
-              <th>Name</th>
+              <th>Description</th>
               <th>Amount</th>
               <th>Category</th>
               <th>Delete?</th>

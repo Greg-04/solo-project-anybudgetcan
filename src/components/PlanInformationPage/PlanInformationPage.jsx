@@ -32,16 +32,16 @@ function PlanInformationPage() {
     /*The toLocaleDateString() method returns the date (not the time) of a date object as a string, using locale conventions. */
     //https://www.geeksforgeeks.org/javascript-date-tolocaledatestring-method/
     const date = new Date(newDate);
-    console.log(date);
+    // console.log(date);
     const formattedDate = date.toLocaleDateString('en-US', {
       weekday: 'long',
       month: 'short',
       day: 'numeric',
       year: 'numeric',
     });
-    console.log(formattedDate);
+    // console.log(formattedDate);
     const splitDate = formattedDate.split(',');
-    console.log(splitDate);
+    // console.log(splitDate);
     const weekday = splitDate[0];
     const monthDay = splitDate[1];
     const year = splitDate[2];

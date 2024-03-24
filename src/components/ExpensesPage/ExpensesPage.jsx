@@ -137,7 +137,7 @@ function ExpensesPage() {
           <table className="expenseTable">
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Description</th>
                 <th>Amount</th>
                 <th>Category</th>
                 <th>Delete?</th>

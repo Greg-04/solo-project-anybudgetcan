@@ -54,7 +54,7 @@ function AddTransactionsPage() {
       </div>
       <div>
         <form className="transactionForm" onSubmit={handleSubmit}>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Description:</label>
           <input
             className="input-container"
             type="text"
