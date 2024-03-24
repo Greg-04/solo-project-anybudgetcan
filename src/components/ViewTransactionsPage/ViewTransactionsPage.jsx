@@ -63,7 +63,7 @@ function ViewTransactionsPage() {
     // console.log(formattedDate);
     const splitDate = formattedDate.split(',');
     // console.log(splitDate);
-    const weekday = splitDate[0];
+    // const weekday = splitDate[0];
     const monthDay = splitDate[1];
     const splitMonthDay = monthDay.split(' ');
     // console.log('splitMonthDay', splitMonthDay);
@@ -73,7 +73,7 @@ function ViewTransactionsPage() {
     // console.log('replaceNewDateFormat', replaceNewDateFormat);
     
 
-    return `${weekday}: ${replaceNewDateFormat}`;
+    return `${replaceNewDateFormat}`;
   };
 
   // Function to handle delete

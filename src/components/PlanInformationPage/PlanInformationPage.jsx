@@ -46,14 +46,16 @@ function PlanInformationPage() {
     const monthDay = splitDate[1];
     const year = splitDate[2];
 
-    return `${weekday} - ${monthDay},${year}`;
+    return `${weekday}, ${monthDay},${year}`;
   };
 
   // https://bugfender.com/blog/javascript-date-and-time/
   //newDate()
   const calculateRemainingDays = () => {
     // console.log('plan information', planInformation);
-    const targetDate = new Date(planInformation[0].target_date);
+    const targetDate = new Date(
+      planInformation && planInformation[0].target_date
+    );
     // console.log('Target Date Object:', targetDate);
     const today = new Date();
     // console.log('Todays Date Object:', today);
@@ -86,10 +88,12 @@ function PlanInformationPage() {
   //.reduce iterates over an array and returns a single value,
   const calculateTotalExpenses = () => {
     // total is set 0 and each expense.amount will be added to total
-    const totalExpenses = expensesInformation.reduce(
-      (total, expense) => total + Number(expense.amount),
-      0
-    );
+    const totalExpenses =
+      expensesInformation &&
+      expensesInformation.reduce(
+        (total, expense) => total + Number(expense.amount),
+        0
+      );
     return totalExpenses;
   };
   // let totalExpenseValue = calculateTotalExpenses();
@@ -105,7 +109,9 @@ function PlanInformationPage() {
     const dailyExpenses = Number(annualExpenses / 365);
 
     //set days remaining
-    const targetDate = new Date(planInformation[0].target_date);
+    const targetDate = new Date(
+      planInformation && planInformation[0].target_date
+    );
     const today = new Date();
     const timeDifference = targetDate.getTime() - today.getTime();
     const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
@@ -122,10 +128,12 @@ function PlanInformationPage() {
   //.reduce to loop transactionsInformation and calculate transactions
   const calculateTotalTransactions = () => {
     // total is set 0 and each transaction.amount will be added to total
-    const totalTransactions = transactionsInformation.reduce(
-      (total, transaction) => total + Number(transaction.amount),
-      0
-    );
+    const totalTransactions =
+      transactionsInformation &&
+      transactionsInformation.reduce(
+        (total, transaction) => total + Number(transaction.amount),
+        0
+      );
     return totalTransactions;
   };
   // let totalTransactionValue = calculateTotalTransactions();
@@ -134,7 +142,8 @@ function PlanInformationPage() {
   // Function to calculate income gained until Target
   const incomeGained = () => {
     //set annual income
-    const annualIncome = Number(incomeInformation[0].monthly_amount) * 12;
+    const annualIncome =
+      Number(incomeInformation && incomeInformation[0].monthly_amount) * 12;
     // console.log('annual income', annualIncome);
 
     //set daily income
@@ -142,7 +151,9 @@ function PlanInformationPage() {
     // console.log('daily income', dailyIncome);
 
     //set days remaining
-    const targetDate = new Date(planInformation[0].target_date);
+    const targetDate = new Date(
+      planInformation && planInformation[0].target_date
+    );
     const today = new Date();
     const timeDifference = targetDate.getTime() - today.getTime();
     const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
@@ -153,8 +164,8 @@ function PlanInformationPage() {
     // console.log('incomeUntilTarget', incomeUntilTarget);
     return incomeGained;
   };
-  let totalIncomeGained = incomeGained();
-  console.log('totalIncomeGained', totalIncomeGained);
+  // let totalIncomeGained = incomeGained();
+  // console.log('totalIncomeGained', totalIncomeGained);
 
   // Function to calculate income remaining until Target date
   const incomeRemaining = () => {
@@ -170,14 +181,33 @@ function PlanInformationPage() {
   //Monthly Budget Total
   const monthlyBudgetTotal = () => {
     //set annual income
-    const annualIncomeGained = Number(incomeInformation[0].monthly_amount) * 12;
+    const annualIncomeGained =
+      Number(incomeInformation && incomeInformation[0].monthly_amount) * 12;
     // console.log('annual income', annualIncome);
 
     //set daily income
-    const dailyIncomeGained = Number(annualIncome / 365);
+    const dailyIncomeGained = Number(annualIncomeGained / 365);
     // console.log('daily income', dailyIncome);
     //set monthly income
-    const monthlyIncomeGained = Number(dailyIncome * 31);
+    const monthlyIncomeGained = Number(dailyIncomeGained * 31);
+
+    //get expense totals
+    const totalExpenses = calculateTotalExpenses();
+    //set annual expenses
+    const annualExpenses = Number(totalExpenses * 12);
+
+    //set daily expenses
+    const dailyExpenses = Number(annualExpenses / 365);
+
+    //set monthly expenses
+    const monthlyExpensesDeducted = Number(dailyExpenses * 31);
+
+    //now get monthly budget amount
+    const monthlyBudgetAmount = Number(
+      monthlyIncomeGained - monthlyExpensesDeducted
+    );
+
+    return monthlyBudgetAmount;
   };
 
   return (
@@ -189,16 +219,21 @@ function PlanInformationPage() {
       </div>
       <main>
         <div className="planInformation">
-          {planInformation.map((planItem) => (
-            <div key="planItem.id">
-              <h2>{planItem.name}</h2>
-              <p>Target Date: {formatDate(planItem.target_date)}</p>
-              <p>Budget Goal: ${planItem.budget_goal}</p>
-              <p>Remaining Days: {calculateRemainingDays()} Days</p>
-              <p>Remaining Amount: ${incomeRemaining().toFixed(2)}</p>
-              <p>Monthly Budget Amount: ${null}</p>
-            </div>
-          ))}
+          {planInformation &&
+            planInformation.map((planItem) => (
+              <div key="planItem.id">
+                <h2>{planItem.name}</h2>
+                <p>Target Date: {formatDate(planItem.target_date)}</p>
+                <p>Budget Goal: ${planItem.budget_goal}</p>
+                <p>Remaining Days: {calculateRemainingDays()} Days</p>
+                <p>
+                  Remaining Budget until target date: $
+                  {incomeRemaining().toFixed(2)}
+                </p>
+                <p>Monthly Budget Amount: ${monthlyBudgetTotal().toFixed(2)}</p>
+                <p>Remaining Monthly Budget Amount: ${null}</p>
+              </div>
+            ))}
         </div>
       </main>
     </>
