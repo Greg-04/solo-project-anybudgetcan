@@ -11,7 +11,14 @@ import {
   Legend,
 } from 'chart.js';
 
-ChartJS.register();
+//Register ChartJS items
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale, //y
+  Tooltip,
+  Legend
+);
 
 function PlanInformationPage() {
   //Set Dispatch Hook
@@ -308,6 +315,33 @@ function PlanInformationPage() {
     return remainingBudget;
   };
 
+  const data = {
+    labels: [
+      'Remaining Budget until target date:',
+      'Target Monthly Budget Amount:',
+      'Remaining Monthly Budget Amount',
+    ],
+    datasets: [
+      {
+        label: [
+          'Remaining Budget until target date:',
+          'Target Monthly Budget Amount:',
+          'Remaining Monthly Budget Amount',
+        ],
+        data: [
+          incomeRemaining().toFixed(2),
+          monthlyBudgetTotal().toFixed(2),
+          monthlyBudgetTotalRemaining().toFixed(2),
+        ],
+        backgroundColor: ['green', 'green', 'red'],
+        borderColor: 'black',
+        borderWidth: 2,
+      },
+    ],
+  };
+
+  const options = {};
+
   return (
     <>
       <div className="container">
@@ -341,7 +375,9 @@ function PlanInformationPage() {
         </div>
         <div>
           <h2 className="header">Bar Chart</h2>
-          <div></div>
+          <div style={{ width: '50%' }}>
+            <Bar data={data} options={options}></Bar>
+          </div>
         </div>
       </main>
     </>
