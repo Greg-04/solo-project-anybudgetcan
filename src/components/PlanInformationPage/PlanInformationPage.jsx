@@ -210,6 +210,56 @@ function PlanInformationPage() {
     return monthlyBudgetAmount;
   };
 
+  //Monthly Budget Total Remaining
+  const monthlyBudgetTotalRemaining = () => {
+    // Set monthly budget
+    const monthlyTotalBudget = monthlyBudgetTotal();
+
+    // Get current date
+    const currentDate = new Date();
+
+    // Get the first day of the current month
+    const firstDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      1
+    );
+
+    // Get the last day of the current month
+    const lastDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    );
+
+    // Filter transactions occurred within the current month
+    const transactionsWithinMonth =
+      transactionsInformation &&
+      transactionsInformation.filter((transaction) => {
+        const transactionDate = new Date(transaction.trans_date);
+        return (
+          transactionDate >= firstDayOfMonth &&
+          transactionDate <= lastDayOfMonth
+        );
+      });
+    console.log('transactionsWithinMonth', transactionsWithinMonth);
+
+    // Calculate total transactions within the current month
+    const totalTransactionsWithinMonth =
+      transactionsWithinMonth &&
+      transactionsWithinMonth.reduce(
+        (total, transaction) => total + Number(transaction.amount),
+        0
+      );
+
+    console.log('totalTransactionsWithinMonth', totalTransactionsWithinMonth);
+
+    // Calculate remaining monthly budget after deducting transactions
+    const remainingBudget = monthlyTotalBudget - totalTransactionsWithinMonth;
+
+    return remainingBudget;
+  };
+
   return (
     <>
       <div className="container">
@@ -230,8 +280,11 @@ function PlanInformationPage() {
                   Remaining Budget until target date: $
                   {incomeRemaining().toFixed(2)}
                 </p>
-                <p>Monthly Budget Amount: ${monthlyBudgetTotal().toFixed(2)}</p>
-                <p>Remaining Monthly Budget Amount: ${null}</p>
+                <p>Target Monthly Budget Amount: ${monthlyBudgetTotal().toFixed(2)}</p>
+                <p>
+                  Remaining Monthly Budget Amount: $
+                  {monthlyBudgetTotalRemaining().toFixed(2)}
+                </p>
               </div>
             ))}
         </div>
