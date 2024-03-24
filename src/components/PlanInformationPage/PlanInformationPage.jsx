@@ -235,6 +235,7 @@ function PlanInformationPage() {
       newDailyIncomeRemainingUntilTarget * daysInMonth
     );
 
+    //This calculation doesnt work because it will change if the remaining budget changes, which is not the purpose of the value
     // //Calculation takes in an ideal monthly target amount by factoring income remaining until target
     // const incomeRemainingUntilTarget = incomeRemaining();
     // const daysLeft = calculateRemainingDays();
