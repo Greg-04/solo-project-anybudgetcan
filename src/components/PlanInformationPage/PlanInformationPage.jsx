@@ -180,34 +180,18 @@ function PlanInformationPage() {
 
   //Monthly Budget Total
   const monthlyBudgetTotal = () => {
-    //set annual income
-    const annualIncomeGained =
-      Number(incomeInformation && incomeInformation[0].monthly_amount) * 12;
-    // console.log('annual income', annualIncome);
-
-    //set daily income
-    const dailyIncomeGained = Number(annualIncomeGained / 365);
-    // console.log('daily income', dailyIncome);
-    //set monthly income
-    const monthlyIncomeGained = Number(dailyIncomeGained * 31);
-
-    //get expense totals
-    const totalExpenses = calculateTotalExpenses();
-    //set annual expenses
-    const annualExpenses = Number(totalExpenses * 12);
-
-    //set daily expenses
-    const dailyExpenses = Number(annualExpenses / 365);
-
-    //set monthly expenses
-    const monthlyExpensesDeducted = Number(dailyExpenses * 31);
-
-    //now get monthly budget amount
-    const monthlyBudgetAmount = Number(
-      monthlyIncomeGained - monthlyExpensesDeducted
+    //reworked calculation to not overshoot incomeRemaining
+    const incomeRemainingUntilTarget = incomeRemaining();
+    const daysLeft = calculateRemainingDays();
+    const dailyIncomeRemainingUntilTarget = Number(
+      incomeRemainingUntilTarget / daysLeft
+    );
+    const totalDaysInMonth = 30;
+    const monthlyBudgetTarget = Number(
+      dailyIncomeRemainingUntilTarget * totalDaysInMonth
     );
 
-    return monthlyBudgetAmount;
+    return monthlyBudgetTarget;
   };
 
   //Monthly Budget Total Remaining
@@ -280,7 +264,10 @@ function PlanInformationPage() {
                   Remaining Budget until target date: $
                   {incomeRemaining().toFixed(2)}
                 </p>
-                <p>Target Monthly Budget Amount: ${monthlyBudgetTotal().toFixed(2)}</p>
+                <p>
+                  Target Monthly Budget Amount: $
+                  {monthlyBudgetTotal().toFixed(2)}
+                </p>
                 <p>
                   Remaining Monthly Budget Amount: $
                   {monthlyBudgetTotalRemaining().toFixed(2)}
