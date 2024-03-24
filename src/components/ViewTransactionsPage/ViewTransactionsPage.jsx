@@ -94,15 +94,19 @@ function ViewTransactionsPage() {
   // Function to group transactions by month
   const groupTransactionsByMonth = () => {
     const groupedTransactions = {};
-    //forEach to call function for each element in array
-    transactions.forEach((transaction) => {
-      //Getting the month
-      const month = new Date(transaction.trans_date).getMonth() + 1; // Adding 1 because getMonth() returns zero-based month index
-      if (!groupedTransactions[month]) {
-        groupedTransactions[month] = [];
-      }
-      groupedTransactions[month].push(transaction);
-    });
+    //forEach to call function and loop through array
+    transactions &&
+      transactions.forEach((transaction) => {
+        //Getting the month from each transaction
+        const month = new Date(transaction.trans_date).getMonth() + 1; // Adding 1 because getMonth() returns zero-based month index
+        //if the month exists and creating an array if not
+        if (!groupedTransactions[month]) {
+          groupedTransactions[month] = [];
+        }
+        // console.log(groupedTransactions[month]);
+        //pushing the transaction into the corresponding array
+        groupedTransactions[month].push(transaction);
+      });
     return groupedTransactions;
   };
 
@@ -111,6 +115,8 @@ function ViewTransactionsPage() {
       <div className="header">
         <h1>View Transactions</h1>
       </div>
+
+      {/* object.entries returns an array of arrays, giving it the properties of month and transactions */}
       {Object.entries(groupTransactionsByMonth()).map(
         ([month, transactions]) => (
           <div key={month} className="month-table">

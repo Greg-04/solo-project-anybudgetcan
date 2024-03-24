@@ -1,11 +1,13 @@
 .table-container {
-  margin-top: 20px;
+  /* margin-top: 20px;
   border: 1px solid #000000;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; */
+  border: 1px solid #000000;
 }
 
 .table-container table {
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -18,4 +20,14 @@
 
 .table-container th {
   background-color: #f2f2f2;
+}
+
+.month-table {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.table-container tbody {
+  height: 200px;
+  overflow-y: auto;
 }
