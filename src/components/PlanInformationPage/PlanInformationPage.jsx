@@ -1,25 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PlanInformationPage.css';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
-  LineElement,
-  CategoryScale, // x axis
-  LinearScale, //y axis
-  PointElement,
-  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale, //y
   Tooltip,
+  Legend,
 } from 'chart.js';
 
-ChartJS.register(
-  LineElement,
-  CategoryScale, // x axis
-  LinearScale, //y axis
-  PointElement,
-  Legend,
-  Tooltip
-);
+ChartJS.register();
 
 function PlanInformationPage() {
   //Set Dispatch Hook
@@ -199,64 +191,66 @@ function PlanInformationPage() {
 
   //Monthly Budget Total
   const monthlyBudgetTotal = () => {
-    //First attempt at calculating a monthly Budget Total
-    // //set annual income
-    // const annualIncome =
-    //   Number(incomeInformation && incomeInformation[0].monthly_amount) * 12;
-    // // console.log('annual income', annualIncome);
-    // //set daily income
-    // const dailyIncome = Number(annualIncome / 365);
-    // // console.log('daily income', dailyIncome);
-    // //set monthly income
-    // const monthlyIncome = Number(dailyIncome * 30);
+    // First attempt at calculating a monthly Budget Total
+    //You do need to set this because you don't want this total Changing if the income remaining changes
+    //set annual income
+    const annualIncome =
+      Number(incomeInformation && incomeInformation[0].monthly_amount) * 12;
+    // console.log('annual income', annualIncome);
+    //set daily income
+    const dailyIncome = Number(annualIncome / 365);
+    // console.log('daily income', dailyIncome);
+    //set monthly income
+    const monthlyIncome = Number(dailyIncome * 30);
 
-    // const totalExpenses = calculateTotalExpenses();
-    // //set annual expenses
-    // const annualExpenses = Number(totalExpenses * 12);
-    // //set daily expenses
-    // const dailyExpenses = Number(annualExpenses / 365);
-    // //set monthly expenses
-    // const monthlyExpenses = Number(dailyExpenses * 30);
+    const totalExpenses = calculateTotalExpenses();
+    //set annual expenses
+    const annualExpenses = Number(totalExpenses * 12);
+    //set daily expenses
+    const dailyExpenses = Number(annualExpenses / 365);
+    //set monthly expenses
+    const monthlyExpenses = Number(dailyExpenses * 30);
 
-    // //Set variables for days left and days in month
-    // const daysLeftUntilTarget = calculateRemainingDays();
-    // const daysInMonth = 30;
+    //Set variables for days left and days in month
+    const daysLeftUntilTarget = calculateRemainingDays();
+    const daysInMonth = 30;
 
-    // //Setting up percentage of periods left until target. EX: days in month = 30, days until target = 54, 1.8 cycles left until target
-    // const monthlyCyclesRemaining = daysLeftUntilTarget / daysInMonth;
+    //Setting up percentage of periods left until target. EX: days in month = 30, days until target = 54, 1.8 cycles left until target
+    const monthlyCyclesRemaining = daysLeftUntilTarget / daysInMonth;
 
-    // //Set ideal monthly budget w/ no transactions calculated. Only income gained and expenses deducted in a 30 day period
-    // const idealMonthlyBudget = Number(monthlyIncome - monthlyExpenses);
+    //Set ideal monthly budget w/ no transactions calculated. Only income gained and expenses deducted in a 30 day period
+    const idealMonthlyBudget = Number(monthlyIncome - monthlyExpenses);
 
-    // //Calculate a new  approximate income remaining amount based on days remaining and income/expenses calculated
-    // const newApproximateIncomeRemaining = Number(
-    //   idealMonthlyBudget * monthlyCyclesRemaining
-    // );
-
-    // //factor in this new approximate income remaining and divide into a daily amount
-    // const newDailyIncomeRemainingUntilTarget = Number(
-    //   newApproximateIncomeRemaining / daysLeftUntilTarget
-    // );
-
-    // const newBudgetTargetAmount = Number(
-    //   newDailyIncomeRemainingUntilTarget * daysInMonth
-    // );
-
-    //Calculation takes in an ideal monthly target amount by factoring income remaining until target
-    const incomeRemainingUntilTarget = incomeRemaining();
-    const daysLeft = calculateRemainingDays();
-    const totalDaysInMonth = 30;
-    if (daysLeft < totalDaysInMonth) {
-      return daysLeft * (incomeRemainingUntilTarget / daysLeft);
-    }
-    const dailyIncomeRemainingUntilTarget = Number(
-      incomeRemainingUntilTarget / daysLeft
-    );
-    const monthlyBudgetTarget = Number(
-      dailyIncomeRemainingUntilTarget * totalDaysInMonth
+    //Calculate a new  approximate income remaining amount based on days remaining and income/expenses calculated
+    const newApproximateIncomeRemaining = Number(
+      idealMonthlyBudget * monthlyCyclesRemaining
     );
 
-    return monthlyBudgetTarget;
+    //factor in this new approximate income remaining and divide into a daily amount
+    const newDailyIncomeRemainingUntilTarget = Number(
+      newApproximateIncomeRemaining / daysLeftUntilTarget
+    );
+
+    const newBudgetTargetAmount = Number(
+      newDailyIncomeRemainingUntilTarget * daysInMonth
+    );
+
+    // //Calculation takes in an ideal monthly target amount by factoring income remaining until target
+    // const incomeRemainingUntilTarget = incomeRemaining();
+    // const daysLeft = calculateRemainingDays();
+    // const totalDaysInMonth = 30;
+    // if (daysLeft < totalDaysInMonth) {
+    //   return daysLeft * (incomeRemainingUntilTarget / daysLeft);
+    // }
+    // const dailyIncomeRemainingUntilTarget = Number(
+    //   incomeRemainingUntilTarget / daysLeft
+    // );
+    // const monthlyBudgetTarget = Number(
+    //   dailyIncomeRemainingUntilTarget * totalDaysInMonth
+    // );
+
+    // return monthlyBudgetTarget;
+    return newBudgetTargetAmount;
   };
 
   //Monthly Budget Total Remaining
@@ -313,34 +307,6 @@ function PlanInformationPage() {
     return remainingBudget;
   };
 
-  //Set up chart data
-  const data = {
-    labels: ['Mon', 'Tue', 'Wed'],
-    datasets: [
-      {
-        label: 'Sales of the Week',
-        data: [6, 6, 9],
-        backgroundColor: 'aqua',
-        borderColor: 'black',
-        pointBorderColor: 'aqua',
-        fill: true,
-        tension: 0.4,
-      },
-    ],
-  };
-
-  const options = {
-    plugins: {
-      legend: true,
-      scales: {
-        y: {
-          // min: 3,
-          // max: 6
-        },
-      },
-    },
-  };
-
   return (
     <>
       <div className="container">
@@ -373,14 +339,8 @@ function PlanInformationPage() {
             ))}
         </div>
         <div>
-          <h2 className="header">Line Chart</h2>
-          <div
-            style={{
-              width: '1000px',
-              height: '500px',
-            }}>
-            <Line data={data} options={options}></Line>
-          </div>
+          <h2 className="header">Bar Chart</h2>
+          <div></div>
         </div>
       </main>
     </>

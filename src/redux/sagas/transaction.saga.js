@@ -22,6 +22,8 @@ function* deleteTransaction(action) {
     yield axios.delete(`/api/transaction/${id}`);
     // If successful, dispatch action
     yield put({ type: 'DELETE_TRANSACTION_SUCCESS', payload: id });
+    // If successful, dispatch action to fetch transactions
+    yield put({ type: 'FETCH_TRANSACTIONS' });
   } catch (error) {
     // If an error occurs, dispatch a failure action
     yield put({ type: 'DELETE_TRANSACTION_ERROR', payload: error });
@@ -32,7 +34,7 @@ function* deleteTransaction(action) {
 // worker Saga: will be fired on "FETCH_TRANSACTIONS" actions
 function* fetchTransactions() {
   try {
-    // Get the categories:
+    // Get the transactions:
     const transactionResponse = yield axios.get('/api/transaction');
     // Set the value of the transaction reducer:
     yield put({
@@ -56,6 +58,8 @@ function* updateTransactionAmount(action) {
       type: 'UPDATE_TRANSACTION_AMOUNT_SUCCESS',
       payload: { id, amount },
     });
+    // If successful, dispatch action to fetch transactions
+    yield put({ type: 'FETCH_TRANSACTIONS' });
   } catch (error) {
     // Handle any errors
     yield put({ type: 'UPDATE_TRANSACTION_AMOUNT_ERROR', payload: error });

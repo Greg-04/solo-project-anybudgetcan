@@ -22,6 +22,7 @@ function* deleteExpense(action) {
     yield axios.delete(`/api/expenses/${id}`);
     // If successful, dispatch action
     yield put({ type: 'DELETE_EXPENSE_SUCCESS', payload: id });
+    yield put({ type: 'FETCH_EXPENSES' });
   } catch (error) {
     // If an error occurs, dispatch a failure action
     yield put({ type: 'DELETE_EXPENSE_ERROR', payload: error });
@@ -56,6 +57,7 @@ function* updateExpenseAmount(action) {
       type: 'UPDATE_EXPENSE_AMOUNT_SUCCESS',
       payload: { id, amount },
     });
+    yield put({ type: 'FETCH_EXPENSES' });
   } catch (error) {
     // Handle any errors
     yield put({ type: 'UPDATE_EXPENSE_AMOUNT_ERROR', payload: error });
