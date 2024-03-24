@@ -1,6 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PlanInformationPage.css';
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale, // x axis
+  LinearScale, //y axis
+  PointElement,
+  Legend,
+  Tooltip,
+} from 'chart.js';
+
+ChartJS.register(
+  LineElement,
+  CategoryScale, // x axis
+  LinearScale, //y axis
+  PointElement,
+  Legend,
+  Tooltip
+);
 
 function PlanInformationPage() {
   //Set Dispatch Hook
@@ -223,7 +242,6 @@ function PlanInformationPage() {
     //   newDailyIncomeRemainingUntilTarget * daysInMonth
     // );
 
-    
     //Calculation takes in an ideal monthly target amount by factoring income remaining until target
     const incomeRemainingUntilTarget = incomeRemaining();
     const daysLeft = calculateRemainingDays();
@@ -238,7 +256,7 @@ function PlanInformationPage() {
       dailyIncomeRemainingUntilTarget * totalDaysInMonth
     );
 
-    return monthlyBudgetTarget; 
+    return monthlyBudgetTarget;
   };
 
   //Monthly Budget Total Remaining
@@ -295,6 +313,34 @@ function PlanInformationPage() {
     return remainingBudget;
   };
 
+  //Set up chart data
+  const data = {
+    labels: ['Mon', 'Tue', 'Wed'],
+    datasets: [
+      {
+        label: 'Sales of the Week',
+        data: [6, 6, 9],
+        backgroundColor: 'aqua',
+        borderColor: 'black',
+        pointBorderColor: 'aqua',
+        fill: true,
+        tension: 0.4,
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: true,
+      scales: {
+        y: {
+          // min: 3,
+          // max: 6
+        },
+      },
+    },
+  };
+
   return (
     <>
       <div className="container">
@@ -325,6 +371,16 @@ function PlanInformationPage() {
                 </p>
               </div>
             ))}
+        </div>
+        <div>
+          <h2 className="header">Line Chart</h2>
+          <div
+            style={{
+              width: '1000px',
+              height: '500px',
+            }}>
+            <Line data={data} options={options}></Line>
+          </div>
         </div>
       </main>
     </>
