@@ -23,7 +23,11 @@ function PlanInformationPage() {
   const dispatch = useDispatch();
   //Getting plan data from redux store
   const planInformation = useSelector((store) => store.plan);
-
+  //bringing in the savingsGoal
+  // console.log('planInformation', planInformation);
+  const savingsGoal =
+    planInformation && Number(planInformation.map((plan) => plan.budget_goal));
+  // console.log('savingsGoal', savingsGoal);
   const incomeInformation = useSelector((store) => store.income);
   // console.log('income information', incomeInformation);
   const expensesInformation = useSelector((store) => store.expense);
@@ -188,7 +192,8 @@ function PlanInformationPage() {
     const gainedIncome = incomeGained();
     const totalTransactions = calculateTotalTransactions();
     const totalExpenses = calculateMonthlyExpenseDeductions();
-    const incomeRemaining = gainedIncome - (totalTransactions + totalExpenses);
+    const incomeRemaining =
+      gainedIncome - (totalTransactions + totalExpenses + savingsGoal);
     return incomeRemaining;
   };
   // let incomeRemainingTotal = incomeRemaining();
@@ -220,9 +225,14 @@ function PlanInformationPage() {
     const daysLeftUntilTarget = calculateRemainingDays();
     const daysInMonth = 30;
 
+    //Setting value for savings goal to calculate in approximate amount
+    const savingsGoalDailyAmount = savingsGoal / daysLeftUntilTarget;
+
     // If statement to catch periods less than 30 days
     if (daysLeftUntilTarget <= daysInMonth) {
-      const dailyAmount = Number(dailyIncome - dailyExpenses);
+      const dailyAmount = Number(
+        dailyIncome - (dailyExpenses + savingsGoalDailyAmount)
+      );
       return dailyAmount * daysLeftUntilTarget;
     }
 
@@ -230,7 +240,9 @@ function PlanInformationPage() {
     const monthlyCyclesRemaining = daysLeftUntilTarget / daysInMonth;
 
     //Set ideal monthly budget w/ no transactions calculated. Only income gained and expenses deducted in a 30 day period
-    const idealMonthlyBudget = Number(monthlyIncome - monthlyExpenses);
+    const idealMonthlyBudget = Number(
+      monthlyIncome - (monthlyExpenses + savingsGoalDailyAmount)
+    );
 
     //Calculate a new  approximate income remaining amount based on days remaining and income/expenses calculated
     const newApproximateIncomeRemaining = Number(
