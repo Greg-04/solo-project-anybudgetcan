@@ -32,18 +32,41 @@ function IncomePage() {
     event.preventDefault();
     alert('Income Updated!');
     // console.log('Payload:', salary);
-    //If statement to convert yearly salary inputs
+
+    //defining adjusted salary equal to the input value
     let adjustedSalary = salary;
+    //If statement to convert yearly salary inputs
     if (incomeFrequency === 'Annual') {
       //converting to monthly value
       adjustedSalary /= 12;
     }
-    // console.log('modified salary:', adjustedSalary);
 
-    dispatch({
-      type: 'ADD_INCOME',
-      payload: { monthly_amount: adjustedSalary },
-    });
+    // conditional to check if currentIncome has available data, if yes take the id
+    if (currentIncome && currentIncome.length > 0) {
+      // Extract the ID from the first income object
+      const id = currentIncome[0].id;
+
+      //defining adjusted salary equal to the input value
+      let adjustedSalary = salary;
+      //If statement to convert yearly salary inputs
+      if (incomeFrequency === 'Annual') {
+        //converting to monthly value
+        adjustedSalary /= 12;
+      }
+      // console.log('modified salary:', adjustedSalary);
+
+      // Dispatching UPDATE_INCOME_AMOUNT with current ID
+      dispatch({
+        type: 'UPDATE_INCOME_AMOUNT',
+        payload: { id, monthly_amount: adjustedSalary },
+      });
+    } else {
+      //If there is no data for current income this will submit one
+      dispatch({
+        type: 'ADD_INCOME',
+        payload: { monthly_amount: adjustedSalary },
+      });
+    }
     //Set values back to $0
     setSalary(0);
     setIncomeFrequency('');
