@@ -28,6 +28,7 @@ function IncomePage() {
   };
 
   //handle for my income submit
+  //By default this is a put call but will add in a new amount if empty
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('Income Updated!');
