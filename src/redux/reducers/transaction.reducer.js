@@ -14,7 +14,7 @@ const transactionReducer = (state = null, action) => {
     case 'DELETE_TRANSACTION_ERROR':
       return { ...state, error: action.payload };
     case 'UPDATE_TRANSACTION_AMOUNT_SUCCESS':
-      // Update the transaction amount in the state
+      // if id matches Update the transaction amount in the state
       return state.map((transaction) =>
         transaction.id === action.payload.id
           ? { ...transaction, amount: action.payload.amount }

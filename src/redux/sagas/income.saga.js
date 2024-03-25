@@ -27,10 +27,31 @@ function* addIncome(action) {
   }
 }
 
+// PUT Worker Saga
+// worker Saga: will be fired on "UPDATE_INCOME_AMOUNT" actions
+function* updateIncomeAmount(action) {
+  try {
+    // Extract necessary data from the action payload
+    const { id, monthly_amount } = action.payload;
+    // Make the API call to update the income amount
+    yield axios.put(`/api/income/${id}`, { monthly_amount });
+    // Dispatch an action to update the income amount in the reducer
+    yield put({
+      type: 'UPDATE_INCOME_AMOUNT_SUCCESS',
+      payload: { id, monthly_amount },
+    });
+    yield put({ type: 'FETCH_INCOME' });
+  } catch (error) {
+    // Handle any errors
+    yield put({ type: 'UPDATE_INCOME_AMOUNT_ERROR', payload: error });
+  }
+}
+
 //watcher saga
 function* incomeSaga() {
   yield takeLatest('FETCH_INCOME', fetchIncome);
   yield takeLatest('ADD_INCOME', addIncome);
+  yield takeLatest('UPDATE_INCOME_AMOUNT', updateIncomeAmount);
 }
 
 export default incomeSaga;
