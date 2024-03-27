@@ -26,6 +26,7 @@ import IncomePage from '../IncomePage/IncomePage';
 import CreatePlanPage from '../CreatePlanPage/CreatePlanPage';
 import BudgetOverviewPage from '../BudgetOverviewPage/BudgetOverviewPage';
 import PlanInformationPage from '../PlanInformationPage/PlanInformationPage';
+import HomePage from '../HomePage/HomePage';
 
 import './App.css';
 
@@ -72,6 +73,13 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // landingPage
+            exact
+            path="/landingPage">
+            <LandingPage />
+          </ProtectedRoute>
+
           <ProtectedRoute exact path="/addTransactions">
             <AddTransactionsPage />
           </ProtectedRoute>
@@ -98,6 +106,10 @@ function App() {
 
           <ProtectedRoute exact path="/planInformationPage">
             <PlanInformationPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/homeDashboard">
+            <HomePage />
           </ProtectedRoute>
 
           <Route exact path="/login">

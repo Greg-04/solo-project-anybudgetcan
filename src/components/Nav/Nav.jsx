@@ -24,7 +24,7 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <Link className="navLink" to="/homeDashboard">
               Home
             </Link>
 
@@ -33,39 +33,39 @@ function Nav() {
             </Link>
 
             <LogOutButton className="navLink" />
+
+            <Link className="navLink" to="/addTransactions">
+              Add Transactions
+            </Link>
+
+            <Link className="navLink" to="/viewTransactions">
+              View Transactions
+            </Link>
+
+            <Link className="navLink" to="/expensesPage">
+              Expenses
+            </Link>
+
+            <Link className="navLink" to="/incomePage">
+              Income
+            </Link>
+
+            <Link className="navLink" to="/createPlanPage">
+              Create Plan
+            </Link>
+
+            <Link className="navLink" to="/budgetOverviewPage">
+              Budget Overview
+            </Link>
+
+            <Link className="navLink" to="/planInformationPage">
+              Plan Information
+            </Link>
           </>
         )}
 
         <Link className="navLink" to="/about">
           About
-        </Link>
-
-        <Link className="navLink" to="/addTransactions">
-          Add Transactions
-        </Link>
-
-        <Link className="navLink" to="/viewTransactions">
-          View Transactions
-        </Link>
-
-        <Link className="navLink" to="/expensesPage">
-          Expenses
-        </Link>
-
-        <Link className="navLink" to="/incomePage">
-          Income
-        </Link>
-
-        <Link className="navLink" to="/createPlanPage">
-          Create Plan
-        </Link>
-
-        <Link className="navLink" to="/budgetOverviewPage">
-          Budget Overview
-        </Link>
-
-        <Link className="navLink" to="/planInformationPage">
-          Plan Information
         </Link>
       </div>
     </div>
