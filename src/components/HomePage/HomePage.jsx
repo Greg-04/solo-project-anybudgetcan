@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 
 function HomePage() {
   //Set Dispatch Hook
@@ -182,14 +185,21 @@ function HomePage() {
 
   return (
     <>
-      <div>
-        Remaining Budget until target date: ${incomeRemaining().toFixed(2)}
-      </div>
       <div className="container">
         <div>
           <h1 className="header">Home Page</h1>
         </div>
       </div>
+      <main>
+        <Container maxWidth="xs">
+          <Box sx={{ p: 2, border: '5px solid black', borderRadius: "8px"}}>
+            <Typography sx={{ fontSize: 50, color: "green" }}>
+              ${incomeRemaining().toFixed(2)}
+            </Typography>
+            <Typography sx={{ fontSize: 16 }}>Remaining Budget:</Typography>
+          </Box>
+        </Container>
+      </main>
     </>
   );
 }
