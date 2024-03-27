@@ -10,6 +10,7 @@ import planSaga from './plan.saga';
 import expenseTotalSaga from './expenseTotal.saga';
 import transactionTotalSaga from './transTotal.saga';
 import combinedTotalSaga from './combinedTotal.saga';
+import incomeRemainingSaga from './incomeRemaining.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -31,5 +32,6 @@ export default function* rootSaga() {
     expenseTotalSaga(),
     transactionTotalSaga(),
     combinedTotalSaga(),
+    incomeRemainingSaga(),
   ]);
 }
