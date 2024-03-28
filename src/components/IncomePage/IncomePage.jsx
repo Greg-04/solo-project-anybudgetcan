@@ -2,6 +2,7 @@ import './IncomePage.css';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 function IncomePage() {
   // Dispatch hook
@@ -81,6 +82,7 @@ function IncomePage() {
 
   return (
     <>
+       <div><LogOutButton className="btn"/></div>
       <div className="container">
         <div>
           <h1>Income Page</h1>

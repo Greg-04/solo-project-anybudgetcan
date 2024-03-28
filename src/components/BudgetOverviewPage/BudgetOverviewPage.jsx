@@ -6,6 +6,7 @@ import { Pie } from 'react-chartjs-2';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 //registering pie chart components
 ChartJS.register(Tooltip, Legend, ArcElement);
@@ -138,6 +139,7 @@ function BudgetOverviewPage() {
 
   return (
     <>
+     <div><LogOutButton className="btn"/></div>
       <div className="container">
         <div>
           <h1>Budget Overview</h1>

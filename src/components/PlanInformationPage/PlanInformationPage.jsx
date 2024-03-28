@@ -9,6 +9,10 @@ import {
   LinearScale, //y
   Tooltip,
 } from 'chart.js';
+import LogOutButton from '../LogOutButton/LogOutButton';
+
+//link to reset plan
+//link to update income
 
 //Register ChartJS items
 ChartJS.register(
@@ -375,6 +379,7 @@ function PlanInformationPage() {
 
   return (
     <>
+     <div><LogOutButton className="btn"/></div>
       <div className="container">
         <div className="header">
           <h1>Plan Information</h1>

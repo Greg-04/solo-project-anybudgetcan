@@ -1,6 +1,7 @@
 import './AddTransactionsPage.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 function AddTransactionsPage() {
   // Dispatch hook
@@ -49,6 +50,7 @@ function AddTransactionsPage() {
 
   return (
     <>
+       <div><LogOutButton className="btn"/></div>
       <div className="header">
         <h1>Add Transactions</h1>
       </div>

@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
+      <Link to="/homeDashboard">
         <h2 className="nav-title">Any Budget Can</h2>
       </Link>
       <div>

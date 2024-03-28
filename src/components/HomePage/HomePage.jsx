@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 function HomePage() {
   //Set Dispatch Hook
@@ -188,6 +189,7 @@ function HomePage() {
 
   return (
     <>
+    <div><LogOutButton className="btn"/></div>
       <main>
         <Container
           maxWidth="md"

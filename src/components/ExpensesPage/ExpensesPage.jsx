@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 function ExpensesPage() {
   // Dispatch hook
@@ -89,6 +90,7 @@ function ExpensesPage() {
 
   return (
     <>
+       <div><LogOutButton className="btn"/></div>
       <h1 className="header">Add Fixed Monthly Expenses</h1>
       <main>
         <div>

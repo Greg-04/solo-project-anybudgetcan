@@ -2,8 +2,13 @@ import './CreatePlanPage.css';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 function CreatePlanPage() {
+  
+  //To do, make a button to reset plan information
+
+
   //set hook
   let dispatch = useDispatch();
   //set states for inputs
@@ -60,6 +65,7 @@ function CreatePlanPage() {
 
   return (
     <>
+     <div><LogOutButton className="btn"/></div>
       <div className="container">
         <div>
           <h1>Create Plan</h1>
