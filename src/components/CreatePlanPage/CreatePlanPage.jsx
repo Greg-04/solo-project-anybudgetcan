@@ -1,11 +1,13 @@
 import './CreatePlanPage.css';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 function CreatePlanPage() {
   //To do, make a button to reset plan information
+  //Get plan from store
+  const plan = useSelector((store) => store.plan);
 
   //set hook
   let dispatch = useDispatch();
@@ -58,6 +60,20 @@ function CreatePlanPage() {
     //to do: add a navigate to the next page*
   };
 
+  // Function to handle delete
+  const handleDelete = (event) => {
+    let id = plan && plan.map((planItem) => planItem.id);
+    // Dispatch action to delete plan
+    // console.log('Plan ID:', id);
+    dispatch({ type: 'DELETE_PLAN', payload: id });
+    alert('Plan Deleted!');
+  };
+
+  // Fetch plan on component mount
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PLAN' });
+  }, [dispatch]);
+
   return (
     <>
       <div>
@@ -70,7 +86,7 @@ function CreatePlanPage() {
       </div>
       <main>
         <div>
-          <button>Reset Plan</button>
+          <button onClick={handleDelete}>Reset Plan</button>
           <br></br>
           <button>
             <Link to="/incomePage">Update Income</Link>
