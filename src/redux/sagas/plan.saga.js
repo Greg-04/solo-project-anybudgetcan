@@ -28,10 +28,25 @@ function* addPlan(action) {
   }
 }
 
+// DELETE Worker Saga: will be fired on "DELETE_PLAN" actions
+function* deletePlan(action) {
+  try {
+    const id = action.payload;
+    yield axios.delete(`/api/plan/${id}`);
+    // If successful, dispatch action
+    yield put({ type: 'DELETE_PLAN_SUCCESS', payload: id });
+    yield put({ type: 'FETCH_PLAN' });
+  } catch (error) {
+    // If an error occurs, dispatch a failure action
+    yield put({ type: 'DELETE_PLAN_ERROR', payload: error });
+  }
+}
+
 //watcher saga
 function* planSaga() {
   yield takeLatest('FETCH_PLAN', fetchPlan);
   yield takeLatest('ADD_PLAN', addPlan);
+  yield takeLatest('DELETE_PLAN', deletePlan);
 }
 
 export default planSaga;
