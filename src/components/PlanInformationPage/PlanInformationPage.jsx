@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PlanInformationPage.css';
+import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -25,6 +26,9 @@ ChartJS.register(
 function PlanInformationPage() {
   //Set Dispatch Hook
   const dispatch = useDispatch();
+
+  // Get history object from React Router
+  const history = useHistory();
   //Getting plan data from redux store
   const planInformation = useSelector((store) => store.plan);
   //bringing in the savingsGoal
@@ -77,9 +81,12 @@ function PlanInformationPage() {
   //newDate()
   const calculateRemainingDays = () => {
     // console.log('plan information', planInformation);
+
+    //Below this is what was working in case you need to bring it back
     const targetDate = new Date(
       planInformation && planInformation[0].target_date
     );
+
     // console.log('Target Date Object:', targetDate);
     const today = new Date();
     // console.log('Todays Date Object:', today);
@@ -379,7 +386,9 @@ function PlanInformationPage() {
 
   return (
     <>
-     <div><LogOutButton className="btn"/></div>
+      <div>
+        <LogOutButton className="btn" />
+      </div>
       <div className="container">
         <div className="header">
           <h1>Plan Information</h1>
@@ -387,27 +396,29 @@ function PlanInformationPage() {
       </div>
       <main>
         <div className="planInformation">
-          {planInformation &&
-            planInformation.map((planItem) => (
-              <div key="planItem.id">
-                <h2>{planItem.name}</h2>
-                <p>Target Date: {formatDate(planItem.target_date)}</p>
-                <p>Budget Goal: ${planItem.budget_goal}</p>
-                <p>Remaining Days: {calculateRemainingDays()} Days</p>
-                <p>
-                  Remaining Budget until target date: $
-                  {incomeRemaining().toFixed(2)}
-                </p>
-                <p>
-                  Target Monthly Budget Amount: $
-                  {monthlyBudgetTotal().toFixed(2)}
-                </p>
-                <p>
-                  Remaining Monthly Budget Amount: $
-                  {monthlyBudgetTotalRemaining().toFixed(2)}
-                </p>
-              </div>
-            ))}
+          {planInformation && planInformation.length > 0
+            ? planInformation.map((planItem) => (
+                <div key={planItem.id}>
+                  <h2>{planItem.name}</h2>
+                  <p>Target Date: {formatDate(planItem.target_date)}</p>
+                  <p>Budget Goal: ${planItem.budget_goal}</p>
+                  <p>Remaining Days: {calculateRemainingDays()} Days</p>
+                  <p>
+                    Remaining Budget until target date: $
+                    {incomeRemaining().toFixed(2)}
+                  </p>
+                  <p>
+                    Target Monthly Budget Amount: $
+                    {monthlyBudgetTotal().toFixed(2)}
+                  </p>
+                  <p>
+                    Remaining Monthly Budget Amount: $
+                    {monthlyBudgetTotalRemaining().toFixed(2)}
+                  </p>
+                </div>
+              ))
+            : // Redirect to home income page when no plan is available
+              history.push('/createPlanPage')}
         </div>
         <div className="chartContainer">
           <h2 className="header">Bar Chart</h2>
