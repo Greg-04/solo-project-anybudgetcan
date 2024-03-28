@@ -7,6 +7,9 @@ import Box from '@mui/material/Box';
 function HomePage() {
   //Set Dispatch Hook
   const dispatch = useDispatch();
+
+  //getting user from store
+  const user = useSelector((store) => store.user);
   //Getting plan data from redux store
   const planInformation = useSelector((store) => store.plan);
   //bringing in the savingsGoal
@@ -185,18 +188,30 @@ function HomePage() {
 
   return (
     <>
-      <div className="container">
-        <div>
-          <h1 className="header">Home Page</h1>
-        </div>
-      </div>
       <main>
+        <Container
+          maxWidth="md"
+          sx={{ textAlign: 'center', marginTop: '50px' }}>
+          <Box>
+            <Typography sx={{ fontSize: 45, color: 'black' }}>
+              Welcome, {user.username}!
+            </Typography>
+          </Box>
+        </Container>
         <Container maxWidth="xs">
-          <Box sx={{ p: 2, border: '5px solid black', borderRadius: "8px"}}>
-            <Typography sx={{ fontSize: 50, color: "green" }}>
+          <Box
+            sx={{
+              p: 2,
+              border: '5px solid black',
+              borderRadius: '8px',
+              marginTop: '80px',
+            }}>
+            <Typography sx={{ fontSize: 50, color: 'green' }}>
               ${incomeRemaining().toFixed(2)}
             </Typography>
-            <Typography sx={{ fontSize: 16 }}>Remaining Budget:</Typography>
+            <Typography sx={{ fontSize: 16 }}>
+              Total Amount Remaining:
+            </Typography>
           </Box>
         </Container>
       </main>
