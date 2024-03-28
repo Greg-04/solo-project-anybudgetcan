@@ -36,4 +36,21 @@ router.post('/', (req, res) => {
     });
 });
 
+/**
+ * DELETE route
+ */
+router.delete('/:id', (req, res) => {
+  const planId = Number(req.params.id);
+  const queryText = 'DELETE FROM "plan" WHERE "id" = $1;';
+  pool
+    .query(queryText, [planId])
+    .then((results) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.error('Error deleting plan:', error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

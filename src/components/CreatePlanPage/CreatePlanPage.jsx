@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 function CreatePlanPage() {
-  
   //To do, make a button to reset plan information
-
 
   //set hook
   let dispatch = useDispatch();
@@ -60,18 +58,24 @@ function CreatePlanPage() {
     //to do: add a navigate to the next page*
   };
 
-  //link to transactions page
-  const handleToTransactions = (event) => {};
-
   return (
     <>
-     <div><LogOutButton className="btn"/></div>
+      <div>
+        <LogOutButton className="btn" />
+      </div>
       <div className="container">
         <div>
           <h1>Create Plan</h1>
         </div>
       </div>
       <main>
+        <div>
+          <button>Reset Plan</button>
+          <br></br>
+          <button>
+            <Link to="/incomePage">Update Income</Link>
+          </button>
+        </div>
         <form className="createPlanForm" onSubmit={handlePlanSubmit}>
           <h2>Set Savings Plan</h2>
 
