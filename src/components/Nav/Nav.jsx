@@ -32,8 +32,6 @@ function Nav() {
               Info Page
             </Link>
 
-            <LogOutButton className="navLink" />
-
             <Link className="navLink" to="/addTransactions">
               Add Transactions
             </Link>
