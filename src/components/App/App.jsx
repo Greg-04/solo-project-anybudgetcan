@@ -101,9 +101,11 @@ function App() {
             <CreatePlanPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/budgetOverviewPage">
-            <BudgetOverviewPage />
-          </ProtectedRoute>
+          <ErrorBoundary>
+            <ProtectedRoute exact path="/budgetOverviewPage">
+              <BudgetOverviewPage />
+            </ProtectedRoute>
+          </ErrorBoundary>
 
           <ErrorBoundary>
             <ProtectedRoute exact path="/planInformationPage">
