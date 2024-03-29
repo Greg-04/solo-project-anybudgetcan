@@ -14,7 +14,7 @@ function UserPage() {
         <LogOutButton className="btn" />
       </div>
       <div className="header">
-        <h2>Welcome, {user.username}!</h2>
+        <h2>Hi, {user.username}!</h2>
         <p>Your ID is: {user.id}</p>
         <button className="btn">
           <Link to="homeDashboard">Home</Link>

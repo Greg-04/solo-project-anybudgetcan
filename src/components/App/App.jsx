@@ -27,6 +27,7 @@ import CreatePlanPage from '../CreatePlanPage/CreatePlanPage';
 import BudgetOverviewPage from '../BudgetOverviewPage/BudgetOverviewPage';
 import PlanInformationPage from '../PlanInformationPage/PlanInformationPage';
 import HomePage from '../HomePage/HomePage';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 import './App.css';
 
@@ -104,9 +105,11 @@ function App() {
             <BudgetOverviewPage />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/planInformationPage">
-            <PlanInformationPage />
-          </ProtectedRoute>
+          <ErrorBoundary>
+            <ProtectedRoute exact path="/planInformationPage">
+              <PlanInformationPage />
+            </ProtectedRoute>
+          </ErrorBoundary>
 
           <ProtectedRoute exact path="/homeDashboard">
             <HomePage />

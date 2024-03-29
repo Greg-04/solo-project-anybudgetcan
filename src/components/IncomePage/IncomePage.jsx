@@ -85,7 +85,7 @@ function IncomePage() {
        <div><LogOutButton className="btn"/></div>
       <div className="container">
         <div>
-          <h1>Income Page</h1>
+          <h1>Your Income</h1>
         </div>
       </div>
       <main>
