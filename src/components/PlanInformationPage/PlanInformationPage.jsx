@@ -396,29 +396,27 @@ function PlanInformationPage() {
       </div>
       <main>
         <div className="planInformation">
-          {planInformation && planInformation.length > 0
-            ? planInformation.map((planItem) => (
-                <div key={planItem.id}>
-                  <h2>{planItem.name}</h2>
-                  <p>Target Date: {formatDate(planItem.target_date)}</p>
-                  <p>Budget Goal: ${planItem.budget_goal}</p>
-                  <p>Remaining Days: {calculateRemainingDays()} Days</p>
-                  <p>
-                    Remaining Budget until target date: $
-                    {incomeRemaining().toFixed(2)}
-                  </p>
-                  <p>
-                    Target Monthly Budget Amount: $
-                    {monthlyBudgetTotal().toFixed(2)}
-                  </p>
-                  <p>
-                    Remaining Monthly Budget Amount: $
-                    {monthlyBudgetTotalRemaining().toFixed(2)}
-                  </p>
-                </div>
-              ))
-            : // Redirect to home income page when no plan is available
-              history.push('/createPlanPage')}
+          {planInformation &&
+            planInformation.map((planItem) => (
+              <div key={planItem.id}>
+                <h2>{planItem.name}</h2>
+                <p>Target Date: {formatDate(planItem.target_date)}</p>
+                <p>Budget Goal: ${planItem.budget_goal}</p>
+                <p>Remaining Days: {calculateRemainingDays()} Days</p>
+                <p>
+                  Remaining Budget until target date: $
+                  {incomeRemaining().toFixed(2)}
+                </p>
+                <p>
+                  Target Monthly Budget Amount: $
+                  {monthlyBudgetTotal().toFixed(2)}
+                </p>
+                <p>
+                  Remaining Monthly Budget Amount: $
+                  {monthlyBudgetTotalRemaining().toFixed(2)}
+                </p>
+              </div>
+            ))}
         </div>
         <div className="chartContainer">
           <h2 className="header">Bar Chart</h2>
