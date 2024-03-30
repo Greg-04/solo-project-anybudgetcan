@@ -86,7 +86,7 @@ function CreatePlanPage() {
       </div>
       <div>
         <div>
-          <h1 className="pageTitle">Set Savings Plan!</h1>
+          <h1 className="pageTitle">Set Plan</h1>
         </div>
       </div>
       <div className="sideButtons">

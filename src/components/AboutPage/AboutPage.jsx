@@ -11,7 +11,7 @@ function AboutPage() {
   return (
     <>
       <div className="aboutPageContainer">
-        <h1 >About Page</h1>
+        <h1>About</h1>
       </div>
       <main className="aboutContainer">
         <div className="aboutContainer">

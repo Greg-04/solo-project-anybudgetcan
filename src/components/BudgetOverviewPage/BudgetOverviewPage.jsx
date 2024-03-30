@@ -148,11 +148,11 @@ function BudgetOverviewPage() {
       <div>
         <LogOutButton className="btn" />
       </div>
-      <div className="budgetTitle">
+      {/* <div className="budgetTitle">
         <div>
           <h1>Budget Overview</h1>
         </div>
-      </div>
+      </div> */}
       <main>
         <div className="container">
           <div
