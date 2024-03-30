@@ -1,5 +1,6 @@
 .table-container {
-  border: 1px solid #000000;
+  border: 2px solid #000000;
+  border-radius: 10px;
 }
 
 .table-container table {
@@ -11,11 +12,16 @@
 .table-container td {
   padding: 20px;
   text-align: left;
-  border: 1px solid #000000;
+  border: 2px solid #000000;
+  color: #e0e0e0;
+  border-radius: 10px;
 }
 
 .table-container th {
-  background-color: #f2f2f2;
+  background-color: #e0e0e0;
+  color:black;
+  font-family: 'Rockwell';
+  border-radius: 10px;
 }
 
 .month-table {
@@ -23,4 +29,11 @@
   width: 80%;
   display: flex;
   flex-direction: column;
+  font-family: 'Rockwell';
+}
+
+.vtHeader {
+  text-align: center;
+  color: #e0e0e0;
+  font-family: 'Rockwell';
 }

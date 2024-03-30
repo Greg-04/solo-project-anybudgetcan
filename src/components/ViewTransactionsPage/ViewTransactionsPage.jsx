@@ -2,6 +2,7 @@ import './ViewTransactionsPage.css';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import Button from '@mui/material/Button';
 
 function ViewTransactionsPage() {
   //dispatch hook
@@ -113,8 +114,10 @@ function ViewTransactionsPage() {
 
   return (
     <>
-       <div><LogOutButton className="btn"/></div>
-      <div className="header">
+      <div>
+        <LogOutButton className="btn" />
+      </div>
+      <div className="vtHeader">
         <h1>View Transactions</h1>
       </div>
 
@@ -156,25 +159,55 @@ function ViewTransactionsPage() {
                       </td>
                       <td>{transaction.category_name}</td>
                       <td>
-                        <button onClick={() => handleDelete(transaction.id)}>
+                        <Button
+                          sx={{
+                            fontFamily: 'Rockwell',
+                            backgroundColor: '#d50000',
+                            color: '#e0e0e0',
+                          }}
+                          variant="contained"
+                          onClick={() => handleDelete(transaction.id)}>
                           Delete
-                        </button>
+                        </Button>
                       </td>
                       <td>
                         {editingId === transaction.id ? (
                           <>
-                            <button onClick={() => handleSave(transaction.id)}>
+                            <Button
+                              sx={{
+                                fontFamily: 'Rockwell',
+                                backgroundColor: '#9e9e9e',
+                                color: '#e0e0e0',
+                              }}
+                              variant="contained"
+                              onClick={() => handleSave(transaction.id)}>
                               Save
-                            </button>
-                            <button onClick={handleCancel}>Cancel</button>
+                            </Button>
+                            <Button
+                              sx={{
+                                fontFamily: 'Rockwell',
+                                backgroundColor: '#9e9e9e',
+                                color: '#e0e0e0',
+                                marginLeft: '5px',
+                              }}
+                              variant="contained"
+                              onClick={handleCancel}>
+                              Cancel
+                            </Button>
                           </>
                         ) : (
-                          <button
+                          <Button
+                            sx={{
+                              fontFamily: 'Rockwell',
+                              backgroundColor: '#9e9e9e',
+                              color: '#e0e0e0',
+                            }}
+                            variant="contained"
                             onClick={() =>
                               handleEdit(transaction.id, transaction.amount)
                             }>
                             Edit
-                          </button>
+                          </Button>
                         )}
                       </td>
                     </tr>
