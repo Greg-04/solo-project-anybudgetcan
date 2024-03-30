@@ -8,10 +8,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useTheme } from '@mui/material/styles';
 
 function CreatePlanPage() {
-  const theme = useTheme();
   //To do, make a button to reset plan information
   //Get plan from store
   const plan = useSelector((store) => store.plan);
@@ -93,12 +91,19 @@ function CreatePlanPage() {
       </div>
       <div className="sideButtons">
         <p className="inputHeader">Make a Change?</p>
-        <Button sx={{ color: '#d50000', fontFamily:'Rockwell' }} variant="text" onClick={handleDelete}>
+        <Button
+          sx={{ color: '#d50000', fontFamily: 'Rockwell' }}
+          variant="text"
+          onClick={handleDelete}>
           Reset Plan
         </Button>
 
-        <Button sx={{ color: '#e0e0e0', fontFamily:'Rockwell' }} variant="text">
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/incomePage">
+        <Button
+          sx={{ color: '#e0e0e0', fontFamily: 'Rockwell' }}
+          variant="text">
+          <Link
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            to="/incomePage">
             Change Income
           </Link>
         </Button>
@@ -144,13 +149,24 @@ function CreatePlanPage() {
                     required
                   />
                 </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
-                  <Button variant="contained" type="submit" style={{ textDecoration: 'none', fontFamily: 'inherit' }}>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px'  }}>
                     Make This Plan!
                   </Button>
                 </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
-                  <Button variant="contained" style={{ textDecoration: 'none', fontFamily: 'inherit' }}>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                  <Button
+                    variant="contained"
+                    style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px' }}>
                     <Link to="/addTransactions">
                       Start recording your transactions!
                     </Link>
