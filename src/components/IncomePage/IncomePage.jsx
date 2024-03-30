@@ -87,54 +87,66 @@ function IncomePage() {
 
   return (
     <>
-       <div><LogOutButton className="btn"/></div>
+      <div>
+        <LogOutButton className="btn" />
+      </div>
       {/* <div className="container">
         <div>
           <h1>Your Income</h1>
         </div>
       </div> */}
       <main>
-        <div className="header">
-          <p>
-            Current Monthly Amount $
+        <div>
+          <p className="currentSalary">
+            Current Monthly Amount: <inline className="currentSalaryAmount">$
             {currentIncome &&
               currentIncome.map(
                 (currentIncomeItem) => currentIncomeItem.monthly_amount
               )}
+              </inline>
           </p>
         </div>
         <form className="salaryForm" onSubmit={handleSubmit}>
-        <Container maxWidth="md">
-          <h2>Set Income</h2>
-          <h1>${salary}</h1>
-          <div>
-            <p>Annual or Monthly?</p>
-            <select
-              required
-              id="income"
-              value={incomeFrequency}
-              onChange={handleFrequencyChange}>
-              <option value="">Select</option>
-              <option>Annual</option>
-              <option>Monthly</option>
-            </select>
-          </div>
-          <div>
-            <p>Enter your income:</p>
-            <input
-              type="number"
-              value={salary}
-              onChange={handleSalaryChange}
-              required></input>
-          </div>
-          <div>
-            <br />
-            <button type="submit">Submit</button>
-            <br />
-            <button className="navButton">
-              <Link to="/expensesPage">Next</Link>
-            </button>
-          </div>
+          <Container maxWidth="md">
+            <Box sx={{ mt: 4 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <h2 className="inputHeader">Set Income</h2>
+                  <h1 className="salary">${salary}</h1>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <p className="inputHeader">Annual or Monthly?</p>
+                  <select
+                    required
+                    id="income"
+                    value={incomeFrequency}
+                    onChange={handleFrequencyChange}>
+                    <option value="">Select</option>
+                    <option>Annual</option>
+                    <option>Monthly</option>
+                  </select>
+                </Grid>
+                <Grid item xs={12}>
+                  <p className="inputHeader">Enter your income:</p>
+                  <TextField
+                    fullWidth
+                    type="number"
+                    value={salary}
+                    onChange={handleSalaryChange}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
+                  <Button type="submit" variant="contained" style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px' }}>Submit</Button>
+                </Grid>
+                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
+                  <Button variant="contained" className="navButton" style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px' }}>
+                    <Link to="/expensesPage">Next</Link>
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
           </Container>
         </form>
       </main>

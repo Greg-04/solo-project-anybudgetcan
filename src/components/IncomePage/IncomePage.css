@@ -12,3 +12,18 @@
   margin-bottom: 10px;
 } */
 
+.salary {
+  color: #4caf50;
+}
+
+.currentSalary {
+  font-family: 'Rockwell';
+  color: black;
+  text-align: center;
+  font-weight: 600;
+  font-size: xx-large;
+}
+
+.currentSalaryAmount {
+  color: #4caf50;
+}
