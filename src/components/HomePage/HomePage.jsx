@@ -189,13 +189,16 @@ function HomePage() {
 
   return (
     <>
-    <div><LogOutButton className="btn"/></div>
+      <div>
+        <LogOutButton className="btn" />
+      </div>
       <main>
         <Container
           maxWidth="md"
           sx={{ textAlign: 'center', marginTop: '50px' }}>
           <Box>
-            <Typography sx={{ fontSize: 45, color: 'black' }}>
+            <Typography
+              sx={{ fontSize: 45, color: '#e0e0e0', fontFamily: 'Rockwell' }}>
               Welcome, {user.username}!
             </Typography>
           </Box>
@@ -203,15 +206,20 @@ function HomePage() {
         <Container maxWidth="xs">
           <Box
             sx={{
-              p: 2,
-              border: '5px solid black',
-              borderRadius: '8px',
+              p: 4,
+              border: '5px solid #4caf50',
+              borderRadius: '12px',
               marginTop: '80px',
+              boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+              backgroundColor: '#e0e0e0',
+              textAlign: 'center',
             }}>
-            <Typography sx={{ fontSize: 50, color: 'green' }}>
+            <Typography
+              sx={{ fontSize: 50, color: '#4caf50', fontFamily: 'Rockwell' }}>
               ${incomeRemaining().toFixed(2)}
             </Typography>
-            <Typography sx={{ fontSize: 16 }}>
+            <Typography
+              sx={{ fontSize: 16, color: 'black', fontFamily: 'Rockwell' }}>
               Total Amount Remaining:
             </Typography>
           </Box>
