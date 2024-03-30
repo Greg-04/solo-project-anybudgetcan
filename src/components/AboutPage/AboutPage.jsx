@@ -11,9 +11,6 @@ function AboutPage() {
   return (
     <>
       <div>
-        <LogOutButton className="btn" />
-      </div>
-      <div>
         <h1 className="header">About Page</h1>
       </div>
       <main className="container">
