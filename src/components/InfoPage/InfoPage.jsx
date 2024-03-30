@@ -15,32 +15,32 @@ function InfoPage() {
       </div>
       <div className="infoPageContainer">
         <h1>How To Use</h1>
-        <p>
+        <p className="pContent">
           Welcome to Any Budget Can! This page provides you with instructions on
           how to use the application.
         </p>
 
         <h2>1. Adding Income</h2>
-        <p>On the Income page, you can input your monthly or annual income.</p>
+        <p className="pContent">On the Income page, you can input your monthly or annual income.</p>
         <h2>2. Managing Expenses</h2>
-        <p>
+        <p className="pContent">
           Use the Expenses page to input your monthly expenses such as rent,
           utilities, groceries, etc.
         </p>
         <h2>3. Creating Savings Plan</h2>
-        <p>
+        <p className="pContent">
           The Savings Plan page allows you to create customized savings plans by
           setting a timeframe, plan name, and target amount to save.
         </p>
         <h2>4. Tracking Transactions</h2>
-        <p>
+        <p className="pContent">
           With the Add Transactions page, you can manually add transactions to
           keep track of your budget. Enter details like name, amount, category,
           and date for each transaction. Then navigate to the "View
           Transactions" to track submissions.
         </p>
         <h2>5. You're all set</h2>
-        <p>
+        <p className="pContent">
           Once you inputted all your information, the home page, budget
           overview, plan information, and view transactions will provide you a
           comprehensive view of your financial summary. Use the links on the
@@ -48,7 +48,7 @@ function InfoPage() {
           application.
         </p>
         <h2>Support</h2>
-        <p>
+        <p className="pContent">
           If you encounter any issues or have suggestions for improvement,
           please feel free to contact us at regs0404@gmail.com
         </p>

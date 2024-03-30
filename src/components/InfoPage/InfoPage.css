@@ -2,10 +2,11 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  font-family: 'Rockwell';
 }
 
 h1, h2 {
-  color: #333;
+  color: #e0e0e0;
 }
 
 p {
@@ -17,19 +18,6 @@ h2 {
   margin-top: 30px;
 }
 
-.btn {
-  /* background-color: #007bff; */
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  /* background-color: #0056b3; */
-}
-
-.btn:active {
-  /* background-color: #004499; */
+.pContent {
+  color:#9e9e9e;
 }

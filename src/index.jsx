@@ -17,7 +17,7 @@ const themeConfig = {
       main: grey[300], // Dark blue-grey for primary elements
     },
     secondary: {
-      main: grey[700], // Teal color for secondary elements
+      main: grey[500], // Teal color for secondary elements
     },
   },
 };
