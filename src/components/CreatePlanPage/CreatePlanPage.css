@@ -26,3 +26,7 @@
 .sideButtons > * {
   margin-bottom: 10px;
 }
+
+body {
+  background: radial-gradient(circle, #4b6cb7, #182848);
+}

@@ -8,16 +8,16 @@ import App from './components/App/App';
 
 //material ui custom theming
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { blueGrey, teal } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 //theme options are on the configuration object
 const themeConfig = {
   palette: {
     primary: {
-      main: blueGrey[700], // Dark blue-grey for primary elements
+      main: grey[300], // Dark blue-grey for primary elements
     },
     secondary: {
-      main: teal[500], // Teal color for secondary elements
+      main: grey[700], // Teal color for secondary elements
     },
   },
 };
