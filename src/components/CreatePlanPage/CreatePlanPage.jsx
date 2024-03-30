@@ -8,8 +8,10 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { useTheme } from '@mui/material/styles';
 
 function CreatePlanPage() {
+  const theme = useTheme();
   //To do, make a button to reset plan information
   //Get plan from store
   const plan = useSelector((store) => store.plan);
@@ -84,20 +86,22 @@ function CreatePlanPage() {
       <div>
         <LogOutButton />
       </div>
-      <div className="header">
+      <div>
         <div>
-          <h1>Create Plan</h1>
+          <h1 className="pageTitle">Set Savings Plan!</h1>
         </div>
       </div>
       <div className="sideButtons">
-      <p>Make a Change?</p>
-      <Button variant="text" onClick={handleDelete} >
-        Reset Plan
-      </Button>
+        <p className="inputHeader">Make a Change?</p>
+        <Button sx={{ color: '#d50000', fontFamily:'Rockwell' }} variant="text" onClick={handleDelete}>
+          Reset Plan
+        </Button>
 
-      <Button variant="text" >
-        <Link to="/incomePage">Change Income</Link>
-      </Button>
+        <Button sx={{ color: '#e0e0e0', fontFamily:'Rockwell' }} variant="text">
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/incomePage">
+            Change Income
+          </Link>
+        </Button>
       </div>
 
       <main>
@@ -106,10 +110,10 @@ function CreatePlanPage() {
             <Box sx={{ mt: 4 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <h2>Set Savings Plan</h2>
+                  <h2 className="formTitle"></h2>
                 </Grid>
                 <Grid item xs={12}>
-                  <p>Set Target Date:</p>
+                  <p className="inputHeader">Set Target Date:</p>
                   <TextField
                     fullWidth
                     type="date"
@@ -120,7 +124,7 @@ function CreatePlanPage() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <p>Plan Name:</p>
+                  <p className="inputHeader">Plan Name:</p>
                   <TextField
                     fullWidth
                     type="text"
@@ -131,7 +135,7 @@ function CreatePlanPage() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <p>Set Target Amount:</p>
+                  <p className="inputHeader"> Set Target Amount:</p>
                   <TextField
                     fullWidth
                     type="number"
@@ -140,13 +144,13 @@ function CreatePlanPage() {
                     required
                   />
                 </Grid>
-                <Grid item xs={12} sx={{textAlign:"center"}}>
-                  <Button variant="contained" type="submit">
+                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
+                  <Button variant="contained" type="submit" style={{ textDecoration: 'none', fontFamily: 'inherit' }}>
                     Make This Plan!
                   </Button>
                 </Grid>
-                <Grid item xs={12} sx={{textAlign:"center"}}>
-                  <Button variant="contained">
+                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
+                  <Button variant="contained" style={{ textDecoration: 'none', fontFamily: 'inherit' }}>
                     <Link to="/addTransactions">
                       Start recording your transactions!
                     </Link>
