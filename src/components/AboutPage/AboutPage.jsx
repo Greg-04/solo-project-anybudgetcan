@@ -10,11 +10,11 @@ import './AboutPage.css';
 function AboutPage() {
   return (
     <>
-      <div>
-        <h1 className="header">About Page</h1>
+      <div className="aboutPageContainer">
+        <h1 >About Page</h1>
       </div>
-      <main className="container">
-        <div>
+      <main className="aboutContainer">
+        <div className="aboutContainer">
           <p>
             "Any Budget Can" is an application that streamlines personal finance
             management by tracking income and expenses to tailor savings plans.
@@ -39,7 +39,7 @@ function AboutPage() {
         </div>
       </main>
       <div>
-        <p className="footer">
+        <p className="aboutFooter">
           Thanks to Prime Digital Academy who equipped and helped me to make
           this application a reality!
         </p>
