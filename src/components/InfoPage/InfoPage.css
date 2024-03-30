@@ -5,7 +5,8 @@
   font-family: 'Rockwell';
 }
 
-h1, h2 {
+h1,
+h2 {
   color: black;
 }
 
@@ -19,5 +20,9 @@ h2 {
 }
 
 .pContent {
-  color:#e0e0e0;
+  color: #e0e0e0;
+}
+
+.startButton {
+  text-align: center;
 }

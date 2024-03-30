@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function IncomePage() {
   // Dispatch hook
@@ -83,11 +88,11 @@ function IncomePage() {
   return (
     <>
        <div><LogOutButton className="btn"/></div>
-      <div className="container">
+      {/* <div className="container">
         <div>
           <h1>Your Income</h1>
         </div>
-      </div>
+      </div> */}
       <main>
         <div className="header">
           <p>
@@ -99,7 +104,8 @@ function IncomePage() {
           </p>
         </div>
         <form className="salaryForm" onSubmit={handleSubmit}>
-          <h2>Update income</h2>
+        <Container maxWidth="md">
+          <h2>Set Income</h2>
           <h1>${salary}</h1>
           <div>
             <p>Annual or Monthly?</p>
@@ -129,6 +135,7 @@ function IncomePage() {
               <Link to="/expensesPage">Next</Link>
             </button>
           </div>
+          </Container>
         </form>
       </main>
     </>

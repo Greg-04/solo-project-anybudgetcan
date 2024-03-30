@@ -1,6 +1,8 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './InfoPage.css';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -21,7 +23,9 @@ function InfoPage() {
         </p>
 
         <h2>1. Adding Income</h2>
-        <p className="pContent">On the Income page, you can input your monthly or annual income.</p>
+        <p className="pContent">
+          On the Income page, you can input your monthly or annual income.
+        </p>
         <h2>2. Managing Expenses</h2>
         <p className="pContent">
           Use the Expenses page to input your monthly expenses such as rent,
@@ -47,6 +51,17 @@ function InfoPage() {
           left-hand side to navigate between different sections of the
           application.
         </p>
+        <div className="startButton">
+          <Button
+            variant="contained"
+            sx={{
+              fontFamily: 'Rockwell',
+              backgroundColor: '#4caf50',
+              color: '#e0e0e0',
+            }}>
+            <Link to="/incomePage">Start!</Link>
+          </Button>
+        </div>
         <h2>Support</h2>
         <p className="pContent">
           If you encounter any issues or have suggestions for improvement,
