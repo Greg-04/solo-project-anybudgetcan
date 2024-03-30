@@ -16,7 +16,7 @@ function LandingPage() {
   return (
     <>
       <div>
-        <h1 className="header">{heading} to AnyBudgetApp!</h1>
+        <h1 className="expe">{heading} to AnyBudgetApp!</h1>
       </div>
       <div className="container">
         {/* <h2>{heading}</h2> */}
