@@ -198,7 +198,7 @@ function HomePage() {
           sx={{ textAlign: 'center', marginTop: '50px' }}>
           <Box>
             <Typography
-              sx={{ fontSize: 45, color: '#e0e0e0', fontFamily: 'Rockwell' }}>
+              sx={{ fontSize: 45, color: 'black', fontFamily: 'Rockwell' }}>
               Welcome, {user.username}!
             </Typography>
           </Box>

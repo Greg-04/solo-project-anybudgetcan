@@ -32,20 +32,20 @@ function BudgetOverviewPage() {
           (expenseTotalItem) => expenseTotalItem.expenses_total
         ),
         backgroundColor: [
-          'aqua',
-          'green',
-          'blue',
-          'pink',
-          'yellow',
-          'orangered',
-          'brown',
-          'lightblue',
-          'black',
-          'purple',
-          'lightgreen',
-          'darkorange',
-          'darkviolet',
-          'gold',
+          '#3cb371', // MediumSeaGreen
+          '#4169e1', // RoyalBlue
+          '#6a5acd', // SlateBlue
+          '#ff69b4', // HotPink
+          '#ffd700', // Gold
+          '#ffa07a', // LightSalmon
+          '#87ceeb', // SkyBlue
+          '#da70d6', // Orchid
+          '#20b2aa', // LightSeaGreen
+          '#ff4500', // OrangeRed
+          '#9400d3', // DarkViolet
+          '#008080', // Teal
+          '#ff8c00', // DarkOrange
+          '#9932cc'  // DarkOrchid
         ],
       },
     ],
@@ -61,20 +61,20 @@ function BudgetOverviewPage() {
           (transactionTotalItem) => transactionTotalItem.transaction_total
         ),
         backgroundColor: [
-          'aqua',
-          'green',
-          'blue',
-          'pink',
-          'yellow',
-          'orangered',
-          'brown',
-          'lightblue',
-          'black',
-          'purple',
-          'lightgreen',
-          'darkorange',
-          'darkviolet',
-          'gold',
+          '#3cb371', // MediumSeaGreen
+          '#4169e1', // RoyalBlue
+          '#6a5acd', // SlateBlue
+          '#ff69b4', // HotPink
+          '#ffd700', // Gold
+          '#ffa07a', // LightSalmon
+          '#87ceeb', // SkyBlue
+          '#da70d6', // Orchid
+          '#20b2aa', // LightSeaGreen
+          '#ff4500', // OrangeRed
+          '#9400d3', // DarkViolet
+          '#008080', // Teal
+          '#ff8c00', // DarkOrange
+          '#9932cc'  // DarkOrchid
         ],
       },
     ],
@@ -92,20 +92,20 @@ function BudgetOverviewPage() {
           .filter((item) => item.combined_total !== '0')
           .map((combinedTotalItem) => combinedTotalItem.combined_total),
         backgroundColor: [
-          'aqua',
-          'green',
-          'blue',
-          'pink',
-          'yellow',
-          'orangered',
-          'brown',
-          'lightblue',
-          'black',
-          'purple',
-          'lightgreen',
-          'darkorange',
-          'darkviolet',
-          'gold',
+          '#3cb371', // MediumSeaGreen
+  '#4169e1', // RoyalBlue
+  '#6a5acd', // SlateBlue
+  '#ff69b4', // HotPink
+  '#ffd700', // Gold
+  '#ffa07a', // LightSalmon
+  '#87ceeb', // SkyBlue
+  '#da70d6', // Orchid
+  '#20b2aa', // LightSeaGreen
+  '#ff4500', // OrangeRed
+  '#9400d3', // DarkViolet
+  '#008080', // Teal
+  '#ff8c00', // DarkOrange
+  '#9932cc'  // DarkOrchid
         ],
       },
     ],
@@ -127,6 +127,12 @@ function BudgetOverviewPage() {
           },
         },
       },
+      legend: {
+        labels: {
+          color: '#e0e0e0',
+          fontFamily: 'Rockwell',
+        },
+      },
     },
   };
 
@@ -139,8 +145,10 @@ function BudgetOverviewPage() {
 
   return (
     <>
-     <div><LogOutButton className="btn"/></div>
-      <div className="container">
+      <div>
+        <LogOutButton className="btn" />
+      </div>
+      <div className="budgetTitle">
         <div>
           <h1>Budget Overview</h1>
         </div>
@@ -152,6 +160,7 @@ function BudgetOverviewPage() {
             style={{
               padding: '20px',
               width: '25%',
+              fontFamily: 'Rockwell',
             }}>
             <h2>Fixed Expense Totals</h2>
             <Pie data={expenseChartData} options={options}></Pie>
@@ -162,6 +171,7 @@ function BudgetOverviewPage() {
             style={{
               padding: '20px',
               width: '25%',
+              fontFamily: 'Rockwell',
             }}>
             <h2>Transaction Totals</h2>
             <Pie data={transactionChartData} options={options}></Pie>
@@ -172,6 +182,7 @@ function BudgetOverviewPage() {
             style={{
               padding: '20px',
               width: '25%',
+              fontFamily: 'Rockwell',
             }}>
             <h2>Combined Totals</h2>
             <Pie data={combinedChartData} options={options}></Pie>
@@ -179,7 +190,7 @@ function BudgetOverviewPage() {
         </div>
 
         <div>
-          <h2 className="header">Total Spending by Category</h2>
+          <h2 className="budgetTitle">Total Spending by Category</h2>
           <Grid container spacing={5}>
             {combinedTotal
               .filter((item) => item.combined_total !== '0')
@@ -190,9 +201,10 @@ function BudgetOverviewPage() {
                       borderRadius: '8px',
                       margin: '10px',
                       padding: '10px',
-                      backgroundColor: `${grey[300]}`,
+                      backgroundColor: `#e0e0e0`,
                       border: '.2px solid #101010',
                       boxShadow: '0 8px 6px rgba(0, 0, 0, 0.1)',
+                      fontFamily: 'Rockwell',
                     }}>
                     <h3>{combinedTotalItem.name}</h3>
                     <p>Amount Spent: ${combinedTotalItem.combined_total}</p>

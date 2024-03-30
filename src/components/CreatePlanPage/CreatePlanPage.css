@@ -38,8 +38,13 @@
 }
 
 .pageTitle {
-  color: #e0e0e0;
+  color: black;
   text-align: center;
   font-family: 'Rockwell';
   font-weight: 500px;
+}
+
+.sideMenu {
+  font-family: 'Rockwell';
+  color: black;
 }

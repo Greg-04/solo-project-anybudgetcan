@@ -90,7 +90,7 @@ function CreatePlanPage() {
         </div>
       </div>
       <div className="sideButtons">
-        <p className="inputHeader">Make a Change?</p>
+        <p className="sideMenu">Make a Change?</p>
         <Button
           sx={{ color: '#d50000', fontFamily: 'Rockwell' }}
           variant="text"
