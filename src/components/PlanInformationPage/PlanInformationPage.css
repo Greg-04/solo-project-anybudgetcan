@@ -1,4 +1,4 @@
-.planInformation {
+/* .planInformation {
   border: 5px solid #000000;
   text-align: center;
   background-color: rgba(171, 168, 168, 0.679);
@@ -8,5 +8,23 @@
 }
 
 .chartContainer {
+  margin-top: 50px;
+} */
+
+.planInformation {
+  text-align: center;
+  font-family: 'Rockwell';
+}
+
+.piHeaders {
+  text-align: center;
+  color: #e0e0e0;
+  font-family: 'Rockwell';
+}
+
+.piHeaders2 {
+  text-align: center;
+  color: black;
+  font-family: 'Rockwell';
   margin-top: 50px;
 }

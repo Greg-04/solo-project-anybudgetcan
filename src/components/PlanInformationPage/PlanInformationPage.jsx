@@ -348,21 +348,21 @@ function PlanInformationPage() {
       {
         label: 'Remaining Budget until target date:',
         data: [incomeRemaining().toFixed(2)],
-        backgroundColor: 'green',
+        backgroundColor: '#9932cc',
         borderColor: 'black',
         borderWidth: 2,
       },
       {
         label: 'Target Monthly Budget Amount:',
         data: [monthlyBudgetTotal().toFixed(2)],
-        backgroundColor: 'blue',
+        backgroundColor: '#da70d6',
         borderColor: 'black',
         borderWidth: 2,
       },
       {
         label: 'Remaining Monthly Budget Amount:',
         data: [monthlyBudgetTotalRemaining().toFixed(2)],
-        backgroundColor: 'red',
+        backgroundColor: '#20b2aa',
         borderColor: 'black',
         borderWidth: 2,
       },
@@ -381,6 +381,12 @@ function PlanInformationPage() {
           },
         },
       },
+      legend: {
+        labels: {
+          color: '#e0e0e0',
+          fontFamily: 'Rockwell',
+        },
+      },
     },
   };
 
@@ -389,13 +395,13 @@ function PlanInformationPage() {
       <div>
         <LogOutButton className="btn" />
       </div>
-      <div className="container">
-        <div className="header">
+      {/* <div className="container">
+        <div className="piHeaders">
           <h1>Plan Information</h1>
         </div>
-      </div>
+      </div> */}
       <main>
-        <div className="planInformation">
+        <div className="piHeaders">
           {planInformation &&
             planInformation.map((planItem) => (
               <div key={planItem.id}>
@@ -418,7 +424,7 @@ function PlanInformationPage() {
               </div>
             ))}
         </div>
-        <div className="chartContainer">
+        <div className="piHeaders2">
           <h2 className="header">Bar Chart</h2>
           <div style={{ margin: '0 auto', width: '80%' }}>
             <Bar data={data} options={options}></Bar>
