@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function CreatePlanPage() {
   //To do, make a button to reset plan information
@@ -77,58 +82,79 @@ function CreatePlanPage() {
   return (
     <>
       <div>
-        <LogOutButton className="btn" />
+        <LogOutButton />
       </div>
-      <div className="container">
+      <div className="header">
         <div>
           <h1>Create Plan</h1>
         </div>
       </div>
-      <main>
-        <div>
-          <button onClick={handleDelete}>Reset Plan</button>
-          <br></br>
-          <button>
-            <Link to="/incomePage">Update Income</Link>
-          </button>
-        </div>
-        <form className="createPlanForm" onSubmit={handlePlanSubmit}>
-          <h2>Set Savings Plan</h2>
+      <div className="sideButtons">
+      <p>Make a Change?</p>
+      <Button variant="text" onClick={handleDelete} >
+        Reset Plan
+      </Button>
 
-          <div>
-            <p>Set Target Date:</p>
-            <input
-              type="date"
-              value={targetDate}
-              onChange={handleTargetDate}
-              required></input>
-          </div>
-          <div>
-            <p>Plan Name:</p>
-            <input
-              type="text"
-              value={planName}
-              onChange={handlePlanName}
-              required></input>
-          </div>
-          <div>
-            <p>Set Target Amount</p>
-            <input
-              type="number"
-              value={targetAmount}
-              onChange={handleTargetAmount}
-              required></input>
-          </div>
-          <div>
-            <br />
-            <button type="submit">Make This Plan!</button>
-            <br />
-          </div>
-          <button className="navButton">
-            <Link to="/addTransactions">
-              Start recording your transactions!
-            </Link>
-          </button>
+      <Button variant="text" >
+        <Link to="/incomePage">Change Income</Link>
+      </Button>
+      </div>
+
+      <main>
+        <form className="createPlanForm" onSubmit={handlePlanSubmit}>
+          <Container maxWidth="md">
+            <Box sx={{ mt: 4 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <h2>Set Savings Plan</h2>
+                </Grid>
+                <Grid item xs={12}>
+                  <p>Set Target Date:</p>
+                  <TextField
+                    fullWidth
+                    type="date"
+                    value={targetDate}
+                    onChange={handleTargetDate}
+                    required
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <p>Plan Name:</p>
+                  <TextField
+                    fullWidth
+                    type="text"
+                    value={planName}
+                    onChange={handlePlanName}
+                    required
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <p>Set Target Amount:</p>
+                  <TextField
+                    fullWidth
+                    type="number"
+                    value={targetAmount}
+                    onChange={handleTargetAmount}
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} sx={{textAlign:"center"}}>
+                  <Button variant="contained" type="submit">
+                    Make This Plan!
+                  </Button>
+                </Grid>
+                <Grid item xs={12} sx={{textAlign:"center"}}>
+                  <Button variant="contained">
+                    <Link to="/addTransactions">
+                      Start recording your transactions!
+                    </Link>
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </Container>
         </form>
       </main>
     </>

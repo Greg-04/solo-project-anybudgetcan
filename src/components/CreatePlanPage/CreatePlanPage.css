@@ -1,4 +1,4 @@
-.createPlanForm {
+/* .createPlanForm {
   border: 5px solid #000000;
   text-align: center;
   background-color: rgba(171, 168, 168, 0.679);
@@ -10,5 +10,19 @@
 
 .navButton {
   margin-top: 10px;
+  margin-bottom: 10px;
+} */
+
+.sideButtons {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+}
+
+.sideButtons > * {
   margin-bottom: 10px;
 }
