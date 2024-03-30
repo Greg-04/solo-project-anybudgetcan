@@ -1,8 +1,9 @@
 .expenseTable {
- margin-top: 20px;
-  border: 1px solid #000000;
+  margin-top: 20px;
+  border: 2px solid #000000;
+  border-radius: 10px;
   margin-left: auto; /* Center the container horizontally */
-   margin-right: auto; 
+  margin-right: auto;
 }
 
 .expenseTable table {
@@ -14,15 +15,32 @@
 .expenseTable td {
   padding: 20px;
   text-align: left;
-  border: 1px solid #000000; /* Add border to each cell */
+  border: 2px solid #000000;
+  color: #e0e0e0;
+  border-radius: 10px;
 }
 
 .expenseTable th {
-  background-color: #f2f2f2;
+  background-color: #e0e0e0;
+  color:black;
+  font-family: 'Rockwell';
+  border-radius: 10px;
 }
 
-/*This is for form */
-.expenseForm {
+.expenseHeaders {
+  text-align: center;
+  color: #e0e0e0;
+  font-family: 'Rockwell';
+}
+
+.expenseHeaders2 {
+  text-align: center;
+  color: #e0e0e0;
+  font-family: 'Rockwell';
+  margin-top: 50px;
+}
+
+/* .expenseForm {
   border: 3px solid #000000;
   text-align: center;
   background-color: rgba(171, 168, 168, 0.679);
@@ -31,8 +49,8 @@
   padding: 40px;
   width: 80%;
   margin: 0 auto;
-}
+} */
 
 .button {
   margin-top: 20px;
-}
+} */

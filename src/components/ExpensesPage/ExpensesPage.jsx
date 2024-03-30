@@ -4,6 +4,11 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Unstable_Grid2';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
 
 function ExpensesPage() {
   // Dispatch hook
@@ -90,55 +95,83 @@ function ExpensesPage() {
 
   return (
     <>
-       <div><LogOutButton className="btn"/></div>
-      <h1 className="header">Add Fixed Monthly Expenses</h1>
+      <div>
+        <LogOutButton className="btn" />
+      </div>
+      <h1 className="expenseHeaders">Add Fixed Monthly Expenses</h1>
       <main>
         <div>
           <form className="expenseForm" onSubmit={handleSubmit}>
-            <label htmlFor="name">Name:</label>
-            <input
-              className="input-container"
-              type="text"
-              id="name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              required
-            />
-            <label htmlFor="amount">Amount:</label>
-            <input
-              className="input-container"
-              type="number"
-              id="amount"
-              value={Number(amount)}
-              onChange={(event) => setAmount(event.target.value)}
-              required
-            />
-            <label htmlFor="category">Select Category:</label>
-            <select
-              required
-              id="category"
-              value={categoryId}
-              onChange={handleCategorySelect}>
-              <option className="input-container" value="">
-                Select a category
-              </option>
-              {category.map((categoryName) => (
-                <option key={categoryName.id} value={categoryName.id}>
-                  {categoryName.name}
-                </option>
-              ))}
-            </select>
-            <br></br>
-            <button className="button" type="submit">
-              Submit
-            </button>
-            <br></br>
-            <button className="navButton">
-              <Link to="/createPlanPage">Next</Link>
-            </button>
+            <Container maxWidth="md">
+              <Box sx={{ mt: 4 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <p className="inputHeader">Name:</p>
+                    <TextField
+                      fullWidth
+                      className="input-container"
+                      type="text"
+                      id="name"
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <p className="inputHeader">Amount:</p>
+                    <TextField
+                      fullWidth
+                      className="input-container"
+                      type="number"
+                      id="amount"
+                      value={Number(amount)}
+                      onChange={(event) => setAmount(event.target.value)}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <p className="inputHeader">Select Category:</p>
+                    <select
+                      required
+                      id="category"
+                      value={categoryId}
+                      onChange={handleCategorySelect}>
+                      <option className="input-container" value="">
+                        Select a category
+                      </option>
+                      {category.map((categoryName) => (
+                        <option key={categoryName.id} value={categoryName.id}>
+                          {categoryName.name}
+                        </option>
+                      ))}
+                    </select>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                    <Button
+                      variant="contained"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: 'inherit',
+                        marginTop: '10px',
+                      }}
+                      className="button"
+                      type="submit">
+                      Submit
+                    </Button>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}></Grid>
+                </Grid>
+              </Box>
+            </Container>
           </form>
         </div>
-        <h2 className="header">Fixed Monthly Expenses List</h2>
+        <h2 className="expenseHeaders2">Fixed Monthly Expenses List</h2>
         <div>
           <table className="expenseTable">
             <thead>
@@ -171,25 +204,56 @@ function ExpensesPage() {
                     </td>
                     <td>{expenseItem.category_name}</td>
                     <td>
-                      <button onClick={() => handleDelete(expenseItem.id)}>
+                      <Button
+                        sx={{
+                          fontFamily: 'Rockwell',
+                          backgroundColor: '#d50000',
+                          color: '#e0e0e0',
+                        }}
+                        variant="contained"
+                        onClick={() => handleDelete(expenseItem.id)}>
                         Delete
-                      </button>
+                      </Button>
                     </td>
                     <td>
                       {editingId === expenseItem.id ? (
                         <>
-                          <button onClick={() => handleSave(expenseItem.id)}>
+                          <Button
+                            sx={{
+                              fontFamily: 'Rockwell',
+                              backgroundColor: '#9e9e9e',
+                              color: '#e0e0e0',
+                            }}
+                            variant="contained"
+                            onClick={() => handleSave(expenseItem.id)}>
                             Save
-                          </button>
-                          <button onClick={handleCancel}>Cancel</button>
+                          </Button>
+                          <Button
+                            sx={{
+                              fontFamily: 'Rockwell',
+                              backgroundColor: '#9e9e9e',
+                              color: '#e0e0e0',
+                              marginLeft: '5px',
+                            }}
+                            variant="contained"
+                            onClick={handleCancel}>
+                            Cancel
+                          </Button>
                         </>
                       ) : (
-                        <button
+                        <Button
+                          sx={{
+                            fontFamily: 'Rockwell',
+                            backgroundColor: '#9e9e9e',
+                            color: '#e0e0e0',
+                            marginLeft: '5px',
+                          }}
+                          variant="contained"
                           onClick={() =>
                             handleEdit(expenseItem.id, expenseItem.amount)
                           }>
                           Edit
-                        </button>
+                        </Button>
                       )}
                     </td>
                   </tr>
@@ -203,6 +267,17 @@ function ExpensesPage() {
               )}
             </tbody>
           </table>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <Button
+            variant="contained"
+            sx={{
+              marginTop: '30px',
+              fontFamily: 'Rockwell',
+            }}
+            className="navButton">
+            <Link to="/createPlanPage">Next</Link>
+          </Button>
         </div>
       </main>
     </>
