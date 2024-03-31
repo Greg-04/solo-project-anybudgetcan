@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
@@ -11,15 +11,16 @@ function RegisterPage() {
       <RegisterForm />
 
       <center>
-        <button
+        <Button
           type="button"
-          className="btn btn_asLink"
+          variant="contained"
+          sx={{ textAlign: 'center', fontFamily:'Rockwell', marginTop:'10px' }}
           onClick={() => {
             history.push('/login');
           }}
         >
           Login
-        </button>
+        </Button>
       </center>
     </div>
   );
