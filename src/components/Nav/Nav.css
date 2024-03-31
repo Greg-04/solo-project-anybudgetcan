@@ -55,12 +55,3 @@
   align-items: center;
 }
 
-.iconBar {
- 
- 
-  position: absolute;
-  top: 0;
-  right: 20px;
-  display: flex;
-  align-items: center;
-}

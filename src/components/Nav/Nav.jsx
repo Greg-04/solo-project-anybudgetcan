@@ -272,7 +272,6 @@ function Nav() {
         onOpen={toggleDrawer(true)}
         PaperProps={{ style: { backgroundColor: '#9e9e9e' } }}
         sx={{
-          backgroundColor: 'radial-gradient(circle, #4b6cb7, #182848)',
           fontFamily: 'Rockwell',
         }}>
         <List sx={{ width: 250 }}>
@@ -282,8 +281,14 @@ function Nav() {
               component={Link}
               to="/login"
               onClick={toggleDrawer(false)}
-              sx={{ marginBottom: 2 }}>
-              <Typography variant="body1" sx={{ color: 'white' }}>
+              sx={{ marginBottom: 2, marginTop: '75px' }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: '#e0e0e0',
+                  fontFamily: 'Rockwell',
+                  fontSize: '25px',
+                }}>
                 Login / Register
               </Typography>
             </ListItem>
@@ -293,57 +298,131 @@ function Nav() {
                 button
                 component={Link}
                 to="/homeDashboard"
-                onClick={toggleDrawer(false)}>
-                Home
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2, marginTop: '75px' }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  Home
+                </Typography>
               </ListItem>
               <ListItem
                 button
                 component={Link}
                 to="/info"
-                onClick={toggleDrawer(false)}>
-                Info Page
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  Info Page
+                </Typography>
               </ListItem>
               <ListItem
                 button
                 component={Link}
                 to="/addTransactions"
-                onClick={toggleDrawer(false)}>
-                Add Transactions
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  {' '}
+                  Add Transactions
+                </Typography>
               </ListItem>
               <ListItem
                 button
                 component={Link}
                 to="/viewTransactions"
-                onClick={toggleDrawer(false)}>
-                View Transactions
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  {' '}
+                  View Transactions
+                </Typography>
               </ListItem>
               <ListItem
                 button
                 component={Link}
                 to="/expensesPage"
-                onClick={toggleDrawer(false)}>
-                Expenses
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  Expenses
+                </Typography>
               </ListItem>
               <ListItem
                 button
                 component={Link}
                 to="/createPlanPage"
-                onClick={toggleDrawer(false)}>
-                Create Plan
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  Create Plan
+                </Typography>
               </ListItem>
               <ListItem
                 button
                 component={Link}
                 to="/budgetOverviewPage"
-                onClick={toggleDrawer(false)}>
-                Budget Overview
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  Budget Overview
+                </Typography>
               </ListItem>
               <ListItem
                 button
                 component={Link}
                 to="/planInformationPage"
-                onClick={toggleDrawer(false)}>
-                Plan Information
+                onClick={toggleDrawer(false)}
+                sx={{ marginBottom: 2 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#e0e0e0',
+                    fontFamily: 'Rockwell',
+                    fontSize: '25px',
+                  }}>
+                  Plan Information
+                </Typography>
               </ListItem>
             </>
           )}
@@ -351,8 +430,17 @@ function Nav() {
             button
             component={Link}
             to="/about"
-            onClick={toggleDrawer(false)}>
-            About
+            onClick={toggleDrawer(false)}
+            sx={{ marginBottom: 2 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: '#e0e0e0',
+                fontFamily: 'Rockwell',
+                fontSize: '25px',
+              }}>
+              About
+            </Typography>
           </ListItem>
         </List>
       </SwipeableDrawer>
