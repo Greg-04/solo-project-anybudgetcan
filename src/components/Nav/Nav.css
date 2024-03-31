@@ -5,8 +5,9 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: #2a48c0;
+  background-color: radial-gradient(circle, #4b6cb7, #182848);
   overflow: hidden;
+  font-family: 'Rockwell';
 }
 
 .nav a {
@@ -16,27 +17,30 @@
 .nav-title {
   font-size: 24px;
   font-weight: 700;
-  color: #f2f2f2;
+  font-family: 'Rockwell';
+  color: black;
   padding-left: 10px;
   margin: 0;
+  text-decoration: none;
 }
 
 .navLink {
-  display: inline-block;
+  /* display: inline-block;
   color: #f2f2f2;
   background-color: #2a48c0;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 15px; */
 
   /* these last two make the logout button in
   the nav bar look like another link */
-  border: none;
+  /* border: none;
   cursor: pointer;
-  outline: 0;
+  outline: 0; */
+  text-decoration: underline;
 }
 
 .navLink:hover {
-  background-color: #008183;
+  background-color: #e0e0e0;
 }

@@ -1,68 +1,114 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+// import TabContext from '@mui/lab/TabContext';
+// import TabList from '@mui/lab/TabList';
+// import TabPanel from '@mui/lab/TabPanel';
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
-      <Link to="/homeDashboard">
-        <h2 className="nav-title">Any Budget Can</h2>
-      </Link>
-      <div>
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
-        )}
-
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <Link className="navLink" to="/homeDashboard">
-              Home
-            </Link>
-
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
-            <Link className="navLink" to="/addTransactions">
-              Add Transactions
-            </Link>
-
-            <Link className="navLink" to="/viewTransactions">
-              View Transactions
-            </Link>
-
-            <Link className="navLink" to="/expensesPage">
-              Expenses
-            </Link>
-
-            <Link className="navLink" to="/createPlanPage">
-              Create Plan
-            </Link>
-
-            <Link className="navLink" to="/budgetOverviewPage">
-              Budget Overview
-            </Link>
-
-            <Link className="navLink" to="/planInformationPage">
-              Plan Information
-            </Link>
-          </>
-        )}
-
-        <Link className="navLink" to="/about">
-          About
+    <>
+      <div className="nav">
+        <Link to="/homeDashboard">
+          <h2 className="nav-title">Any Budget Can</h2>
         </Link>
+        <Tabs value={false} variant="fullWidth">
+          {/* If no user is logged in, show these links */}
+          {!user.id && (
+            // If there's no user, show login/registration links
+            <Tab
+              label="Login / Register"
+              className="navLink"
+              component={Link}
+              to="/login"
+              sx={{ fontFamily: 'Rockwell' }}
+            />
+          )}
+          {/* If a user is logged in, show these links */}
+          {user.id && (
+            <>
+              <Tab
+                className="navLink"
+                to="/homeDashboard"
+                label="Home"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+
+              <Tab
+                className="navLink"
+                to="/info"
+                label="Info Page"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+
+              <Tab
+                className="navLink"
+                to="/addTransactions"
+                label="Add Transactions"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+
+              <Tab
+                className="navLink"
+                to="/viewTransactions"
+                label="View Transactions"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+
+              <Tab
+                className="navLink"
+                to="/expensesPage"
+                label="Expenses"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+
+              <Tab
+                className="navLink"
+                to="/createPlanPage"
+                label="Create Plan"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+
+              <Tab
+                className="navLink"
+                to="/budgetOverviewPage"
+                label="Budget Overview"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+
+              <Tab
+                className="navLink"
+                to="/planInformationPage"
+                label="Plan Info"
+                component={Link}
+                sx={{ fontFamily: 'Rockwell' }}
+              />
+            </>
+          )}
+          <Tab
+            to="/about"
+            className="navLink"
+            label="About"
+            component={Link}
+            sx={{ fontFamily: 'Rockwell', textDecoration: 'underline' }}
+          />
+          About
+        </Tabs>
       </div>
-    </div>
+    </>
   );
 }
 
