@@ -220,7 +220,7 @@ function HomePage() {
             </Typography>
             <Typography
               sx={{ fontSize: 16, color: 'black', fontFamily: 'Rockwell' }}>
-              Total Amount Remaining:
+              Budget Remaining:
             </Typography>
           </Box>
         </Container>
