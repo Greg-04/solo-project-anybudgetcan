@@ -18,7 +18,15 @@ function LandingPage() {
   return (
     <>
       <div>
-        <Typography sx={{ fontSize: 45, color: 'black', fontFamily: 'Rockwell', textAlign:'center' }}>{heading} to AnyBudgetApp!</Typography>
+        <Typography
+          sx={{
+            fontSize: 45,
+            color: 'black',
+            fontFamily: 'Rockwell',
+            textAlign: 'center',
+          }}>
+          {heading} to AnyBudgetApp!
+        </Typography>
       </div>
       <div className="container">
         {/* <h2>{heading}</h2> */}
@@ -41,8 +49,23 @@ function LandingPage() {
           <RegisterForm />
 
           <center>
-            <Typography sx={{ fontSize: 16, color: 'black', fontFamily: 'Rockwell', textAlign:'center' }}>Already a Member?</Typography>
-            <Button variant="contained" sx={{ textAlign: 'center', fontFamily:'Rockwell' }} onClick={onLogin}>
+            <Typography
+              sx={{
+                fontSize: 16,
+                color: 'black',
+                fontFamily: 'Rockwell',
+                textAlign: 'center',
+              }}>
+              Already a Member?
+            </Typography>
+            <Button
+              variant="contained"
+              sx={{
+                textAlign: 'center',
+                fontFamily: 'Rockwell',
+                marginTop: '10px',
+              }}
+              onClick={onLogin}>
               Login
             </Button>
           </center>

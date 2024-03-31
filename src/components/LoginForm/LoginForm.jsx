@@ -6,6 +6,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Typography } from '@mui/material';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -53,30 +54,40 @@ function LoginForm() {
               </h3>
             )}
             <Grid item xs={12}>
-              <p>
+              <Typography
+                sx={{
+                  color: '#e0e0e0',
+                  textAlign: 'center',
+                  fontFamily: 'Rockwell',
+                }}>
                 Username:
-                <TextField
-                  fullWidth
-                  type="text"
-                  name="username"
-                  required
-                  value={username}
-                  onChange={(event) => setUsername(event.target.value)}
-                />
-              </p>
+              </Typography>
+              <TextField
+                fullWidth
+                type="text"
+                name="username"
+                required
+                value={username}
+                onChange={(event) => setUsername(event.target.value)}
+              />
             </Grid>
             <Grid item xs={12}>
-              <p>
+              <Typography
+                sx={{
+                  color: '#e0e0e0',
+                  textAlign: 'center',
+                  fontFamily: 'Rockwell',
+                }}>
                 Password:
-                <TextField  
-                  fullWidth
-                  type="password"
-                  name="password"
-                  required
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                />
-              </p>
+              </Typography>
+              <TextField
+                fullWidth
+                type="password"
+                name="password"
+                required
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </Grid>
             <Grid item xs={12}>
               <Button
@@ -84,7 +95,7 @@ function LoginForm() {
                 sx={{
                   backgroundColor: '#e0e0e0',
                   fontFamily: 'Rockwell',
-                  marginBottom: '20px',
+                  marginBottom: '50px',
                 }}
                 type="submit"
                 name="submit"
