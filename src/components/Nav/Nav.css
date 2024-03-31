@@ -4,10 +4,10 @@
   justify-content: space-between;
   align-items: center;
 
-  margin: 0 0 30px;
+  margin: 0 0 10px;
   background-color: radial-gradient(circle, #4b6cb7, #182848);
-  overflow: hidden;
-  font-family: 'Rockwell';
+  /* overflow: hidden;
+  font-family: 'Rockwell'; */
 }
 
 .nav a {
@@ -20,6 +20,7 @@
   font-family: 'Rockwell';
   color: black;
   padding-left: 10px;
+  padding-top: 10px;
   margin: 0;
   text-decoration: none;
 }
@@ -38,9 +39,28 @@
   /* border: none;
   cursor: pointer;
   outline: 0; */
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .navLink:hover {
   background-color: #e0e0e0;
+}
+
+
+.linkBar {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.iconBar {
+ 
+ 
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: flex;
+  align-items: center;
 }

@@ -7,6 +7,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Link } from 'react-router-dom';
 
 function AddTransactionsPage() {
   // Dispatch hook
@@ -119,10 +120,37 @@ function AddTransactionsPage() {
                     required
                   />
                 </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
-                <Button variant="contained" className="button" type="submit" style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px' }}>
-                  Add Transaction
-                </Button>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                  <Button
+                    variant="contained"
+                    className="button"
+                    type="submit"
+                    style={{
+                      textDecoration: 'none',
+                      fontFamily: 'inherit',
+                      marginTop: '10px',
+                    }}>
+                    Add Transaction
+                  </Button>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                  <Button
+                    variant="contained"
+                    className="button"
+                    type="submit"
+                    style={{
+                      textDecoration: 'none',
+                      fontFamily: 'inherit',
+                      marginTop: '10px',
+                    }}>
+                    <Link to="/viewTransactions">View Transactions</Link>
+                  </Button>
                 </Grid>
               </Grid>
             </Box>
@@ -130,7 +158,9 @@ function AddTransactionsPage() {
         </form>
       </div>
       <h2>
-        {successMessage && <div className="transactionMessage">{successMessage}</div>}
+        {successMessage && (
+          <div className="transactionMessage">{successMessage}</div>
+        )}
       </h2>
     </>
   );
