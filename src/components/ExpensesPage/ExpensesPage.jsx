@@ -124,7 +124,7 @@ function ExpensesPage() {
                       className="input-container"
                       type="number"
                       id="amount"
-                      value={Number(amount)}
+                      value={amount}
                       onChange={(event) => setAmount(event.target.value)}
                       required
                     />
