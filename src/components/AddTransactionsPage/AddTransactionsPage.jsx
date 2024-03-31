@@ -130,7 +130,7 @@ function AddTransactionsPage() {
         </form>
       </div>
       <h2>
-        {successMessage && <div className="header">{successMessage}</div>}
+        {successMessage && <div className="transactionMessage">{successMessage}</div>}
       </h2>
     </>
   );

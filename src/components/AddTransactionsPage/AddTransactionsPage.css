@@ -21,3 +21,11 @@
 .button {
   margin-top: 20px;
 } */
+
+.transactionMessage {
+  font-family: 'Rockwell';
+  color: #e0e0e0;
+  font-size: 50;
+  text-align: center;
+  margin-top: 20px;
+}
