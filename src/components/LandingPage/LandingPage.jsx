@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -16,7 +18,7 @@ function LandingPage() {
   return (
     <>
       <div>
-        <h1 className="expe">{heading} to AnyBudgetApp!</h1>
+        <Typography sx={{ fontSize: 45, color: 'black', fontFamily: 'Rockwell', textAlign:'center' }}>{heading} to AnyBudgetApp!</Typography>
       </div>
       <div className="container">
         {/* <h2>{heading}</h2> */}
@@ -39,10 +41,10 @@ function LandingPage() {
           <RegisterForm />
 
           <center>
-            <h4>Already a Member?</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
+            <Typography sx={{ fontSize: 16, color: 'black', fontFamily: 'Rockwell', textAlign:'center' }}>Already a Member?</Typography>
+            <Button variant="contained" sx={{ textAlign: 'center', fontFamily:'Rockwell' }} onClick={onLogin}>
               Login
-            </button>
+            </Button>
           </center>
         </div>
         {/* </div> */}
