@@ -25,7 +25,7 @@ function LandingPage() {
             fontFamily: 'Rockwell',
             textAlign: 'center',
           }}>
-          {heading} to AnyBudgetApp!
+          {heading} to AnyBudgetCan!
         </Typography>
       </div>
       <div className="container">
