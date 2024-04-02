@@ -19,32 +19,36 @@ function UserPage() {
         <LogOutButton />
       </div>
       <main>
-      <Container
-        maxWidth="md"
-        sx={{ textAlign: 'center', marginTop: '50px', fontFamily: 'Rockwell' }}>
-        <h2>Hi, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
-        <Button
-          variant="contained"
+        <Container
+          maxWidth="md"
           sx={{
-            backgroundColor: '#e0e0e0',
+            textAlign: 'center',
+            marginTop: '50px',
             fontFamily: 'Rockwell',
-            marginBottom: '20px',
           }}>
-          <Link to="homeDashboard">Home</Link>
-        </Button>
-        
-        <h2>Need to get started?</h2>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: '#e0e0e0',
-            fontFamily: 'Rockwell',
-            marginBottom: '20px',
-          }}
-          id="button">
-          <Link to="/info">How To Start</Link>
-        </Button>
+          <h2>Hi, {user.username}!</h2>
+          {/* <p>Your ID is: {user.id}</p> */}
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: '#e0e0e0',
+              fontFamily: 'Rockwell',
+              marginBottom: '20px',
+            }}>
+            <Link to="homeDashboard">Home</Link>
+          </Button>
+
+          <h2>Need to get started?</h2>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: '#e0e0e0',
+              fontFamily: 'Rockwell',
+              marginBottom: '20px',
+            }}
+            id="button">
+            <Link to="/info">How To Start</Link>
+          </Button>
         </Container>
       </main>
     </>
