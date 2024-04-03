@@ -357,7 +357,7 @@ function PlanInformationPage() {
         borderWidth: 2,
       },
       {
-        label: 'Remaining Budget until target date:',
+        label: 'Total Remaining Budget Amount:',
         data: [incomeRemaining().toFixed(2)],
         backgroundColor: '#9932cc',
         borderColor: 'black',
@@ -371,7 +371,7 @@ function PlanInformationPage() {
         borderWidth: 2,
       },
       {
-        label: 'Remaining Monthly Budget Amount:',
+        label: 'Current Monthly Amount Remaining:',
         data: [monthlyBudgetTotalRemaining().toFixed(2)],
         backgroundColor: '#20b2aa',
         borderColor: 'black',
@@ -421,15 +421,14 @@ function PlanInformationPage() {
                 <p>Budget Goal: ${planItem.budget_goal}</p>
                 <p>Remaining Days: {calculateRemainingDays()} Days</p>
                 <p>
-                  Remaining Budget until target date: $
-                  {incomeRemaining().toFixed(2)}
+                  Total Remaining Budget Amount: ${incomeRemaining().toFixed(2)}
                 </p>
                 <p>
                   Target Monthly Budget Amount: $
                   {monthlyBudgetTotal().toFixed(2)}
                 </p>
                 <p>
-                  Remaining Monthly Budget Amount: $
+                  Current Monthly Amount Remaining: $
                   {monthlyBudgetTotalRemaining().toFixed(2)}
                 </p>
               </div>
