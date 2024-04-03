@@ -195,7 +195,7 @@ function Nav() {
                     fontFamily: 'Rockwell',
                     fontSize: '25px',
                   }}>
-                  Expenses
+                  Monthly Expenses
                 </Typography>
               </ListItem>
               <ListItem
@@ -211,7 +211,7 @@ function Nav() {
                     fontFamily: 'Rockwell',
                     fontSize: '25px',
                   }}>
-                  Create Plan
+                  Make A Plan
                 </Typography>
               </ListItem>
               <ListItem
@@ -227,7 +227,7 @@ function Nav() {
                     fontFamily: 'Rockwell',
                     fontSize: '25px',
                   }}>
-                  Spending Overview
+                  Spending Summary
                 </Typography>
               </ListItem>
               <ListItem
@@ -243,7 +243,7 @@ function Nav() {
                     fontFamily: 'Rockwell',
                     fontSize: '25px',
                   }}>
-                  Plan Information
+                  Plan Overview
                 </Typography>
               </ListItem>
             </>
