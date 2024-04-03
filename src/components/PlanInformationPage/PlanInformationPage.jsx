@@ -342,9 +342,20 @@ function PlanInformationPage() {
     return remainingBudget;
   };
 
+  const monthlySalary =
+    incomeInformation && incomeInformation[0].monthly_amount;
+  console.log('monthlySalary', monthlySalary);
+
   const data = {
     labels: [``],
     datasets: [
+      {
+        label: 'Monthly Salary:',
+        data: [monthlySalary],
+        backgroundColor: '#ffd700',
+        borderColor: 'black',
+        borderWidth: 2,
+      },
       {
         label: 'Remaining Budget until target date:',
         data: [incomeRemaining().toFixed(2)],
