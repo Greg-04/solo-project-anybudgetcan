@@ -30,7 +30,11 @@ function Nav() {
       <div>
         <div className="nav">
           <Link to="/homeDashboard">
-            <h2 className="nav-title"><span className="highlightLogo">A</span>ny<span className="highlightLogo">B</span>udget<span className="highlightLogo">C</span>an</h2>
+            <h2 className="nav-title">
+              <span className="highlightLogo">A</span>ny
+              <span className="highlightLogo">B</span>udget
+              <span className="highlightLogo">C</span>an
+            </h2>
           </Link>
         </div>
         <div className="linkBar">
@@ -51,7 +55,11 @@ function Nav() {
                   to="/homeDashboard"
                   label="Home"
                   component={Link}
-                  sx={{ fontFamily: 'Rockwell', fontSize: 15, marginTop: '2px' }}
+                  sx={{
+                    fontFamily: 'Rockwell',
+                    fontSize: 15,
+                    marginTop: '2px',
+                  }}
                 />
               </>
             )}
@@ -60,13 +68,21 @@ function Nav() {
               className=""
               label="About"
               component={Link}
-              sx={{ fontFamily: 'Rockwell', marginTop: '1.6px', fontSize: 14.80 }}
+              sx={{
+                fontFamily: 'Rockwell',
+                marginTop: '1.6px',
+                fontSize: 14.8,
+              }}
             />
           </Tabs>
 
           <MenuOutlinedIcon
             onClick={toggleDrawer(true)}
-            sx={{ marginLeft: '15px', marginBottom: '5.5px', color: '#e0e0e0' }}>
+            sx={{
+              marginLeft: '15px',
+              marginBottom: '5.5px',
+              color: '#e0e0e0',
+            }}>
             Open Drawer
           </MenuOutlinedIcon>
         </div>
@@ -211,7 +227,7 @@ function Nav() {
                     fontFamily: 'Rockwell',
                     fontSize: '25px',
                   }}>
-                  Budget Overview
+                  Spending Overview
                 </Typography>
               </ListItem>
               <ListItem
