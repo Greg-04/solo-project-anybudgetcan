@@ -53,3 +53,7 @@
   display: flex;
   align-items: center;
 }
+
+.highlightLogo {
+  color:#e0e0e0;
+}

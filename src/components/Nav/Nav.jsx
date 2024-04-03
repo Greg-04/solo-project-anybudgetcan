@@ -30,7 +30,7 @@ function Nav() {
       <div>
         <div className="nav">
           <Link to="/homeDashboard">
-            <h2 className="nav-title">Any Budget Can</h2>
+            <h2 className="nav-title"><span className="highlightLogo">A</span>ny<span className="highlightLogo">B</span>udget<span className="highlightLogo">C</span>an</h2>
           </Link>
         </div>
         <div className="linkBar">
