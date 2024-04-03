@@ -1,197 +1,3 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import './Nav.css';
-// import { useSelector } from 'react-redux';
-
-// //MUI imports
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
-// import Box from '@mui/material/Box';
-
-// import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-// import Button from '@mui/material/Button';
-// import List from '@mui/material/List';
-// import Divider from '@mui/material/Divider';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
-// import MailIcon from '@mui/icons-material/Mail';
-
-// function Nav() {
-//   const user = useSelector((store) => store.user);
-
-//   //MUI Code
-//   const [state, setState] = React.useState({
-//     top: false,
-//     left: false,
-//     bottom: false,
-//     right: false,
-//   });
-
-//   const toggleDrawer = (anchor, open) => (event) => {
-//     if (
-//       event &&
-//       event.type === 'keydown' &&
-//       (event.key === 'Tab' || event.key === 'Shift')
-//     ) {
-//       return;
-//     }
-
-//     setState({ ...state, [anchor]: open });
-//   };
-
-//   const list = (anchor) => (
-//     <Box
-//       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-//       role="presentation"
-//       onClick={toggleDrawer(anchor, false)}
-//       onKeyDown={toggleDrawer(anchor, false)}>
-//       <List>
-//         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-//           <ListItem key={text} disablePadding>
-//             <ListItemButton>
-//               <ListItemIcon>
-//                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-//               </ListItemIcon>
-//               <ListItemText primary={text} />
-//             </ListItemButton>
-//           </ListItem>
-//         ))}
-//       </List>
-//       <Divider />
-//       <List>
-//         {['All mail', 'Trash', 'Spam'].map((text, index) => (
-//           <ListItem key={text} disablePadding>
-//             <ListItemButton>
-//               <ListItemIcon>
-//                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-//               </ListItemIcon>
-//               <ListItemText primary={text} />
-//             </ListItemButton>
-//           </ListItem>
-//         ))}
-//       </List>
-//     </Box>
-//   );
-
-//   return (
-//     <>
-//       <div className="navLink">
-//         {['right'].map((anchor) => (
-//           <React.Fragment key={anchor}>
-//             <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-//             <SwipeableDrawer
-//               anchor={anchor}
-//               open={state[anchor]}
-//               onClose={toggleDrawer(anchor, false)}
-//               onOpen={toggleDrawer(anchor, true)}>
-//               {list(anchor)}
-//             </SwipeableDrawer>
-//           </React.Fragment>
-//         ))}
-//       </div>
-//       <div className="nav">
-//         <Link to="/homeDashboard">
-//           <h2 className="nav-title">Any Budget Can</h2>
-//         </Link>
-//         <Tabs value={false} variant="fullWidth">
-//           {/* If no user is logged in, show these links */}
-//           {!user.id && (
-//             // If there's no user, show login/registration links
-//             <Tab
-//               label="Login / Register"
-//               className="navLink"
-//               component={Link}
-//               to="/login"
-//               sx={{ fontFamily: 'Rockwell' }}
-//             />
-//           )}
-//           {/* If a user is logged in, show these links */}
-//           {user.id && (
-//             <>
-//               <Tab
-//                 className="navLink"
-//                 to="/homeDashboard"
-//                 label="Home"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-
-//               <Tab
-//                 className="navLink"
-//                 to="/info"
-//                 label="Info Page"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-
-//               <Tab
-//                 className="navLink"
-//                 to="/addTransactions"
-//                 label="Add Transactions"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-
-//               <Tab
-//                 className="navLink"
-//                 to="/viewTransactions"
-//                 label="View Transactions"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-
-//               <Tab
-//                 className="navLink"
-//                 to="/expensesPage"
-//                 label="Expenses"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-
-//               <Tab
-//                 className="navLink"
-//                 to="/createPlanPage"
-//                 label="Create Plan"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-
-//               <Tab
-//                 className="navLink"
-//                 to="/budgetOverviewPage"
-//                 label="Budget Overview"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-
-//               <Tab
-//                 className="navLink"
-//                 to="/planInformationPage"
-//                 label="Plan Info"
-//                 component={Link}
-//                 sx={{ fontFamily: 'Rockwell' }}
-//               />
-//             </>
-//           )}
-//           <Tab
-//             to="/about"
-//             className="navLink"
-//             label="About"
-//             component={Link}
-//             sx={{ fontFamily: 'Rockwell', textDecoration: 'underline' }}
-//           />
-//           About
-//         </Tabs>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Nav;
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
@@ -235,7 +41,7 @@ function Nav() {
                 label="Login / Register"
                 component={Link}
                 to="/login"
-                sx={{ fontFamily: 'Rockwell', color: 'black' }}
+                sx={{ fontFamily: 'Rockwell', color: '' }}
               />
             )}
             {/* If a user is logged in, show these links */}
@@ -245,7 +51,7 @@ function Nav() {
                   to="/homeDashboard"
                   label="Home"
                   component={Link}
-                  sx={{ fontFamily: 'Rockwell', color: 'black' }}
+                  sx={{ fontFamily: 'Rockwell', fontSize: 15, marginTop: '2px' }}
                 />
               </>
             )}
@@ -254,13 +60,13 @@ function Nav() {
               className=""
               label="About"
               component={Link}
-              sx={{ fontFamily: 'Rockwell', color: 'black' }}
+              sx={{ fontFamily: 'Rockwell', marginTop: '1.6px', fontSize: 14.80 }}
             />
           </Tabs>
 
           <MenuOutlinedIcon
             onClick={toggleDrawer(true)}
-            sx={{ marginLeft: '10px' }}>
+            sx={{ marginLeft: '15px', marginBottom: '5.5px', color: '#e0e0e0' }}>
             Open Drawer
           </MenuOutlinedIcon>
         </div>
