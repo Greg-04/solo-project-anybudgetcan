@@ -25,7 +25,9 @@ function LandingPage() {
             fontFamily: 'Rockwell',
             textAlign: 'center',
           }}>
-          {heading} to AnyBudgetCan!
+          {heading} to <span className="highlightLogo">A</span>ny
+          <span className="highlightLogo">B</span>udget
+          <span className="highlightLogo">C</span>an!
         </Typography>
       </div>
       <div className="container">
