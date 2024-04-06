@@ -10,7 +10,7 @@ function LoginPage() {
     <div>
       <LoginForm />
 
-      <center>
+      <center className="center">
         <Button
           type="button"
           variant="contained"

@@ -70,6 +70,9 @@ function RegisterForm() {
                   value={username}
                   required
                   onChange={(event) => setUsername(event.target.value)}
+                  InputProps={{
+                    style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -88,6 +91,9 @@ function RegisterForm() {
                   value={password}
                   required
                   onChange={(event) => setPassword(event.target.value)}
+                  InputProps={{
+                    style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>

@@ -10,7 +10,7 @@ function RegisterPage() {
     <div>
       <RegisterForm />
 
-      <center>
+      <center className="center">
         <Button
           type="button"
           variant="contained"

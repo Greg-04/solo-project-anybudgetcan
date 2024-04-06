@@ -75,6 +75,9 @@ function LoginForm() {
                   required
                   value={username}
                   onChange={(event) => setUsername(event.target.value)}
+                  InputProps={{
+                    style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -93,6 +96,9 @@ function LoginForm() {
                   required
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
+                  InputProps={{
+                    style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
