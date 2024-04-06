@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Paper from '@mui/material/Paper';
 
 function CreatePlanPage() {
   //To do, make a button to reset plan information
@@ -123,76 +124,109 @@ function CreatePlanPage() {
       <main>
         <form className="createPlanForm" onSubmit={handlePlanSubmit}>
           <Container maxWidth="md">
-            <Box sx={{ mt: 4 }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <h2 className="formTitle"></h2>
-                </Grid>
-                <Grid item xs={12}>
-                  <p className="inputHeader">Set Target Date:</p>
-                  <TextField
-                    fullWidth
-                    type="date"
-                    value={targetDate}
-                    onChange={handleTargetDate}
-                    required
-                  />
-                </Grid>
+            <Paper
+              sx={{
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                padding: '20px',
+              }}>
+              <Box sx={{ mt: 4 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <h2 className="formTitle"></h2>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                      }}>
+                      Set Target Date:
+                    </h3>
+                    <TextField
+                      fullWidth
+                      type="date"
+                      value={targetDate}
+                      onChange={handleTargetDate}
+                      InputProps={{
+                        style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                      }}
+                      required
+                    />
+                  </Grid>
 
-                <Grid item xs={12}>
-                  <p className="inputHeader">Plan Name:</p>
-                  <TextField
-                    fullWidth
-                    type="text"
-                    value={planName}
-                    onChange={handlePlanName}
-                    required
-                  />
-                </Grid>
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                      }}>
+                      Plan Name:
+                    </h3>
+                    <TextField
+                      fullWidth
+                      type="text"
+                      value={planName}
+                      onChange={handlePlanName}
+                      InputProps={{
+                        style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                      }}
+                      required
+                    />
+                  </Grid>
 
-                <Grid item xs={12}>
-                  <p className="inputHeader"> Set Target Amount:</p>
-                  <TextField
-                    fullWidth
-                    type="number"
-                    value={targetAmount}
-                    onChange={handleTargetAmount}
-                    required
-                  />
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                      }}>
+                      Set Target Amount:
+                    </h3>
+                    <TextField
+                      fullWidth
+                      type="number"
+                      value={targetAmount}
+                      onChange={handleTargetAmount}
+                      InputProps={{
+                        style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                      }}
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: 'inherit',
+                        marginTop: '10px',
+                      }}>
+                      Make This Plan!
+                    </Button>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                    <Button
+                      variant="contained"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: 'inherit',
+                        marginTop: '10px',
+                      }}>
+                      <Link to="/addTransactions">
+                        Start recording your transactions!
+                      </Link>
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    style={{
-                      textDecoration: 'none',
-                      fontFamily: 'inherit',
-                      marginTop: '10px',
-                    }}>
-                    Make This Plan!
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
-                  <Button
-                    variant="contained"
-                    style={{
-                      textDecoration: 'none',
-                      fontFamily: 'inherit',
-                      marginTop: '10px',
-                    }}>
-                    <Link to="/addTransactions">
-                      Start recording your transactions!
-                    </Link>
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
+              </Box>
+            </Paper>
           </Container>
         </form>
       </main>
