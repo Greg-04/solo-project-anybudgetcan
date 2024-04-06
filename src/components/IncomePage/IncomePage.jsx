@@ -8,6 +8,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Swal from 'sweetalert2';
 
 function IncomePage() {
   // Dispatch hook
@@ -37,7 +38,12 @@ function IncomePage() {
   //By default this is a put call but will add in a new amount if empty
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert('Income Updated!');
+    Swal.fire({
+      title: 'Income Updated!',
+      text: 'Please continue adding your information',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    });
     // console.log('Payload:', salary);
 
     //defining adjusted salary equal to the input value
@@ -98,12 +104,14 @@ function IncomePage() {
       <main>
         <div>
           <p className="currentSalary">
-            Current Monthly Amount: <inline className="currentSalaryAmount">$
-            {currentIncome &&
-              currentIncome.map(
-                (currentIncomeItem) => currentIncomeItem.monthly_amount
-              )}
-              </inline>
+            Current Monthly Amount:{' '}
+            <inline className="currentSalaryAmount">
+              $
+              {currentIncome &&
+                currentIncome.map(
+                  (currentIncomeItem) => currentIncomeItem.monthly_amount
+                )}
+            </inline>
           </p>
         </div>
         <form className="salaryForm" onSubmit={handleSubmit}>
@@ -137,11 +145,33 @@ function IncomePage() {
                     required
                   />
                 </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
-                  <Button type="submit" variant="contained" style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px' }}>Submit</Button>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    style={{
+                      textDecoration: 'none',
+                      fontFamily: 'inherit',
+                      marginTop: '10px',
+                    }}>
+                    Submit
+                  </Button>
                 </Grid>
-                <Grid item xs={12} sx={{ textAlign: 'center', fontFamily:'Rockwell' }}>
-                  <Button variant="contained" className="navButton" style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px' }}>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                  <Button
+                    variant="contained"
+                    className="navButton"
+                    style={{
+                      textDecoration: 'none',
+                      fontFamily: 'inherit',
+                      marginTop: '10px',
+                    }}>
                     <Link to="/expensesPage">Next</Link>
                   </Button>
                 </Grid>
