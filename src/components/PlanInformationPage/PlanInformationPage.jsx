@@ -27,8 +27,6 @@ function PlanInformationPage() {
   //Set Dispatch Hook
   const dispatch = useDispatch();
 
-  // Get history object from React Router
-  const history = useHistory();
   //Getting plan data from redux store
   const planInformation = useSelector((store) => store.plan);
   //bringing in the savingsGoal
