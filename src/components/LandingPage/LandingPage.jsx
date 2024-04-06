@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -50,7 +51,7 @@ function LandingPage() {
         <div className="grid-col grid-col_4">
           <RegisterForm />
 
-          <center>
+          <center className="center">
             <Typography
               sx={{
                 fontSize: 16,

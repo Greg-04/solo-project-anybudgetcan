@@ -14,11 +14,14 @@ function RegisterPage() {
         <Button
           type="button"
           variant="contained"
-          sx={{ textAlign: 'center', fontFamily:'Rockwell', marginTop:'10px' }}
+          sx={{
+            textAlign: 'center',
+            fontFamily: 'Rockwell',
+            marginTop: '10px',
+          }}
           onClick={() => {
             history.push('/login');
-          }}
-        >
+          }}>
           Login
         </Button>
       </center>
