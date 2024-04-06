@@ -159,7 +159,9 @@ function IncomePage() {
                       type="number"
                       value={salary}
                       onChange={handleSalaryChange}
-                      InputProps={{ style: { color: '#e0e0e0' } }}
+                      InputProps={{
+                        style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                      }}
                       required
                     />
                   </Grid>
