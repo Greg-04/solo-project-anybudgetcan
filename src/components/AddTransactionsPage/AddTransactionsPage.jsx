@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
 
 function AddTransactionsPage() {
   // Dispatch hook
@@ -65,95 +66,134 @@ function AddTransactionsPage() {
       <div>
         <form className="transactionForm" onSubmit={handleSubmit}>
           <Container maxWidth="md">
-            <Box sx={{ mt: 4 }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <p className="inputHeader">Description:</p>
-                  <TextField
-                    fullWidth
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    required
-                  />
-                </Grid>
-                {/* <p>{name}</p> // for testing purposes*/}
-                <Grid item xs={12}>
-                  <p className="inputHeader">Amount:</p>
-                  <TextField
-                    fullWidth
-                    className="input-container"
-                    type="number"
-                    id="amount"
-                    value={amount}
-                    onChange={(event) => setAmount(event.target.value)}
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <p className="inputHeader">Select Category:</p>
-                  <select
-                    className="input-container"
-                    required
-                    id="category"
-                    value={categoryId}
-                    onChange={handleCategorySelect}>
-                    <option value="">Select a category</option>
-                    {category.map((categoryName) => (
-                      <option key={categoryName.id} value={categoryName.id}>
-                        {categoryName.name}
-                      </option>
-                    ))}
-                  </select>
-                </Grid>
+            <Paper
+              sx={{
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                padding: '20px',
+              }}>
+              <Box sx={{ mt: 4 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                      }}>
+                      Description:
+                    </h3>
+                    <TextField
+                      fullWidth
+                      type="text"
+                      id="name"
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
+                      InputProps={{
+                        style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                      }}
+                      required
+                    />
+                  </Grid>
+                  {/* <p>{name}</p> // for testing purposes*/}
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                      }}>
+                      Amount:
+                    </h3>
+                    <TextField
+                      fullWidth
+                      className="input-container"
+                      type="number"
+                      id="amount"
+                      value={amount}
+                      onChange={(event) => setAmount(event.target.value)}
+                      InputProps={{
+                        style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                      }}
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                      }}>
+                      Select Category:
+                    </h3>
+                    <select
+                      className="input-container"
+                      required
+                      id="category"
+                      value={categoryId}
+                      onChange={handleCategorySelect}>
+                      <option value="">Select a category</option>
+                      {category.map((categoryName) => (
+                        <option key={categoryName.id} value={categoryName.id}>
+                          {categoryName.name}
+                        </option>
+                      ))}
+                    </select>
+                  </Grid>
 
-                <Grid item xs={12}>
-                  <p className="inputHeader">Date:</p>
-                  <TextField
-                    fullWidth
-                    className="input-container"
-                    type="date"
-                    id="trans_date"
-                    value={transDate}
-                    onChange={(event) => setTransDate(event.target.value)}
-                    required
-                  />
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                      }}>
+                      Date:
+                    </h3>
+                    <TextField
+                      fullWidth
+                      className="input-container"
+                      type="date"
+                      id="trans_date"
+                      value={transDate}
+                      onChange={(event) => setTransDate(event.target.value)}
+                      InputProps={{
+                        style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                      }}
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                    <Button
+                      variant="contained"
+                      className="button"
+                      type="submit"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: 'inherit',
+                        marginTop: '10px',
+                      }}>
+                      Add Transaction
+                    </Button>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                    <Button
+                      variant="contained"
+                      className="button"
+                      type="submit"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: 'inherit',
+                        marginTop: '10px',
+                      }}>
+                      <Link to="/viewTransactions">View Transactions</Link>
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
-                  <Button
-                    variant="contained"
-                    className="button"
-                    type="submit"
-                    style={{
-                      textDecoration: 'none',
-                      fontFamily: 'inherit',
-                      marginTop: '10px',
-                    }}>
-                    Add Transaction
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
-                  <Button
-                    variant="contained"
-                    className="button"
-                    type="submit"
-                    style={{
-                      textDecoration: 'none',
-                      fontFamily: 'inherit',
-                      marginTop: '10px',
-                    }}>
-                    <Link to="/viewTransactions">View Transactions</Link>
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
+              </Box>
+            </Paper>
           </Container>
         </form>
       </div>
