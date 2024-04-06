@@ -414,19 +414,35 @@ function PlanInformationPage() {
             planInformation.map((planItem) => (
               <div key={planItem.id}>
                 <h2>{planItem.name}</h2>
-                <p>Target Date: {formatDate(planItem.target_date)}</p>
-                <p>Budget Goal: ${planItem.budget_goal}</p>
-                <p>Remaining Days: {calculateRemainingDays()} Days</p>
                 <p>
-                  Total Remaining Budget Amount: ${incomeRemaining().toFixed(2)}
+                  <span className="planTitles">Target Date:</span>{' '}
+                  {formatDate(planItem.target_date)}
                 </p>
                 <p>
-                  Target Monthly Budget Amount: $
-                  {monthlyBudgetTotal().toFixed(2)}
+                  <span className="planTitles">Budget Goal:</span> $
+                  {planItem.budget_goal}
                 </p>
                 <p>
-                  Current Monthly Amount Remaining: $
-                  {monthlyBudgetTotalRemaining().toFixed(2)}
+                  <span className="planTitles">Remaining Days:</span>{' '}
+                  {calculateRemainingDays()} Days
+                </p>
+                <p>
+                  <span className="planTitles">
+                    Total Remaining Budget Amount:
+                  </span>{' '}
+                  ${incomeRemaining().toFixed(2)}
+                </p>
+                <p>
+                  <span className="planTitles">
+                    Target Monthly Budget Amount:
+                  </span>{' '}
+                  ${monthlyBudgetTotal().toFixed(2)}
+                </p>
+                <p>
+                  <span className="planTitles">
+                    Current Monthly Amount Remaining:
+                  </span>{' '}
+                  ${monthlyBudgetTotalRemaining().toFixed(2)}
                 </p>
               </div>
             ))}

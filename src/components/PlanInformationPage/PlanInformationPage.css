@@ -28,3 +28,8 @@
   font-family: 'Rockwell';
   margin-top: 50px;
 }
+
+.planTitles {
+  color: black;
+  font-size: larger;
+}
