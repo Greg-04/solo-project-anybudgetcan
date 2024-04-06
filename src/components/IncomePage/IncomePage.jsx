@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Swal from 'sweetalert2';
+import Paper from '@mui/material/Paper';
 
 function IncomePage() {
   // Dispatch hook
@@ -116,67 +117,85 @@ function IncomePage() {
         </div>
         <form className="salaryForm" onSubmit={handleSubmit}>
           <Container maxWidth="md">
-            <Box sx={{ mt: 4 }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <h2 className="inputHeader">Set Income</h2>
-                  <h1 className="salary">${salary}</h1>
-                </Grid>
+            <Paper
+              sx={{
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                padding: '20px',
+              }}>
+              <Box sx={{ mt: 4 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <h3
+                      style={{
+                        color: 'black',
+                        fontFamily: 'Rockwell',
+                        fontSize: '125%',
+                      }}>
+                      Set Income
+                    </h3>
+                    <h1 className="salary">${salary}</h1>
+                  </Grid>
 
-                <Grid item xs={12}>
-                  <p className="inputHeader">Annual or Monthly?</p>
-                  <select
-                    required
-                    id="income"
-                    value={incomeFrequency}
-                    onChange={handleFrequencyChange}>
-                    <option value="">Select</option>
-                    <option>Annual</option>
-                    <option>Monthly</option>
-                  </select>
+                  <Grid item xs={12}>
+                    <h3 style={{ color: 'black', fontFamily: 'Rockwell' }}>
+                      Annual or Monthly?
+                    </h3>
+                    <select
+                      required
+                      id="income"
+                      value={incomeFrequency}
+                      onChange={handleFrequencyChange}>
+                      <option value="">Select</option>
+                      <option>Annual</option>
+                      <option>Monthly</option>
+                    </select>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <h3 style={{ color: 'black', fontFamily: 'Rockwell' }}>
+                      Enter your income:
+                    </h3>
+                    <TextField
+                      fullWidth
+                      type="number"
+                      value={salary}
+                      onChange={handleSalaryChange}
+                      InputProps={{ style: { color: '#e0e0e0' } }}
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: 'inherit',
+                        marginTop: '10px',
+                      }}>
+                      Submit
+                    </Button>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                    <Button
+                      variant="contained"
+                      className="navButton"
+                      style={{
+                        textDecoration: 'none',
+                        fontFamily: 'inherit',
+                        marginTop: '10px',
+                      }}>
+                      <Link to="/expensesPage">Next</Link>
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <p className="inputHeader">Enter your income:</p>
-                  <TextField
-                    fullWidth
-                    type="number"
-                    value={salary}
-                    onChange={handleSalaryChange}
-                    required
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    style={{
-                      textDecoration: 'none',
-                      fontFamily: 'inherit',
-                      marginTop: '10px',
-                    }}>
-                    Submit
-                  </Button>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
-                  <Button
-                    variant="contained"
-                    className="navButton"
-                    style={{
-                      textDecoration: 'none',
-                      fontFamily: 'inherit',
-                      marginTop: '10px',
-                    }}>
-                    <Link to="/expensesPage">Next</Link>
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
+              </Box>
+            </Paper>
           </Container>
         </form>
       </main>
