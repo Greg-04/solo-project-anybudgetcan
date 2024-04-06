@@ -226,7 +226,7 @@ function HomePage() {
           <Box
             sx={{
               p: 4,
-              border: '5px solid #9e9e9e',
+              border: '5px solid black',
               borderRadius: '12px',
               marginTop: '80px',
               boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
@@ -234,7 +234,7 @@ function HomePage() {
               textAlign: 'center',
             }}>
             <Typography
-              sx={{ fontSize: 50, color: '#9e9e9e', fontFamily: 'Rockwell' }}>
+              sx={{ fontSize: 50, color: 'black', fontFamily: 'Rockwell' }}>
               {calculateRemainingDays()}
             </Typography>
             <Typography
