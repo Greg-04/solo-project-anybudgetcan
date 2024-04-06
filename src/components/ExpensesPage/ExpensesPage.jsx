@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
 
 function ExpensesPage() {
   // Dispatch hook
@@ -103,71 +104,104 @@ function ExpensesPage() {
         <div>
           <form className="expenseForm" onSubmit={handleSubmit}>
             <Container maxWidth="md">
-              <Box sx={{ mt: 4 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <p className="inputHeader">Name:</p>
-                    <TextField
-                      fullWidth
-                      className="input-container"
-                      type="text"
-                      id="name"
-                      value={name}
-                      onChange={(event) => setName(event.target.value)}
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <p className="inputHeader">Amount:</p>
-                    <TextField
-                      fullWidth
-                      className="input-container"
-                      type="number"
-                      id="amount"
-                      value={amount}
-                      onChange={(event) => setAmount(event.target.value)}
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <p className="inputHeader">Select Category:</p>
-                    <select
-                      required
-                      id="category"
-                      value={categoryId}
-                      onChange={handleCategorySelect}>
-                      <option className="input-container" value="">
-                        Select a category
-                      </option>
-                      {category.map((categoryName) => (
-                        <option key={categoryName.id} value={categoryName.id}>
-                          {categoryName.name}
+              <Paper
+                sx={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  padding: '20px',
+                }}>
+                <Box sx={{ mt: 4 }}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <h3
+                        style={{
+                          color: 'black',
+                          fontFamily: 'Rockwell',
+                        }}>
+                        Name:
+                      </h3>
+                      <TextField
+                        fullWidth
+                        className="input-container"
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                        InputProps={{
+                          style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                        }}
+                        required
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <h3
+                        style={{
+                          color: 'black',
+                          fontFamily: 'Rockwell',
+                        }}>
+                        Amount:
+                      </h3>
+                      <TextField
+                        fullWidth
+                        className="input-container"
+                        type="number"
+                        id="amount"
+                        value={amount}
+                        onChange={(event) => setAmount(event.target.value)}
+                        InputProps={{
+                          style: { color: '#e0e0e0', fontFamily: 'Rockwell' },
+                        }}
+                        required
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <h3
+                        style={{
+                          color: 'black',
+                          fontFamily: 'Rockwell',
+                        }}>
+                        Select Category:
+                      </h3>
+                      <select
+                        required
+                        id="category"
+                        value={categoryId}
+                        onChange={handleCategorySelect}>
+                        <option className="input-container" value="">
+                          Select a category
                         </option>
-                      ))}
-                    </select>
+                        {category.map((categoryName) => (
+                          <option key={categoryName.id} value={categoryName.id}>
+                            {categoryName.name}
+                          </option>
+                        ))}
+                      </select>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
+                      <Button
+                        variant="contained"
+                        style={{
+                          textDecoration: 'none',
+                          fontFamily: 'inherit',
+                          marginTop: '10px',
+                        }}
+                        className="button"
+                        type="submit">
+                        Submit
+                      </Button>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      sx={{
+                        textAlign: 'center',
+                        fontFamily: 'Rockwell',
+                      }}></Grid>
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
-                    <Button
-                      variant="contained"
-                      style={{
-                        textDecoration: 'none',
-                        fontFamily: 'inherit',
-                        marginTop: '10px',
-                      }}
-                      className="button"
-                      type="submit">
-                      Submit
-                    </Button>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}></Grid>
-                </Grid>
-              </Box>
+                </Box>
+              </Paper>
             </Container>
           </form>
         </div>
