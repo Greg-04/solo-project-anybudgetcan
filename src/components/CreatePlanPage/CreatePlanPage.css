@@ -47,4 +47,6 @@
 .sideMenu {
   font-family: 'Rockwell';
   color: black;
+  font-size: larger;
+  font-weight: 600;
 }

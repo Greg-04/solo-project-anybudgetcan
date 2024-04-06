@@ -103,10 +103,10 @@ function CreatePlanPage() {
       <div className="sideButtons">
         <p className="sideMenu">Make a Change?</p>
         <Button
-          sx={{ color: '#d50000', fontFamily: 'Rockwell' }}
+          sx={{ color: '#e0e0e0', fontFamily: 'Rockwell' }}
           variant="text"
           onClick={handleDelete}>
-          Reset Plan
+          Delete Plan
         </Button>
 
         <Button
