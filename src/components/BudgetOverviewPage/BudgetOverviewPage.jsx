@@ -191,7 +191,7 @@ function BudgetOverviewPage() {
 
         <div>
           <h2 className="budgetTitle">Total Spending by Category</h2>
-          <Grid container spacing={5}>
+          <Grid container spacing={5} className="categories">
             {combinedTotal
               .filter((item) => item.combined_total !== '0')
               .map((combinedTotalItem) => (

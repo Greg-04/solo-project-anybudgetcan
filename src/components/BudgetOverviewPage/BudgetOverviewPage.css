@@ -18,8 +18,12 @@
   border-bottom: 1px solid #e0e0e0; */
 }
 
-
 .budgetTitle {
   color: black;
   text-align: center;
-  font-family: 'Rockwell';}
+  font-family: 'Rockwell';
+}
+
+.categories {
+ padding:20px;
+}
