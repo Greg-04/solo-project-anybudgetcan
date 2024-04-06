@@ -8,6 +8,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 function CreatePlanPage() {
   //To do, make a button to reset plan information
@@ -48,8 +49,13 @@ function CreatePlanPage() {
   //handle for my plan submit
   const handlePlanSubmit = (event) => {
     event.preventDefault();
-    alert('Plan Submitted!');
-    console.log('payload:', planName, targetDate, targetAmount);
+    Swal.fire({
+      title: 'Plan Set!',
+      text: 'Please continue adding your information',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    });
+    // console.log('payload:', planName, targetDate, targetAmount);
     dispatch({
       type: 'ADD_PLAN',
       payload: {
@@ -71,7 +77,12 @@ function CreatePlanPage() {
     // Dispatch action to delete plan
     // console.log('Plan ID:', id);
     dispatch({ type: 'DELETE_PLAN', payload: id });
-    alert('Plan Deleted!');
+    Swal.fire({
+      title: 'Plan Deleted!',
+      text: 'Please add another plan before continuing',
+      icon: 'info',
+      confirmButtonText: 'Ok',
+    });
   };
 
   // Fetch plan on component mount
@@ -156,7 +167,11 @@ function CreatePlanPage() {
                   <Button
                     variant="contained"
                     type="submit"
-                    style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px'  }}>
+                    style={{
+                      textDecoration: 'none',
+                      fontFamily: 'inherit',
+                      marginTop: '10px',
+                    }}>
                     Make This Plan!
                   </Button>
                 </Grid>
@@ -166,7 +181,11 @@ function CreatePlanPage() {
                   sx={{ textAlign: 'center', fontFamily: 'Rockwell' }}>
                   <Button
                     variant="contained"
-                    style={{ textDecoration: 'none', fontFamily: 'inherit', marginTop:'10px' }}>
+                    style={{
+                      textDecoration: 'none',
+                      fontFamily: 'inherit',
+                      marginTop: '10px',
+                    }}>
                     <Link to="/addTransactions">
                       Start recording your transactions!
                     </Link>
