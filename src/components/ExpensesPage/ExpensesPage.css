@@ -1,7 +1,7 @@
 .expenseTable {
   margin-top: 20px;
   border: 2px solid #000000;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin-left: auto; /* Center the container horizontally */
   margin-right: auto;
 }
@@ -17,14 +17,15 @@
   text-align: left;
   border: 2px solid #000000;
   color: #e0e0e0;
-  border-radius: 10px;
+  font-family: 'Rockwell';
+  /* border-radius: 10px; */
 }
 
 .expenseTable th {
   background-color: #e0e0e0;
-  color:black;
+  color: black;
   font-family: 'Rockwell';
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .expenseHeaders {
@@ -53,4 +54,4 @@
 
 .button {
   margin-top: 20px;
-} */
+}
