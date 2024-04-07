@@ -419,8 +419,8 @@ function PlanInformationPage() {
                   {formatDate(planItem.target_date)}
                 </p>
                 <p>
-                  <span className="planTitles">Budget Goal:</span> $
-                  {planItem.budget_goal}
+                  <span className="planTitles">Budget Goal:</span>{' '}
+                  <span className="planAmounts">${planItem.budget_goal}</span>
                 </p>
                 <p>
                   <span className="planTitles">Remaining Days:</span>{' '}
@@ -429,20 +429,29 @@ function PlanInformationPage() {
                 <p>
                   <span className="planTitles">
                     Total Remaining Budget Amount:
-                  </span>{' '}
-                  ${incomeRemaining().toFixed(2)}
+                  </span>
+                  <span className="planAmounts">
+                    {' '}
+                    ${incomeRemaining().toFixed(2)}
+                  </span>
                 </p>
                 <p>
                   <span className="planTitles">
                     Target Monthly Budget Amount:
-                  </span>{' '}
-                  ${monthlyBudgetTotal().toFixed(2)}
+                  </span>
+                  <span className="planAmounts">
+                    {' '}
+                    ${monthlyBudgetTotal().toFixed(2)}
+                  </span>
                 </p>
                 <p>
                   <span className="planTitles">
                     Current Monthly Amount Remaining:
-                  </span>{' '}
-                  ${monthlyBudgetTotalRemaining().toFixed(2)}
+                  </span>
+                  <span className="planAmounts">
+                    {' '}
+                    ${monthlyBudgetTotalRemaining().toFixed(2)}
+                  </span>
                 </p>
               </div>
             ))}
