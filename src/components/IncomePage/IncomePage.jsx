@@ -121,6 +121,7 @@ function IncomePage() {
               sx={{
                 backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 padding: '20px',
+                border: '1px solid'
               }}>
               <Box sx={{ mt: 4 }}>
                 <Grid container spacing={2}>
