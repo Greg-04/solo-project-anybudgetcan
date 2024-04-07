@@ -207,7 +207,7 @@ function BudgetOverviewPage() {
                       fontFamily: 'Rockwell',
                     }}>
                     <h3>{combinedTotalItem.name}</h3>
-                    <p>Amount Spent: ${combinedTotalItem.combined_total}</p>
+                    <p>Amount Spent: <span className="categorySpending">${combinedTotalItem.combined_total}</span></p>
                   </Box>
                 </Grid>
               ))}

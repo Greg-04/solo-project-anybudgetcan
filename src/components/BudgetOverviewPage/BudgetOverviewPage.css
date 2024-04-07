@@ -25,5 +25,9 @@
 }
 
 .categories {
- padding:20px;
+  padding: 20px;
+}
+
+.categorySpending {
+  color: #4caf50;
 }
