@@ -10,6 +10,12 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
 function ExpensesPage() {
   // Dispatch hook
@@ -108,6 +114,7 @@ function ExpensesPage() {
                 sx={{
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
                   padding: '20px',
+                  border: '1px solid'
                 }}>
                 <Box sx={{ mt: 4 }}>
                   <Grid container spacing={2}>
@@ -206,26 +213,54 @@ function ExpensesPage() {
           </form>
         </div>
         <h2 className="expenseHeaders2">Fixed Monthly Expenses List</h2>
-        <div>
-          <table className="expenseTable">
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Category</th>
-                <th>Delete?</th>
-                <th>Edit Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {JSON.stringify(expenses)} */}
-              {/* Adding a conditional check to prevent mapping over undefined or null */}
+      
+
+        <TableContainer
+          component={Paper}
+          sx={{
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            padding: '20px',
+            maxWidth: '50%',
+            marginTop: '20px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            border: '1px solid'
+          }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                  Description
+                </TableCell>
+                <TableCell sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                  Amount
+                </TableCell>
+                <TableCell sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                  Category
+                </TableCell>
+                <TableCell sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                  Delete?
+                </TableCell>
+                <TableCell sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                  Edit Amount
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {expenses &&
                 expenses.map((expenseItem) => (
-                  <tr key={expenseItem.id}>
-                    <td>{expenseItem.name}</td>
+                  <TableRow
+                    key={expenseItem.id}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
+                      {expenseItem.name}
+                    </TableCell>
                     {/* <td>${expenses.amount}</td> */}
-                    <td>
+                    <TableCell
+                      sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
                       {editingId === expenseItem.id ? (
                         <input
                           type="number"
@@ -235,9 +270,12 @@ function ExpensesPage() {
                       ) : (
                         `$${expenseItem.amount}`
                       )}
-                    </td>
-                    <td>{expenseItem.category_name}</td>
-                    <td>
+                    </TableCell>
+                    <TableCell
+                      sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
+                      {expenseItem.category_name}
+                    </TableCell>
+                    <TableCell>
                       <Button
                         sx={{
                           fontFamily: 'Rockwell',
@@ -248,8 +286,8 @@ function ExpensesPage() {
                         onClick={() => handleDelete(expenseItem.id)}>
                         Delete
                       </Button>
-                    </td>
-                    <td>
+                    </TableCell>
+                    <TableCell>
                       {editingId === expenseItem.id ? (
                         <>
                           <Button
@@ -289,19 +327,20 @@ function ExpensesPage() {
                           Edit
                         </Button>
                       )}
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ))}
               {/* If expenses is null or undefined, display a loading message */}
               {/* {JSON.stringify(expenses)} */}
               {!expenses && (
-                <tr>
-                  <td>Loading...</td>
-                </tr>
+                <TableRow>
+                  <TableCell>Loading...</TableCell>
+                </TableRow>
               )}
-            </tbody>
-          </table>
-        </div>
+            </TableBody>
+          </Table>
+        </TableContainer>
+
         <div style={{ textAlign: 'center' }}>
           <Button
             variant="contained"
