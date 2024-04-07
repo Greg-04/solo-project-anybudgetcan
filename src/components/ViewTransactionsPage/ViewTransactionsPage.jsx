@@ -3,6 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import Button from '@mui/material/Button';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 function ViewTransactionsPage() {
   //dispatch hook
@@ -124,29 +131,73 @@ function ViewTransactionsPage() {
       {/* object.entries returns an array of arrays, giving it the properties of month and transactions */}
       {Object.entries(groupTransactionsByMonth()).map(
         ([month, transactions]) => (
-          <div key={month} className="month-table">
-            <h2>{formatTableHeaderDate(transactions[0].trans_date)}</h2>
-            <table className="table-container">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th>Category</th>
-                  <th>Delete?</th>
-                  <th>Edit Amount</th>
-                </tr>
-              </thead>
-              <tbody>
+          <TableContainer
+            component={Paper}
+            key={month}
+            sx={{
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              padding: '20px',
+              maxWidth: '60%',
+              marginTop: '20px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              border: '1px solid',
+            }}>
+            <h2 className="monthHeader">
+              {formatTableHeaderDate(transactions[0].trans_date)}
+            </h2>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                    Date
+                  </TableCell>
+                  <TableCell
+                    sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                    Description
+                  </TableCell>
+                  <TableCell
+                    sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                    Amount
+                  </TableCell>
+                  <TableCell
+                    sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                    Category
+                  </TableCell>
+                  <TableCell
+                    sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                    Delete?
+                  </TableCell>
+                  <TableCell
+                    sx={{ fontFamily: 'Rockwell', fontSize: 'larger' }}>
+                    Edit Amount
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
                 {/* {JSON.stringify(transactions)} */}
                 {/* Adding a conditional check to prevent mapping over undefined or null */}
                 {transactions &&
                   transactions.map((transaction) => (
-                    <tr key={transaction.id}>
-                      <td>{formatDate(transaction.trans_date)}</td>
-                      <td>{transaction.name}</td>
+                    <TableRow
+                      key={transaction.id}
+                      sx={{
+                        '&:last-child td, &:last-child th': { border: 0 },
+                      }}>
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
+                        {formatDate(transaction.trans_date)}
+                      </TableCell>
+                      <TableCell
+                        sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
+                        {transaction.name}
+                      </TableCell>
                       {/* <td>${transaction.amount}</td> */}
-                      <td>
+                      <TableCell
+                        sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
                         {editingId === transaction.id ? (
                           <input
                             type="number"
@@ -156,9 +207,13 @@ function ViewTransactionsPage() {
                         ) : (
                           `$${transaction.amount}`
                         )}
-                      </td>
-                      <td>{transaction.category_name}</td>
-                      <td>
+                      </TableCell>
+                      <TableCell
+                        sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
+                        {transaction.category_name}
+                      </TableCell>
+                      <TableCell
+                        sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
                         <Button
                           sx={{
                             fontFamily: 'Rockwell',
@@ -169,8 +224,9 @@ function ViewTransactionsPage() {
                           onClick={() => handleDelete(transaction.id)}>
                           Delete
                         </Button>
-                      </td>
-                      <td>
+                      </TableCell>
+                      <TableCell
+                        sx={{ fontFamily: 'Rockwell', color: '#e0e0e0' }}>
                         {editingId === transaction.id ? (
                           <>
                             <Button
@@ -209,18 +265,18 @@ function ViewTransactionsPage() {
                             Edit
                           </Button>
                         )}
-                      </td>
-                    </tr>
+                      </TableCell>
+                    </TableRow>
                   ))}
                 {/* If transactions is null or undefined, display a loading message */}
                 {!transactions && (
-                  <tr>
-                    <td>Loading...</td>
-                  </tr>
+                  <TableRow>
+                    <TableCell>Loading...</TableCell>
+                  </TableRow>
                 )}
-              </tbody>
-            </table>
-          </div>
+              </TableBody>
+            </Table>
+          </TableContainer>
         )
       )}
     </>

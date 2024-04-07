@@ -37,3 +37,8 @@
   color: #e0e0e0;
   font-family: 'Rockwell';
 }
+
+.monthHeader {
+  font-family: 'Rockwell';
+  font-weight: 400;
+}
