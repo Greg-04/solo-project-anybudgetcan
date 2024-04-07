@@ -1,6 +1,6 @@
 .expenseTable {
   margin-top: 20px;
-  border: 4px solid #000000;
+  /* border: px solid #000000; */
   /* border-radius: 10px; */
   margin-left: auto; /* Center the container horizontally */
   margin-right: auto;
@@ -15,7 +15,7 @@
 .expenseTable td {
   padding: 20px;
   text-align: left;
-  border: 4px solid #000000;
+  border: 3px solid #000000;
   color: #e0e0e0;
   font-family: 'Rockwell';
 }
