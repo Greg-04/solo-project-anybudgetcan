@@ -92,7 +92,7 @@ function Nav() {
         open={openDrawer}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}
-        PaperProps={{ style: { backgroundColor: '#9e9e9e' } }}
+        PaperProps={{ style: { backgroundColor: '#757575' } }}
         sx={{
           fontFamily: 'Rockwell',
         }}>

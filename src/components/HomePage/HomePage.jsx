@@ -207,10 +207,10 @@ function HomePage() {
           <Box
             sx={{
               p: 4,
-              border: '5px solid #4caf50',
+              border: '2px solid #4caf50',
               borderRadius: '12px',
               marginTop: '80px',
-              boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
               backgroundColor: '#e0e0e0',
               textAlign: 'center',
             }}>
@@ -226,15 +226,15 @@ function HomePage() {
           <Box
             sx={{
               p: 4,
-              border: '5px solid black',
+              border: '2px solid #757575',
               borderRadius: '12px',
               marginTop: '80px',
-              boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
               backgroundColor: '#e0e0e0',
               textAlign: 'center',
             }}>
             <Typography
-              sx={{ fontSize: 50, color: 'black', fontFamily: 'Rockwell' }}>
+              sx={{ fontSize: 50, color: '#757575', fontFamily: 'Rockwell' }}>
               {calculateRemainingDays()}
             </Typography>
             <Typography

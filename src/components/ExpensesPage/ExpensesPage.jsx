@@ -114,7 +114,7 @@ function ExpensesPage() {
                 sx={{
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
                   padding: '20px',
-                  border: '1px solid'
+                  border: '1px solid',
                 }}>
                 <Box sx={{ mt: 4 }}>
                   <Grid container spacing={2}>
@@ -213,7 +213,6 @@ function ExpensesPage() {
           </form>
         </div>
         <h2 className="expenseHeaders2">Fixed Monthly Expenses List</h2>
-      
 
         <TableContainer
           component={Paper}
@@ -224,7 +223,7 @@ function ExpensesPage() {
             marginTop: '20px',
             marginLeft: 'auto',
             marginRight: 'auto',
-            border: '1px solid'
+            border: '1px solid',
           }}>
           <Table>
             <TableHead>
