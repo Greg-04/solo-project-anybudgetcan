@@ -15,6 +15,7 @@ const expensesRouter = require('./routes/expenses.router');
 const incomeRouter = require('./routes/income.router');
 const planRouter = require('./routes/plan.router');
 const budgetOverviewRouter = require('./routes/budgetOverview.router');
+const apiRouter = require('./routes/api.router');
 
 // Express Middleware
 app.use(express.json());
@@ -36,6 +37,7 @@ app.use('/api/expenses', expensesRouter);
 app.use('/api/income', incomeRouter);
 app.use('/api/plan', planRouter);
 app.use('/api/budgetOverview', budgetOverviewRouter);
+app.use('/api/apiRouter', apiRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {
