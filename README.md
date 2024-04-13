@@ -9,6 +9,10 @@
   
 Users will also be able to access each of these pages to view, modify, or add additional savings plans. Allowing users to understand their financial habits and progress toward savings goals effectively.
 
+## Screenshots
+![alt text](<public/Screenshot 2024-04-13 at 1.50.26 PM.png>)
+![alt text](<public/Screenshot 2024-04-13 at 1.52.37 PM.png>)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
